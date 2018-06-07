@@ -1,0 +1,11 @@
+Fitter Status : Successful - Fri Jun 01 13:53:36 2018
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : 180601_7483_BCD_adder
+Top-level Entity Name : 180601_7483_BCD_adder
+Family : MAX II
+Device : EPM1270T144C5
+Timing Models : Final
+Total logic elements : 20 / 1,270 ( 2 % )
+Total pins : 18 / 116 ( 16 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

@@ -1,0 +1,11 @@
+Fitter Status : Successful - Fri Jun 01 16:00:39 2018
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : Hex_to_7seg_encoder_180601
+Top-level Entity Name : Hex_to_7seg_encoder_180601
+Family : MAX II
+Device : EPM1270T144C5
+Timing Models : Final
+Total logic elements : 8 / 1,270 ( < 1 % )
+Total pins : 13 / 116 ( 11 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )
