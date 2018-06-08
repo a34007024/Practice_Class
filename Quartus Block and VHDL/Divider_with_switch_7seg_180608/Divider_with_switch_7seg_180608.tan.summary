@@ -1,0 +1,36 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 17.781 ns
+From           : SCAN[1]
+To             : D[6]
+From Clock     : GCKP18
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'GCKP18'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 230.04 MHz ( period = 4.347 ns )
+From           : FD[0]
+To             : FD[4]
+From Clock     : GCKP18
+To Clock       : GCKP18
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+
