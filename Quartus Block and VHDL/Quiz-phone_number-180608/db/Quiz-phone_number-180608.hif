@@ -1,0 +1,43 @@
+Quartus II
+Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+45
+3468
+OFF
+OFF
+OFF
+ON
+ON
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+Quiz-phone_number-180608
+# storage
+db|Quiz-phone_number-180608.(0).cnf
+db|Quiz-phone_number-180608.(0).cnf
+# case_insensitive
+# source_file
+quiz-phone_number-180608.bdf
+a135fa26fbd5f41ccca36fb6638878b3
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# complete
+

@@ -1,0 +1,31 @@
+|Quiz_phone_number_VHDL_180608
+inputS[0] => Mux0.IN10
+inputS[0] => Mux1.IN5
+inputS[0] => Mux2.IN10
+inputS[0] => Mux3.IN10
+inputS[0] => Mux4.IN10
+inputS[0] => Mux5.IN10
+inputS[0] => Mux6.IN10
+inputS[1] => Mux0.IN9
+inputS[1] => Mux2.IN9
+inputS[1] => Mux3.IN9
+inputS[1] => Mux4.IN9
+inputS[1] => Mux5.IN9
+inputS[1] => Mux6.IN9
+inputS[2] => Mux0.IN8
+inputS[2] => Mux1.IN4
+inputS[2] => Mux2.IN8
+inputS[2] => Mux3.IN8
+inputS[2] => Mux4.IN8
+inputS[2] => Mux5.IN8
+inputS[2] => Mux6.IN8
+segOut[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+segOut[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+segOut[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+segOut[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+segOut[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+segOut[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+segOut[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+Com <= <GND>
+
+

@@ -1,0 +1,11 @@
+Fitter Status : Successful - Fri Jun 08 16:18:11 2018
+Quartus II Version : 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
+Revision Name : Divider_with_switch_7seg_180608
+Top-level Entity Name : Divider_with_switch_7seg_180608
+Family : MAX II
+Device : EPM1270T144C5
+Timing Models : Final
+Total logic elements : 39 / 1,270 ( 3 % )
+Total pins : 18 / 116 ( 16 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

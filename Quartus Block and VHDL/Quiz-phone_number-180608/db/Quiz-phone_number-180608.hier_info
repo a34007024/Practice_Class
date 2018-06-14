@@ -1,0 +1,27 @@
+|Quiz-phone_number-180608
+a <= inst18.DB_MAX_OUTPUT_PORT_TYPE
+S3 => inst15.IN0
+S3 => inst16.IN1
+S3 => inst14.IN1
+S3 => inst26.IN1
+S3 => inst27.IN1
+S3 => inst29.IN1
+S1 => inst12.IN1
+S1 => inst.IN0
+S1 => inst25.IN1
+S1 => inst26.IN2
+S1 => inst29.IN0
+S2 => inst16.IN0
+S2 => inst13.IN0
+S2 => inst14.IN0
+S2 => inst27.IN0
+S2 => inst31.IN0
+b <= inst19.DB_MAX_OUTPUT_PORT_TYPE
+c <= inst20.DB_MAX_OUTPUT_PORT_TYPE
+d <= inst21.DB_MAX_OUTPUT_PORT_TYPE
+e <= inst22.DB_MAX_OUTPUT_PORT_TYPE
+f <= inst23.DB_MAX_OUTPUT_PORT_TYPE
+g <= inst24.DB_MAX_OUTPUT_PORT_TYPE
+COM-137 <= <GND>
+
+
