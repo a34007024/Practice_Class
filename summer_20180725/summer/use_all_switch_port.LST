@@ -1,0 +1,62 @@
+C51 COMPILER V9.01   USE_ALL_SWITCH_PORT                                                   07/25/2018 13:25:23 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE USE_ALL_SWITCH_PORT
+OBJECT MODULE PLACED IN use_all_switch_port.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE use_all_switch_port.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define ledPin P1
+   3          #define sw P0   //sw means switch
+   4          void delay(int ms);
+   5          //-----------------------------
+   6          int main(){
+   7   1              while(1){
+   8   2                      if(sw == 0xfc){
+   9   3                              ledPin = 0x00;
+  10   3                              delay(100);
+  11   3                              ledPin = 0xff;
+  12   3                              delay(100);
+  13   3                      }
+  14   2                      else if(sw == 0xff){
+  15   3                              ledPin = 0x00;
+  16   3                      }
+  17   2                      else if(sw == 0x00){
+  18   3                              ledPin = 0xff;
+  19   3                      }
+  20   2                      else if(sw == 0xfe){
+  21   3                              for(ledPin = 0x00;ledPin<=0xff;ledPin++){
+  22   4                                      if(sw!=0xfe)delay(100);
+  23   4                                      else break;//離開for迴圈
+  24   4                              }
+  25   3                      }
+  26   2                      else{
+  27   3                              ledPin = sw;
+  28   3                      }
+  29   2              }
+  30   1              return 0;
+  31   1      }
+  32          //-------------------------------
+  33          void delay(int ms){
+  34   1              int i,j;
+  35   1              for(i=0;i<ms;i++)
+  36   1                      for(j=0;j<120;j++);
+  37   1              //120是依據這塊板子上的石英晶體
+  38   1              //(12MHz)推算出來的
+  39   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    120    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
