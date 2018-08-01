@@ -1,2 +1,4 @@
 # Practice_Class
 用來存放實習課所做的東西及上課的一些講義
+
+#除頻器部分的詳細說明，請到divide_frequency_180622參考

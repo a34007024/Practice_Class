@@ -1,0 +1,29 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'GCKP18'
+Slack : -4.568
+TNS   : -89.914
+
+Type  : Setup 'FD[23]'
+Slack : -1.794
+TNS   : -6.541
+
+Type  : Hold 'GCKP18'
+Slack : -1.964
+TNS   : -1.964
+
+Type  : Hold 'FD[23]'
+Slack : 1.686
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'GCKP18'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'FD[23]'
+Slack : 0.234
+TNS   : 0.000
+
+------------------------------------------------------------
