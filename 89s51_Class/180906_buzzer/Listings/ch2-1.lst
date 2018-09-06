@@ -1,50 +1,79 @@
-C51 COMPILER V9.59.0.0   CH2_1                                                             09/06/2018 14:13:57 PAGE 1   
+C51 COMPILER V9.01   CH2_1                                                                 09/06/2018 14:34:08 PAGE 1   
 
 
-C51 COMPILER V9.59.0.0, COMPILATION OF MODULE CH2_1
+C51 COMPILER V9.01, COMPILATION OF MODULE CH2_1
 OBJECT MODULE PLACED IN .\Objects\ch2-1.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\keil_c\C51\BIN\C51.EXE ch2-1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND P
-                    -RINT(.\Listings\ch2-1.lst) TABS(2) OBJECT(.\Objects\ch2-1.obj)
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ch2-1.c BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ch2-1.lst) OBJECT(.\Obje
+                    -cts\ch2-1.obj)
 
 line level    source
 
    1          #include <reg51.h>
    2          sbit buzzer=P3^7;
    3          sbit buzzer_sw=P0^0;
-   4          void beep(int);
-   5          void delay500us(int);
-   6          
-   7          void main(){
-   8   1        buzzer = 1;buzzer_sw=1;
-   9   1        //set buzzer and switch to OFF at startup
-  10   1        while(1){
-  11   2          if(!buzzer_sw) beep(1);
-  12   2        }
-  13   1      }
-  14          void beep(int beepcount){//one beep last for 0.2s
-  15   1        int i,j;
-  16   1        for(i=0;i<beepcount;i++){
-  17   2          for(j=0;j<100;j++){
-  18   3            buzzer = 0;delay500us(1);
-  19   3            buzzer = 1;delay500us(1);
-  20   3          }
-  21   2          delay500us(200); //100ms
-  22   2        }
-  23   1      }
-  24          void delay500us(int time){
-  25   1        int i,j;
-  26   1        for(i=0;i<time;i++){
-  27   2          for(j=0;j<60;j++);
-  28   2        }
-  29   1      }
+   4          sbit buzzer_sw2=P0^1;
+   5          void beep(int);
+   6          void beepSW2(int);
+   7          void delay100us(int);
+   8          
+   9          void main(){
+  10   1              buzzer = 1;buzzer_sw=1;
+  11   1              //set buzzer and switch to OFF at startup
+  12   1              while(1){
+  13   2                      if(!buzzer_sw)beep(1);  // if(!buzzer_sw)  =  if(buzzer_sw==0)
+  14   2                      if(!buzzer_sw2)beepSW2(1);
+  15   2              }
+  16   1      }
+  17          void beep(int beepcount){//one beep last for 0.2s
+  18   1              int i,j;
+  19   1              for(i=0;i<beepcount;i++){
+  20   2                      for(j=0;j<100;j++){
+  21   3                              buzzer = 0;delay100us(1);
+  22   3                              buzzer = 1;delay100us(1);
+  23   3                      }
+  24   2                      delay100us(1000); //100ms
+  25   2              }  
+  26   1              for(i=0;i<beepcount;i++){
+  27   2                      for(j=0;j<100;j++){
+  28   3                              buzzer = 0;delay100us(2);
+  29   3                              buzzer = 1;delay100us(2);
+  30   3                      }
+  31   2                      delay100us(1000); //100ms
+  32   2              }
+  33   1      }
+  34          void beepSW2(int beepcount){//one beep last for 0.2s
+  35   1              int i,j;
+  36   1              for(i=0;i<beepcount;i++){
+  37   2                      for(j=0;j<100;j++){
+  38   3                              buzzer = 0;delay100us(3);
+  39   3                              buzzer = 1;delay100us(3);
+  40   3                      }
+  41   2                      delay100us(1000); //100ms
+  42   2              }  
+  43   1              for(i=0;i<beepcount;i++){
+  44   2                      for(j=0;j<100;j++){
+  45   3                              buzzer = 0;delay100us(5);
+  46   3                              buzzer = 1;delay100us(5);
+  47   3                      }
+  48   2                      delay100us(1000); //100ms
+  49   2              }
+  50   1      }
+  51          void delay100us(int time){
+  52   1              int i,j;
+  53   1              for(i=0;i<time;i++){
+  54   2                      for(j=0;j<12;j++);
+C51 COMPILER V9.01   CH2_1                                                                 09/06/2018 14:34:08 PAGE 2   
+
+  55   2              }
+  56   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    140    ----
+   CODE SIZE        =    386    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       6
+   DATA SIZE        =   ----      12
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

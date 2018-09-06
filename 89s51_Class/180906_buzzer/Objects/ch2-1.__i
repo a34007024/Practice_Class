@@ -1,1 +1,1 @@
-"ch2-1.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ch2-1.lst) TABS (2) OBJECT(.\Objects\ch2-1.obj)
+"ch2-1.c" BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ch2-1.lst) OBJECT(.\Objects\ch2-1.obj)

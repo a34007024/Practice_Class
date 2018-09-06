@@ -8,7 +8,7 @@
   <Extensions>
     <cExt>*.c</cExt>
     <aExt>*.s*; *.src; *.a*</aExt>
-    <oExt>*.obj; *.o</oExt>
+    <oExt>*.obj</oExt>
     <lExt>*.lib</lExt>
     <tExt>*.txt; *.h; *.inc</tExt>
     <pExt>*.plm</pExt>
@@ -43,7 +43,7 @@
         <PageWidth>120</PageWidth>
         <PageLength>65</PageLength>
         <TabStop>8</TabStop>
-        <ListingPath>.\Listings\</ListingPath>
+        <ListingPath>.\</ListingPath>
       </OPTLEX>
       <ListingPage>
         <CreateCListing>1</CreateCListing>
@@ -153,7 +153,7 @@
         <aSer4>0</aSer4>
         <StkLoc>0</StkLoc>
         <TrcWin>0</TrcWin>
-        <newCpu>0</newCpu>
+        <newCpu>1</newCpu>
         <uProt>0</uProt>
       </DebugFlag>
       <LintExecutable></LintExecutable>
@@ -167,32 +167,32 @@
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>1</FileNumber>
+      <GroupNumber>0</GroupNumber>
+      <FileNumber>0</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>18766739</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>58803304</TopLine>
-      <CurrentLine>15671464</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\STARTUP.A51</PathWithFileName>
       <FilenameWithoutPath>STARTUP.A51</FilenameWithoutPath>
     </File>
     <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>2</FileNumber>
+      <GroupNumber>0</GroupNumber>
+      <FileNumber>0</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>12</ColumnNumber>
+      <ColumnNumber>26</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>2</CurrentLine>
+      <TopLine>25</TopLine>
+      <CurrentLine>33</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\ch2-1.c</PathWithFileName>
-      <FilenameWithoutPath>ch2-1.c</FilenameWithoutPath>
+      <PathWithFileName>.\ch1.c</PathWithFileName>
+      <FilenameWithoutPath>ch1.c</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -1531,22 +1531,5 @@
       </Window>
     </View>
   </WinLayout>
-
-  <MDIGroups>
-    <Orientation>1</Orientation>
-    <ActiveMDIGroup>0</ActiveMDIGroup>
-    <MDIGroup>
-      <Size>100</Size>
-      <ActiveTab>0</ActiveTab>
-      <Documents>
-        <Doc>
-          <Name>.\ch2-1.c</Name>
-          <ColumnNumber>12</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>2</CurrentLine>
-        </Doc>
-      </Documents>
-    </MDIGroup>
-  </MDIGroups>
 
 </ProjectOpt>
