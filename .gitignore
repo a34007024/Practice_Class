@@ -7,3 +7,5 @@ incremental_db/
 *.rdb
 *.hdb
 *.kpt
+*.docx
+*.pdf
