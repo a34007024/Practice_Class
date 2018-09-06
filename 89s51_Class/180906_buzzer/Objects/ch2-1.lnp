@@ -1,3 +1,4 @@
-".\Objects\STARTUP.obj" 
+".\Objects\STARTUP.obj",
+".\Objects\ch2-1.obj" 
 TO ".\Objects\ch2-1" 
 PRINT(".\Listings\ch2-1.m51")

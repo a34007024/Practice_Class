@@ -1,6 +1,6 @@
 #include <reg51.h>
-sbit buzzer P3^7;
-sbit buzzer_sw P0^0;
+sbit buzzer=P3^7;
+sbit buzzer_sw=P0^0;
 void beep(int);
 void delay500us(int);
 
