@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        09/06/2018  14:34:08  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/06/2018  14:51:30  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -30,8 +30,10 @@ LINK MAP OF MODULE:  .\Objects\ch2-1 (?C_STARTUP)
             CODE    0800H     009FH     UNIT         ?PR?_BEEP?CH2_1
             CODE    089FH     009FH     UNIT         ?PR?_BEEPSW2?CH2_1
             CODE    093EH     002AH     UNIT         ?PR?_DELAY100US?CH2_1
-            CODE    0968H     001AH     UNIT         ?PR?MAIN?CH2_1
-            CODE    0982H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0968H     0026H     UNIT         ?PR?_DELAY?CH2_1
+            CODE    098EH     0026H     UNIT         ?PR?_DELAY25US?CH2_1
+            CODE    09B4H     001CH     UNIT         ?PR?MAIN?CH2_1
+            CODE    09D0H     000CH     UNIT         ?C_C51STARTUP
 
 
 
@@ -57,15 +59,15 @@ SEGMENT                          DATA_GROUP
 
 
 SYMBOL TABLE OF MODULE:  .\Objects\ch2-1 (?C_STARTUP)
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/06/2018  14:51:30  PAGE 2
+
+
 
   VALUE           TYPE          NAME
-BL51 BANKED LINKER/LOCATER V6.22                                                      09/06/2018  14:34:08  PAGE 2
-
-
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:0982H         SEGMENT       ?C_C51STARTUP
+  C:09D0H         SEGMENT       ?C_C51STARTUP
   I:000EH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
@@ -75,7 +77,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\ch2-1 (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0985H         SYMBOL        IDATALOOP
+  C:09D3H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -84,18 +86,18 @@ SYMBOL TABLE OF MODULE:  .\Objects\ch2-1 (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:0982H         SYMBOL        STARTUP1
+  C:09D0H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:0982H         LINE#         133
-  C:0984H         LINE#         134
-  C:0985H         LINE#         135
-  C:0986H         LINE#         136
-  C:0988H         LINE#         185
-  C:098BH         LINE#         196
+  C:09D0H         LINE#         133
+  C:09D2H         LINE#         134
+  C:09D3H         LINE#         135
+  C:09D4H         LINE#         136
+  C:09D6H         LINE#         185
+  C:09D9H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        CH2_1
@@ -103,45 +105,37 @@ SYMBOL TABLE OF MODULE:  .\Objects\ch2-1 (?C_STARTUP)
   D:0080H         PUBLIC        P0
   D:00B0H         PUBLIC        P3
   C:0942H         PUBLIC        _delay100us
+  C:0968H         PUBLIC        _delay
   C:0800H         PUBLIC        _beep
-  B:0080H.1       PUBLIC        buzzer_sw2
   B:00B0H.7       PUBLIC        buzzer
-  C:0968H         PUBLIC        main
-  B:0080H.0       PUBLIC        buzzer_sw
+  C:09B4H         PUBLIC        main
+  C:098EH         PUBLIC        _delay25us
   C:089FH         PUBLIC        _beepSW2
-  -------         PROC          MAIN
-  C:0968H         LINE#         9
-  C:0968H         LINE#         10
-  C:096CH         LINE#         12
-  C:096CH         LINE#         13
-  C:0976H         LINE#         14
-  C:0980H         LINE#         15
-  -------         ENDPROC       MAIN
   -------         PROC          _BEEP
   D:0008H         SYMBOL        beepcount
-BL51 BANKED LINKER/LOCATER V6.22                                                      09/06/2018  14:34:08  PAGE 3
-
-
   -------         DO            
   D:000AH         SYMBOL        i
   D:000CH         SYMBOL        j
   -------         ENDDO         
-  C:0800H         LINE#         17
-  C:0804H         LINE#         19
-  C:081AH         LINE#         20
-  C:081FH         LINE#         21
-  C:0828H         LINE#         22
-  C:0831H         LINE#         23
-  C:0844H         LINE#         24
-  C:0847H         LINE#         25
-  C:0851H         LINE#         26
-  C:0867H         LINE#         27
-  C:086CH         LINE#         28
-  C:0875H         LINE#         29
-  C:087EH         LINE#         30
-  C:0891H         LINE#         31
-  C:0894H         LINE#         32
-  C:089EH         LINE#         33
+  C:0800H         LINE#         5
+  C:0804H         LINE#         7
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/06/2018  14:51:30  PAGE 3
+
+
+  C:081AH         LINE#         8
+  C:081FH         LINE#         9
+  C:0828H         LINE#         10
+  C:0831H         LINE#         11
+  C:0844H         LINE#         12
+  C:0847H         LINE#         13
+  C:0851H         LINE#         14
+  C:0867H         LINE#         15
+  C:086CH         LINE#         16
+  C:0875H         LINE#         17
+  C:087EH         LINE#         18
+  C:0891H         LINE#         19
+  C:0894H         LINE#         20
+  C:089EH         LINE#         21
   -------         ENDPROC       _BEEP
   -------         PROC          _BEEPSW2
   D:0008H         SYMBOL        beepcount
@@ -149,47 +143,86 @@ SYMBOL TABLE OF MODULE:  .\Objects\ch2-1 (?C_STARTUP)
   D:000AH         SYMBOL        i
   D:000CH         SYMBOL        j
   -------         ENDDO         
-  C:089FH         LINE#         34
-  C:08A3H         LINE#         36
-  C:08B9H         LINE#         37
-  C:08BEH         LINE#         38
-  C:08C7H         LINE#         39
-  C:08D0H         LINE#         40
-  C:08E3H         LINE#         41
-  C:08E6H         LINE#         42
-  C:08F0H         LINE#         43
-  C:0906H         LINE#         44
-  C:090BH         LINE#         45
-  C:0914H         LINE#         46
-  C:091DH         LINE#         47
-  C:0930H         LINE#         48
-  C:0933H         LINE#         49
-  C:093DH         LINE#         50
+  C:089FH         LINE#         22
+  C:08A3H         LINE#         24
+  C:08B9H         LINE#         25
+  C:08BEH         LINE#         26
+  C:08C7H         LINE#         27
+  C:08D0H         LINE#         28
+  C:08E3H         LINE#         29
+  C:08E6H         LINE#         30
+  C:08F0H         LINE#         31
+  C:0906H         LINE#         32
+  C:090BH         LINE#         33
+  C:0914H         LINE#         34
+  C:091DH         LINE#         35
+  C:0930H         LINE#         36
+  C:0933H         LINE#         37
+  C:093DH         LINE#         38
   -------         ENDPROC       _BEEPSW2
-  C:093EH         SYMBOL        L?0050
-  -------         PROC          L?0049
-  -------         ENDPROC       L?0049
-  C:093EH         SYMBOL        L?0050
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        millisecond
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0968H         LINE#         39
+  C:0968H         LINE#         41
+  C:0978H         LINE#         42
+  C:0986H         LINE#         43
+  C:098DH         LINE#         44
+  -------         ENDPROC       _DELAY
+  C:093EH         SYMBOL        L?0069
+  -------         PROC          L?0068
+  -------         ENDPROC       L?0068
+  C:093EH         SYMBOL        L?0069
   -------         PROC          _DELAY100US
+  D:0006H         SYMBOL        time
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/06/2018  14:51:30  PAGE 4
+
+
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0942H         LINE#         46
+  C:0942H         LINE#         48
+  C:0952H         LINE#         49
+  C:0960H         LINE#         50
+  C:0967H         LINE#         51
+  -------         ENDPROC       _DELAY100US
+  -------         PROC          _DELAY25US
   D:0006H         SYMBOL        time
   -------         DO            
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
-  C:0942H         LINE#         51
-  C:0942H         LINE#         53
-  C:0952H         LINE#         54
-BL51 BANKED LINKER/LOCATER V6.22                                                      09/06/2018  14:34:08  PAGE 4
-
-
-  C:0960H         LINE#         55
-  C:0967H         LINE#         56
-  -------         ENDPROC       _DELAY100US
+  C:098EH         LINE#         52
+  C:098EH         LINE#         54
+  C:099EH         LINE#         55
+  C:09ACH         LINE#         56
+  C:09B3H         LINE#         57
+  -------         ENDPROC       _DELAY25US
+  -------         PROC          MAIN
+  C:09B4H         LINE#         5
+  C:09B4H         LINE#         6
+  C:09B6H         LINE#         8
+  C:09B6H         LINE#         9
+  C:09B6H         LINE#         10
+  C:09C2H         LINE#         11
+  C:09CEH         LINE#         12
+  -------         ENDPROC       MAIN
   -------         ENDMOD        CH2_1
 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0191H BYTE (19%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 01DFH BYTE (23%) *
 ******************************************************************************
 
-Program Size: data=15.0 xdata=0 code=401
-LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
+Program Size: data=15.0 xdata=0 code=479
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

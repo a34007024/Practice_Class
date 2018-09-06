@@ -91,3 +91,156 @@ linking...
 Program Size: data=15.0 xdata=0 code=401
 creating hex file from ".\Objects\ch2-1"...
 ".\Objects\ch2-1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling ch2-1.c...
+DELAYANDBEEP.H(5): error C202: 'buzzer': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling ch2-1.c...
+DELAYANDBEEP.H(6): warning C206: 'delay100us': missing function-prototype
+DELAYANDBEEP.H(6): error C267: 'delay100us': requires ANSI-style prototype
+DELAYANDBEEP.H(38): error C202: 'time': undefined identifier
+DELAYANDBEEP.H(43): error C231: 'delay100us': redefinition
+DELAYANDBEEP.H(48): error C231: 'delay100us': redefinition
+CH2-1.C(3): error C231: 'buzzer': redefinition
+Target not created
+Build target 'Target 1'
+compiling ch2-1.c...
+DELAYANDBEEP.H(6): warning C206: 'delay100us': missing function-prototype
+DELAYANDBEEP.H(6): error C267: 'delay100us': requires ANSI-style prototype
+DELAYANDBEEP.H(43): error C231: 'delay100us': redefinition
+DELAYANDBEEP.H(48): error C231: 'delay100us': redefinition
+CH2-1.C(3): error C231: 'buzzer': redefinition
+Target not created
+Build target 'Target 1'
+compiling ch2-1.c...
+CH2-1.C(3): error C231: 'buzzer': redefinition
+Target not created
+Build target 'Target 1'
+compiling ch2-1.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling ch2-1.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CH2_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY25US?CH2_1
+Program Size: data=15.0 xdata=0 code=479
+creating hex file from ".\Objects\ch2-1"...
+".\Objects\ch2-1" - 0 Error(s), 2 Warning(s).
