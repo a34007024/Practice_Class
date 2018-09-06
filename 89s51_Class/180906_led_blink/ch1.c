@@ -1,30 +1,41 @@
 #include <reg51.h>
 #define led P1
 void delay(int);
-
+int status = 0;//0為往左移，1為往右移
 void main(){
-	char pat = 0xff;
-	led = pat;
+	led = 0xfe;
 	while(1){
-		led = 0xff;
-		delay(500);
-		led = 0xe7;
-		delay(500);
-		led = 0xc3;
-		delay(500);
-		led = 0x81;
-		delay(500);
-		led = 0x00;
-		delay(500);
-		//=~代表把變數反相	
+		if(status == 0){
+			delay(250);
+			led = led<<1|0x01;
+			if(led==0x7f)status = 1;
+		}
+		else if(status == 1){
+			delay(250);
+			led = led>>1|0x80;
+			if(led==0xfe)status = 0;
+		}
 	}
 }
-/* blink table (0 = bright 1 = dark)
+/* led shift table	  0 = bright 1 = dark
 1111 1111 0xff
-1110 0111 0xe7
-1100 0011 0xc3
-1000 0001 0x81
-0000 0000 0x00
+1111 1110 
+1111 1101
+1111 1011
+1111 0111
+1110 1111
+1101 1111
+1011 1111
+0111 1111 0x7f
+1011 1111
+1101 1111
+1110 1111
+1111 0111
+1111 1011
+1111 1101
+1111 1110
+1000 0000 0x80
+0000 0001 0x01
 */
 void delay(int millisecond){
 	int i,j;
