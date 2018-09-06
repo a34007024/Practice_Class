@@ -6,6 +6,7 @@ void main(){
 	char pat = 0x0f;
 	led = pat;
 	while(1){
+		delay(250);
 		led =~ led;
 		//=~代表把變數反相	
 	}
