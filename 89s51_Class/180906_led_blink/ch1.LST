@@ -1,0 +1,57 @@
+C51 COMPILER V9.01   CH1                                                                   09/06/2018 11:41:58 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH1
+OBJECT MODULE PLACED IN ch1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ch1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define led P1
+   3          void delay(int);
+   4          
+   5          void main(){
+   6   1              char pat = 0xff;
+   7   1              led = pat;
+   8   1              while(1){
+   9   2                      led = 0xff;
+  10   2                      delay(500);
+  11   2                      led = 0xe7;
+  12   2                      delay(500);
+  13   2                      led = 0xc3;
+  14   2                      delay(500);
+  15   2                      led = 0x81;
+  16   2                      delay(500);
+  17   2                      led = 0x00;
+  18   2                      delay(500);
+  19   2                      //=~代表把變數反相      
+  20   2              }
+  21   1      }
+  22          /* blink table (0 = bright 1 = dark)
+  23          1111 1111 0xff
+  24          1110 0111 0xe7
+  25          1100 0011 0xc3
+  26          1000 0001 0x81
+  27          0000 0000 0x00
+  28          */
+  29          void delay(int millisecond){
+  30   1              int i,j;
+  31   1              for(i=0;i < millisecond;i++){
+  32   2                      for(j=0;j<120;j++);
+  33   2              }
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     77    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
