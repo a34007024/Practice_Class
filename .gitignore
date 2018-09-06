@@ -1,4 +1,9 @@
-./*/db
+db/
 *.qmsg
 *.tdb
 *.ddb
+*.vsd
+incremental_db/
+*.rdb
+*.hdb
+*.kpt
