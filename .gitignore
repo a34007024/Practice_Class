@@ -10,3 +10,4 @@ incremental_db/
 *.hex
 *.OBJ
 *.bak
+*.sof
