@@ -16,17 +16,8 @@ void main(){
 	led = 0xfe;
 	while(1){
 		if(resetled == 0)led = 0xfe;
-		//if(sw==0xfe)ledmoveleft();
-		//if(sw==0xfc)ledmoveright();
-		//if(sw==0xf8)ledflash();
-		ledmoveleft();
-		ledflash();
-		beep(1);
-		ledflash();
-		beep(1);
-		ledflash();
-		beep(1);
-		delay(100);
+		ledmoveleft();beep(1);
+		ledmoveright();beep(2);
 	}
 }
 void ledmoveleft(){
