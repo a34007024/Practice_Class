@@ -18,7 +18,7 @@ void main(){
 			}
 			//按鈕被放開就跳出
 		}
-		if(enableLED == 1)flash();
+		if(enableLED == 1)led = 0x00;
 		else led = 0xff;
 	}
 }

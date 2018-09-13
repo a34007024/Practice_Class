@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   BUTTON_CONTROL_LED                                                    09/13/2018 14:25:25 PAGE 1   
+C51 COMPILER V9.01   BUTTON_CONTROL_LED                                                    09/13/2018 14:28:39 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE BUTTON_CONTROL_LED
@@ -27,7 +27,7 @@ line level    source
   18   4                              }
   19   3                              //按鈕被放開就跳出
   20   3                      }
-  21   2                      if(enableLED == 1)flash();
+  21   2                      if(enableLED == 1)led = 0x00;
   22   2                      else led = 0xff;
   23   2              }
   24   1      }
@@ -45,7 +45,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    121    ----
+   CODE SIZE        =    120    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

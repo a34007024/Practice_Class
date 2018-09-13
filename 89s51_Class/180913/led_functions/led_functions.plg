@@ -3,103 +3,23 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-D:\Practice_Class\89s51_Class\180913\led_functions\led_functions.uvproj
+D:\¡i¹q¤T¤A·¨Â`©Ó¡j\Practice_Class\89s51_Class\180913\led_functions\led_functions.uvproj
 Project File Date:  09/13/2018
 
 <h2>Output:</h2>
 Build target 'Target 1'
-assembling STARTUP.A51...
 compiling led_functions.c...
-LED_FUNCTIONS.C(31): error C141: syntax error near '~'
-LED_FUNCTIONS.C(31): error C141: syntax error near '='
+LED_FUNCTIONS.C(19): error C141: syntax error near ')'
 Target not created
 Build target 'Target 1'
 compiling led_functions.c...
-linking...
-Program Size: data=9.0 xdata=0 code=139
-"led_functions" - 0 Error(s), 0 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-Program Size: data=9.0 xdata=0 code=139
-"led_functions" - 0 Error(s), 0 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-Program Size: data=9.0 xdata=0 code=139
-creating hex file from "led_functions"...
-"led_functions" - 0 Error(s), 0 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-LED_FUNCTIONS.C(24): error C141: syntax error near 'int'
-LED_FUNCTIONS.C(24): error C202: 'i': undefined identifier
-LED_FUNCTIONS.C(24): error C202: 'i': undefined identifier
-LED_FUNCTIONS.C(24): error C202: 'i': undefined identifier
-LED_FUNCTIONS.C(24): error C141: syntax error near ')'
-LED_FUNCTIONS.C(31): error C141: syntax error near 'int'
-LED_FUNCTIONS.C(31): error C202: 'i': undefined identifier
-LED_FUNCTIONS.C(31): error C202: 'i': undefined identifier
-LED_FUNCTIONS.C(31): error C202: 'i': undefined identifier
-LED_FUNCTIONS.C(31): error C141: syntax error near ')'
+LED_FUNCTIONS.C(19): error C141: syntax error near ')'
 Target not created
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-Program Size: data=11.0 xdata=0 code=199
-creating hex file from "led_functions"...
-"led_functions" - 0 Error(s), 0 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-LED_FUNCTIONS.C(22): warning C206: 'beep': missing function-prototype
-LED_FUNCTIONS.C(22): error C267: 'beep': requires ANSI-style prototype
-LED_FUNCTIONS.C(50): error C231: 'beep': redefinition
-LED_FUNCTIONS.C(59): error C231: 'beep': redefinition
-Target not created
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LEDMOVERIGHT?LED_FUNCTIONS
-Program Size: data=17.0 xdata=0 code=284
-creating hex file from "led_functions"...
-"led_functions" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LEDMOVERIGHT?LED_FUNCTIONS
-Program Size: data=17.0 xdata=0 code=287
-creating hex file from "led_functions"...
-"led_functions" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LEDMOVERIGHT?LED_FUNCTIONS
-Program Size: data=17.0 xdata=0 code=325
-creating hex file from "led_functions"...
-"led_functions" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LEDMOVERIGHT?LED_FUNCTIONS
-Program Size: data=17.0 xdata=0 code=325
-creating hex file from "led_functions"...
-"led_functions" - 0 Error(s), 1 Warning(s).
 Build target 'Target 1'
 compiling led_functions.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?LEDFLASH?LED_FUNCTIONS
-Program Size: data=15.0 xdata=0 code=317
-creating hex file from "led_functions"...
-"led_functions" - 0 Error(s), 1 Warning(s).
-Build target 'Target 1'
-compiling led_functions.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?LEDFLASH?LED_FUNCTIONS
-Program Size: data=15.0 xdata=0 code=317
+Program Size: data=15.0 xdata=0 code=344
 creating hex file from "led_functions"...
 "led_functions" - 0 Error(s), 1 Warning(s).

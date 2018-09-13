@@ -1,6 +1,7 @@
 #include <reg51.h>
 #define led P1
 #define sw P0
+#define readSW ~sw & 0x03
 sbit buzzer = P3^7;
 sbit resetled = P2^0;
 void delay(int);
@@ -15,9 +16,21 @@ void main(){
 	delay(200);
 	led = 0xfe;
 	while(1){
-		if(resetled == 0)led = 0xfe;
-		ledmoveleft();beep(1);
-		ledmoveright();beep(2);
+		switch(readSW){
+			case 0:
+				led = 0xff;
+				break;
+			case 1:
+				ledmoveleft();
+				break;
+			case 2:
+				ledmoveright();
+				break;
+			case 3:
+				ledmoveleft();beep(1);
+				ledmoveright();beep(2);
+				break;
+		}
 	}
 }
 void ledmoveleft(){
