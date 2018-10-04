@@ -19,7 +19,7 @@ void main(){
 		seg7 = seg7hexCode[seg7number];//show number on 7Seg
 		if(pb4 == 0){
 			delay(10);
-			if(pb4 == 0){
+			if(pb4 == 0){//判斷是否為雜訊
 				if(check7segNumber() == 9) seg7number = 0;
 				else seg7number +=1;
 				while(pb4 == 0);//wait until button released
@@ -28,7 +28,7 @@ void main(){
 		}
 		if(pb3 == 0){
 			delay(10);
-			if(pb3 == 0){
+			if(pb3 == 0){//判斷是否為雜訊
 				if(check7segNumber() == 0) seg7number = 9;
 				else seg7number -=1;
 				while(pb3 == 0);//wait until button released
