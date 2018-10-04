@@ -1,0 +1,130 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/04/2018  11:58:38  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE button_with_7seg.obj TO button_with_7seg
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  button_with_7seg.obj (BUTTON_WITH_7SEG)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  button_with_7seg (BUTTON_WITH_7SEG)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0012H     UNIT         ?DT?BUTTON_WITH_7SEG
+            IDATA   001AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0055H     UNIT         ?PR?MAIN?BUTTON_WITH_7SEG
+            CODE    08E1H     002AH     UNIT         ?PR?_DELAY?BUTTON_WITH_7SEG
+            CODE    090BH     0028H     UNIT         ?PR?CHECK7SEGNUMBER?BUTTON_WITH_7SEG
+            CODE    0933H     0017H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   button_with_7seg (BUTTON_WITH_7SEG)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?BUTTON_WITH_7SEG
+  +--> ?C_INITSEG
+
+?PR?MAIN?BUTTON_WITH_7SEG
+  +--> ?PR?_DELAY?BUTTON_WITH_7SEG
+  +--> ?PR?CHECK7SEGNUMBER?BUTTON_WITH_7SEG
+
+
+
+SYMBOL TABLE OF MODULE:  button_with_7seg (BUTTON_WITH_7SEG)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BUTTON_WITH_7SEG
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/04/2018  11:58:38  PAGE 2
+
+
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  D:0008H         PUBLIC        seg7number
+  B:00A0H.0       PUBLIC        pb3
+  B:00A0H.1       PUBLIC        pb4
+  C:08E5H         PUBLIC        _delay
+  C:088CH         PUBLIC        main
+  D:000AH         PUBLIC        seg7hexCode
+  C:090BH         PUBLIC        check7segNumber
+  -------         PROC          MAIN
+  C:088CH         LINE#         17
+  C:088CH         LINE#         18
+  C:088CH         LINE#         19
+  C:0894H         LINE#         20
+  C:0897H         LINE#         21
+  C:089AH         LINE#         22
+  C:089DH         LINE#         23
+  C:08ACH         LINE#         24
+  C:08B4H         LINE#         25
+  C:08B7H         LINE#         26
+  C:08B7H         LINE#         27
+  C:08BAH         LINE#         28
+  C:08BAH         LINE#         29
+  C:08BDH         LINE#         30
+  C:08C0H         LINE#         31
+  C:08C3H         LINE#         32
+  C:08D1H         LINE#         33
+  C:08D9H         LINE#         34
+  C:08DCH         LINE#         35
+  C:08DCH         LINE#         36
+  C:08DFH         LINE#         37
+  C:08DFH         LINE#         38
+  -------         ENDPROC       MAIN
+  C:08E1H         SYMBOL        L?0033
+  -------         PROC          L?0032
+  -------         ENDPROC       L?0032
+  C:08E1H         SYMBOL        L?0033
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:08E5H         LINE#         41
+  C:08E5H         LINE#         43
+  C:08F5H         LINE#         44
+  C:090AH         LINE#         45
+  -------         ENDPROC       _DELAY
+  -------         PROC          CHECK7SEGNUMBER
+  C:090BH         LINE#         47
+  C:090BH         LINE#         48
+  C:091DH         LINE#         49
+  C:092EH         LINE#         50
+  C:0932H         LINE#         51
+  -------         ENDPROC       CHECK7SEGNUMBER
+  -------         ENDMOD        BUTTON_WITH_7SEG
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/04/2018  11:58:38  PAGE 3
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00BDH BYTE ( 9%) *
+******************************************************************************
+
+Program Size: data=27.0 xdata=0 code=333
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
