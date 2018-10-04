@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\¡i¹q¤T¤A·¨Â`©Ó¡j\Practice_Class\89s51_Class\181004_7seg\7seg.uvproj
+Project File Date:  10/04/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 7seg.c...
+7SEG.C(11): error C141: syntax error near 'void', expected ';'
+7SEG.C(11): error C141: syntax error near 'dotEnable', expected ')'
+7SEG.C(15): error C202: 'false': undefined identifier
+7SEG.C(16): error C202: 'false': undefined identifier
+7SEG.C(17): error C202: 'false': undefined identifier
+7SEG.C(18): error C202: 'false': undefined identifier
+7SEG.C(19): error C202: 'false': undefined identifier
+7SEG.C(20): error C202: 'false': undefined identifier
+7SEG.C(21): error C202: 'false': undefined identifier
+7SEG.C(22): error C202: 'false': undefined identifier
+7SEG.C(23): error C202: 'false': undefined identifier
+7SEG.C(24): error C202: 'false': undefined identifier
+7SEG.C(25): error C202: 'false': undefined identifier
+7SEG.C(26): error C202: 'true': undefined identifier
+7SEG.C(27): error C202: 'true': undefined identifier
+7SEG.C(28): error C202: 'true': undefined identifier
+7SEG.C(29): error C202: 'true': undefined identifier
+7SEG.C(30): error C202: 'true': undefined identifier
+7SEG.C(31): error C202: 'true': undefined identifier
+7SEG.C(32): error C202: 'true': undefined identifier
+7SEG.C(33): error C202: 'true': undefined identifier
+7SEG.C(34): error C202: 'true': undefined identifier
+7SEG.C(35): error C202: 'true': undefined identifier
+7SEG.C(36): error C202: 'false': undefined identifier
+7SEG.C(46): error C141: syntax error near 'dotEnable', expected ')'
+7SEG.C(82): error C202: 'dotEnable': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 7seg.c...
+7SEG.C(11): error C141: syntax error near 'void', expected ';'
+Target not created
+Build target 'Target 1'
+compiling 7seg.c...
+linking...
+Program Size: data=9.0 xdata=0 code=457
+creating hex file from "7seg"...
+"7seg" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 7seg.c...
+linking...
+Program Size: data=9.0 xdata=0 code=457
+creating hex file from "7seg"...
+"7seg" - 0 Error(s), 0 Warning(s).
