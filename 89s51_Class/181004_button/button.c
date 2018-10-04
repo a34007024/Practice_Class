@@ -2,7 +2,6 @@
 #define led P1
 sbit pb4 = P2^1;
 void delay(int ms);
-
 void main(){
 	led = 0x00;
 	while(1){
