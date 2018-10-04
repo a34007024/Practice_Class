@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\¡i¹q¤T¤A·¨Â`©Ó¡j\Practice_Class\89s51_Class\181004_4-digits_7seg\4digit_7seg.uvproj
+Project File Date:  10/04/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 4digit_7seg.c...
+linking...
+Program Size: data=37.0 xdata=0 code=277
+creating hex file from "4digit_7seg"...
+"4digit_7seg" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 4digit_7seg.c...
+linking...
+Program Size: data=37.0 xdata=0 code=294
+creating hex file from "4digit_7seg"...
+"4digit_7seg" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 4digit_7seg.c...
+4DIGIT_7SEG.C(24): error C141: syntax error near 'int'
+4DIGIT_7SEG.C(24): error C202: 'time': undefined identifier
+4DIGIT_7SEG.C(25): error C202: 'time': undefined identifier
+4DIGIT_7SEG.C(30): error C202: 'time': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 4digit_7seg.c...
+4DIGIT_7SEG.C(24): error C141: syntax error near 'int'
+4DIGIT_7SEG.C(24): error C202: 'time': undefined identifier
+4DIGIT_7SEG.C(25): error C202: 'time': undefined identifier
+4DIGIT_7SEG.C(30): error C202: 'time': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 4digit_7seg.c...
+4DIGIT_7SEG.C(24): error C141: syntax error near 'int'
+4DIGIT_7SEG.C(24): error C202: 'time': undefined identifier
+4DIGIT_7SEG.C(25): error C202: 'time': undefined identifier
+4DIGIT_7SEG.C(30): error C202: 'time': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 4digit_7seg.c...
+linking...
+Program Size: data=39.0 xdata=0 code=325
+creating hex file from "4digit_7seg"...
+"4digit_7seg" - 0 Error(s), 0 Warning(s).
