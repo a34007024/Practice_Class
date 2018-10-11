@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/11/2018  14:27:00  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/11/2018  15:08:39  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -22,20 +22,20 @@ LINK MAP OF MODULE:  keypad (KEYPAD)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0020H     UNIT         ?DT?KEYPAD
-            DATA    0028H     0005H     UNIT         _DATA_GROUP_
-            IDATA   002DH     0001H     UNIT         ?STACK
+            DATA    0008H     0026H     UNIT         ?DT?KEYPAD
+            DATA    002EH     0005H     UNIT         _DATA_GROUP_
+            IDATA   0033H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
-            CODE    0800H     0092H     UNIT         ?PR?KEYSCAN?KEYPAD
-            CODE    0892H     008CH     UNIT         ?C_C51STARTUP
-            CODE    091EH     0048H     UNIT         ?PR?_BEEP?KEYPAD
-            CODE    0966H     0027H     UNIT         ?C_INITSEG
-            CODE    098DH     0026H     UNIT         ?PR?_DELAY500US?KEYPAD
-            CODE    09B3H     0026H     UNIT         ?PR?_DELAY100US?KEYPAD
-            CODE    09D9H     0005H     UNIT         ?PR?MAIN?KEYPAD
+            CODE    0800H     0094H     UNIT         ?PR?KEYSCAN?KEYPAD
+            CODE    0894H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0920H     0048H     UNIT         ?PR?_BEEP?KEYPAD
+            CODE    0968H     003BH     UNIT         ?PR?MAIN?KEYPAD
+            CODE    09A3H     0030H     UNIT         ?C_INITSEG
+            CODE    09D3H     0026H     UNIT         ?PR?_DELAY500US?KEYPAD
+            CODE    09F9H     0026H     UNIT         ?PR?_DELAY100US?KEYPAD
 
 
 
@@ -51,17 +51,18 @@ SEGMENT                          DATA_GROUP
 
 ?PR?MAIN?KEYPAD                -----    -----
   +--> ?PR?KEYSCAN?KEYPAD
+  +--> ?PR?_BEEP?KEYPAD
 
-?PR?KEYSCAN?KEYPAD             0028H    0003H
+?PR?KEYSCAN?KEYPAD             002EH    0003H
   +--> ?PR?_BEEP?KEYPAD
   +--> ?PR?_DELAY500US?KEYPAD
 
-?PR?_BEEP?KEYPAD               002BH    0002H
+?PR?_BEEP?KEYPAD               0031H    0002H
   +--> ?PR?_DELAY100US?KEYPAD
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  15:08:39  PAGE 2
+
+
   +--> ?PR?_DELAY500US?KEYPAD
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  14:27:00  PAGE 2
-
-
 
 
 
@@ -73,55 +74,69 @@ SYMBOL TABLE OF MODULE:  keypad (KEYPAD)
   -------         MODULE        KEYPAD
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
+  D:0008H         PUBLIC        check
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   B:00B0H.7       PUBLIC        Buzzer
-  C:091EH         PUBLIC        _BEEP
-  D:0008H         PUBLIC        SCAN_CODE
-  C:09D9H         PUBLIC        main
-  D:0010H         PUBLIC        seg7hexCode
-  D:0024H         PUBLIC        DisplayData
-  C:09B3H         PUBLIC        _DELAY100us
-  C:098DH         PUBLIC        _DELAY500us
+  C:0920H         PUBLIC        _BEEP
+  D:0009H         PUBLIC        SCAN_CODE
+  C:0968H         PUBLIC        main
+  D:0011H         PUBLIC        seg7hexCode
+  D:0025H         PUBLIC        DisplayData
+  D:0029H         PUBLIC        keyPressCount
+  C:09F9H         PUBLIC        _DELAY100us
+  C:09D3H         PUBLIC        _DELAY500us
   C:0800H         PUBLIC        keyscan
+  D:002AH         PUBLIC        password
   -------         PROC          MAIN
-  C:09D9H         LINE#         24
-  C:09D9H         LINE#         25
-  C:09D9H         LINE#         26
-  C:09DCH         LINE#         27
+  C:0968H         LINE#         27
+  C:0968H         LINE#         28
+  C:0968H         LINE#         29
+  C:096BH         LINE#         30
+  C:0970H         LINE#         31
+  C:0973H         LINE#         32
+  C:097EH         LINE#         33
+  C:098EH         LINE#         34
+  C:0992H         LINE#         35
+  C:0992H         LINE#         36
+  C:0997H         LINE#         37
+  C:099AH         LINE#         38
+  C:099FH         LINE#         39
+  C:099FH         LINE#         40
   -------         ENDPROC       MAIN
   -------         PROC          KEYSCAN
   -------         DO            
-  D:0028H         SYMBOL        X
-  D:0029H         SYMBOL        Y
-  D:002AH         SYMBOL        Ycode
+  D:002EH         SYMBOL        X
+  D:002FH         SYMBOL        Y
+  D:0030H         SYMBOL        Ycode
   D:0007H         SYMBOL        Kcode
   D:0006H         SYMBOL        i
   -------         ENDDO         
-  C:0800H         LINE#         30
-  C:0800H         LINE#         32
-  C:0803H         LINE#         33
-  C:0806H         LINE#         34
-  C:080EH         LINE#         35
-  C:081AH         LINE#         36
-  C:0821H         LINE#         37
-  C:0823H         LINE#         38
-  C:082BH         LINE#         39
-  C:0835H         LINE#         40
-  C:083FH         LINE#         41
-  C:0847H         LINE#         42
-  C:0850H         LINE#         43
-  C:0852H         LINE#         44
-  C:0868H         LINE#         45
-  C:086AH         LINE#         46
-  C:086FH         LINE#         47
-  C:087CH         LINE#         48
-  C:087CH         LINE#         49
-  C:0883H         LINE#         50
-  C:0891H         LINE#         51
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  14:27:00  PAGE 3
+  C:0800H         LINE#         45
+  C:0800H         LINE#         47
+  C:0803H         LINE#         48
+  C:0806H         LINE#         49
+  C:080EH         LINE#         50
+  C:081AH         LINE#         51
+  C:0821H         LINE#         52
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  15:08:39  PAGE 3
 
 
+  C:0823H         LINE#         53
+  C:0825H         LINE#         54
+  C:082DH         LINE#         55
+  C:0837H         LINE#         56
+  C:0841H         LINE#         57
+  C:0849H         LINE#         58
+  C:0852H         LINE#         59
+  C:0854H         LINE#         60
+  C:086AH         LINE#         61
+  C:086CH         LINE#         62
+  C:0871H         LINE#         63
+  C:087EH         LINE#         64
+  C:087EH         LINE#         65
+  C:0885H         LINE#         66
+  C:0893H         LINE#         67
   -------         ENDPROC       KEYSCAN
   -------         PROC          _DELAY500US
   D:0006H         SYMBOL        time
@@ -129,10 +144,10 @@ SYMBOL TABLE OF MODULE:  keypad (KEYPAD)
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
-  C:098DH         LINE#         53
-  C:098DH         LINE#         55
-  C:099DH         LINE#         56
-  C:09B2H         LINE#         57
+  C:09D3H         LINE#         69
+  C:09D3H         LINE#         71
+  C:09E3H         LINE#         72
+  C:09F8H         LINE#         73
   -------         ENDPROC       _DELAY500US
   -------         PROC          _DELAY100US
   D:0006H         SYMBOL        time
@@ -140,33 +155,36 @@ SYMBOL TABLE OF MODULE:  keypad (KEYPAD)
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
-  C:09B3H         LINE#         58
-  C:09B3H         LINE#         60
-  C:09C3H         LINE#         61
-  C:09D8H         LINE#         62
+  C:09F9H         LINE#         74
+  C:09F9H         LINE#         76
+  C:0A09H         LINE#         77
+  C:0A1EH         LINE#         78
   -------         ENDPROC       _DELAY100US
   -------         PROC          _BEEP
   D:0001H         SYMBOL        x
   -------         DO            
-  D:002BH         SYMBOL        i
+  D:0031H         SYMBOL        i
   D:0082H         SYMBOL        j
   -------         ENDDO         
-  C:091EH         LINE#         64
-  C:0920H         LINE#         65
-  C:0920H         LINE#         66
-  C:093AH         LINE#         67
-  C:093DH         LINE#         68
-  C:0946H         LINE#         69
-  C:094BH         LINE#         70
-  C:0954H         LINE#         71
-  C:095BH         LINE#         72
-  C:0965H         LINE#         73
+  C:0920H         LINE#         80
+  C:0922H         LINE#         81
+  C:0922H         LINE#         82
+  C:093CH         LINE#         83
+  C:093FH         LINE#         84
+  C:0948H         LINE#         85
+  C:094DH         LINE#         86
+  C:0956H         LINE#         87
+  C:095DH         LINE#         88
+  C:0967H         LINE#         89
   -------         ENDPROC       _BEEP
   -------         ENDMOD        KEYPAD
 
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  15:08:39  PAGE 4
+
+
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0151H BYTE (16%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0192H BYTE (19%) *
 ******************************************************************************
 
-Program Size: data=46.0 xdata=0 code=481
+Program Size: data=52.0 xdata=0 code=546
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
