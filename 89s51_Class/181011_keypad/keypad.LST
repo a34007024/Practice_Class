@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 15:08:39 PAGE 1   
+C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 16:01:47 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE KEYPAD
@@ -22,91 +22,115 @@ line level    source
   13          #define keyInput P2
   14          sbit seg7dp = P0^7;
   15          sbit Buzzer = P3^7;
-  16          char seg7hexCode[20] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98,0xa0,0x83,0xa7,0xa1,0x86,0x8e,0x
-             -f7};
+  16          char seg7hexCode[25] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98,0xa0,0x83,0xa7,0xa1,0x86,0x8e,0x
+             -f7,0x8c,0x88,0xaf,0xa3};
   17          char SCAN_CODE[8]={     0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe };      
   18          char DisplayData[4]={16,16,16,16};
   19          char password[4] = {0,0,0,0};
-  20          char keyPressCount = 0;
-  21          char check;
-  22          void DELAY500us(int);
-  23          void keyscan();
-  24          void BEEP(char);
-  25          void DELAY100us(int);
-  26          
-  27          void main(){
-  28   1              while(1){
-  29   2                      keyscan();
-  30   2                      if(keyPressCount==4){
-  31   3                              keyPressCount = 0;
-  32   3                              for(check=0;check<4;check++){
-  33   4                                      if(DisplayData[check]==password[check])
-  34   4                                              BEEP(1);
-  35   4                                      else{
-  36   5                                              BEEP(10);
-  37   5                                              seg7Output=0xff;// 關閉顯示信號
-  38   5                                              BEEP(10);
-  39   5                                      }
-  40   4                              }
-  41   3                      }
-  42   2              }
-  43   1      }
-  44          //=== 4x4鍵盤掃瞄函數 ===
-  45          void keyscan() {
-  46   1              char X,Y,Ycode,Kcode,i;
-  47   1              for(X=0;X<4;X++){                       // 掃瞄4行
-  48   2                      seg7Output=0xff;                                // 關閉顯示信號(防殘影)
-  49   2                      keyInput=SCAN_CODE[X];          // 輸出掃瞄信號
-  50   2                      seg7Output=seg7hexCode[DisplayData[X]];         // 輸出顯示信號
-  51   2                      Y=~keyInput & 0x0f;                     // 讀取鍵盤  
-  52   2                      if      (Y!=0){                 // 若有按鍵被按下 
-  53   3                              keyPressCount += 1;
-  54   3                              if(Y==1) Ycode=0;               // 第0列有按鍵按下 
-C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 15:08:39 PAGE 2   
+  20          char ok[4] = {17,18,5,5};
+  21          char error[4] = {14,19,20,19};
+  22          char keyPressCount = 0;
+  23          void DELAY500us(int);
+  24          int keyscan();
+  25          void BEEP(char);
+  26          void DELAY100us(int);
+  27          
+  28          void main(){
+  29   1              while(1){
+  30   2                      keyscan();
+  31   2              }
+  32   1      }
+  33          //=== 4x4鍵盤掃瞄函數 ===
+  34          int keyscan() {
+  35   1              char X,Y,Ycode,Kcode,i;
+  36   1              for(X=0;X<4;X++){                       // 掃瞄4行
+  37   2                      seg7Output=0xff;                                // 關閉顯示信號(防殘影)
+  38   2                      keyInput=SCAN_CODE[X];          // 輸出掃瞄信號
+  39   2                      seg7Output=seg7hexCode[DisplayData[X]];         // 輸出顯示信號
+  40   2                      Y=~keyInput & 0x0f;                     // 讀取鍵盤  
+  41   2                      if      (Y!=0){                 // 若有按鍵被按下 
+  42   3                              keyPressCount += 1;
+  43   3                              if(Y==1) Ycode=0;               // 第0列有按鍵按下 
+  44   3                              else if (Y==2) Ycode=1; // 第1列有按鍵按下 
+  45   3                              else if (Y==4) Ycode=2; // 第2列有按鍵按下 
+  46   3                              else if (Y==8) Ycode=3; // 第3列有按鍵按下 
+  47   3                              Kcode=4*X + Ycode;              // 計算按鍵值
+  48   3                              if(Kcode <= 9){//符合可輸入的按鍵
+  49   4                                      for(i=0;i<3;i++)
+  50   4                                              DisplayData[3-i]=DisplayData[2-i];// 顯示資料移位
+  51   4                                      DisplayData[0]=Kcode;                   // 將鍵值存入個位數
+  52   4                              }
+  53   3                              BEEP(1);                                        // 嗶一聲 
+  54   3                              while(Y!=0) Y=~keyInput & 0x0f;// 等待放開按鍵
+C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 16:01:47 PAGE 2   
 
-  55   3                              else if (Y==2) Ycode=1; // 第1列有按鍵按下 
-  56   3                              else if (Y==4) Ycode=2; // 第2列有按鍵按下 
-  57   3                              else if (Y==8) Ycode=3; // 第3列有按鍵按下 
-  58   3                              Kcode=4*X + Ycode;              // 計算按鍵值
-  59   3                              for(i=0;i<3;i++)
-  60   3                                      DisplayData[3-i]=DisplayData[2-i];// 顯示資料移位
-  61   3                              DisplayData[0]=Kcode;                   // 將鍵值存入個位數
-  62   3                              BEEP(1);                                        // 嗶一聲 
-  63   3                              while(Y!=0) Y=~keyInput & 0x0f;// 等待放開按鍵
+  55   3                      }
+  56   2                      DELAY500us(4);                                  // 延遲2ms
+  57   2                      if(Kcode == 10){//A鍵被按下
+  58   3                              int x;
+  59   3                              for(x=0;x<4;x++){
+  60   4                                      DisplayData[x] = 16;
+  61   4                                      //歸零顯示資料
+  62   4                              }
+  63   3                              Kcode = 99;
   64   3                      }
-  65   2                      DELAY500us(4);                                  // 延遲2ms
-  66   2              }
-  67   1      }
-  68          
-  69          void DELAY500us(int time){
-  70   1              int i,j;
-  71   1              for(i = 0;i<time;i++)
-  72   1                      for(j=0;j<60;j++);//do nothing
-  73   1      }
-  74          void DELAY100us(int time){
-  75   1              int i,j;
-  76   1              for(i = 0;i<time;i++)
-  77   1                      for(j=0;j<12;j++);//do nothing
-  78   1      }
-  79          //==== 嗶聲函數 ========
-  80          void BEEP(char x) 
-  81          {       int     i,j;
-  82   1              for(i=0;i<x;i++)                                // 嗶x聲
-  83   1              {       for(j=0;j<100;j++)              // 重複吸放100次
-  84   2                      {       Buzzer=0;DELAY100us(1);// 蜂鳴器吸
-  85   3                              Buzzer=1;DELAY100us(1);// 蜂鳴器放
-  86   3                      } 
-  87   2                      DELAY500us(200);                        // 靜音0.1秒
-  88   2              } 
+  65   2                      else if(Kcode == 11){//B鍵被按下
+  66   3                              char i;
+  67   3                              char check;
+  68   3                              for(i = 0;i<4;i++){
+  69   4                                      if(DisplayData[i] == password[i]){
+  70   5                                              check = 1;
+  71   5                                      }
+  72   4                                      else{
+  73   5                                              BEEP(3);
+  74   5                                              check = 0;
+  75   5                                      }
+  76   4                              }
+  77   3                              if(check == 1){
+  78   4                                      for(i = 0;i<4;i++)
+  79   4                                              DisplayData[3-i] = ok[i];
+  80   4                              }
+  81   3                              else if(check == 0){
+  82   4                                      for(i = 0;i<4;i++)
+  83   4                                              DisplayData[3-i] = error[i];
+  84   4                              }
+  85   3                              Kcode = 99;
+  86   3                      }
+  87   2              }
+  88   1              return Kcode;
   89   1      }
+  90          
+  91          void DELAY500us(int time){
+  92   1              int i,j;
+  93   1              for(i = 0;i<time;i++)
+  94   1                      for(j=0;j<60;j++);//do nothing
+  95   1      }
+  96          void DELAY100us(int time){
+  97   1              int i,j;
+  98   1              for(i = 0;i<time;i++)
+  99   1                      for(j=0;j<12;j++);//do nothing
+ 100   1      }
+ 101          //==== 嗶聲函數 ========
+ 102          void BEEP(char x) 
+ 103          {       int     i,j;
+ 104   1              for(i=0;i<x;i++)                                // 嗶x聲
+ 105   1              {       for(j=0;j<100;j++)              // 重複吸放100次
+ 106   2                      {       Buzzer=0;DELAY100us(1);// 蜂鳴器吸
+ 107   3                              Buzzer=1;DELAY100us(1);// 蜂鳴器放
+ 108   3                      } 
+ 109   2                      DELAY500us(200);                        // 靜音0.1秒
+ 110   2              } 
+ 111   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    355    ----
+   CODE SIZE        =    465    ----
    CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 16:01:47 PAGE 3   
+
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     38       5
+   DATA SIZE        =     50       8
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
