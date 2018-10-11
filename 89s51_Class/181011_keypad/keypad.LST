@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:08:23 PAGE 1   
+C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:27:00 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE KEYPAD
@@ -29,59 +29,64 @@ line level    source
   19          void DELAY500us(int);
   20          void keyscan();
   21          void BEEP(char);
-  22          
-  23          void main(){
-  24   1              while(1){
-  25   2                      keyscan();
-  26   2              }
-  27   1      }
-  28          //=== 4x4鍵盤掃瞄函數 ===
-  29          void keyscan() {
-  30   1              char X,Y,Ycode,Kcode,i;
-  31   1              for(X=0;X<4;X++){                       // 掃瞄4行
-  32   2                      seg7Output=0xff;                                // 關閉顯示信號(防殘影)
-  33   2                      keyInput=SCAN_CODE[X];          // 輸出掃瞄信號
-  34   2                      seg7Output=seg7hexCode[DisplayData[X]];         // 輸出顯示信號
-  35   2                      Y=~keyInput & 0x0f;                     // 讀取鍵盤  
-  36   2                      if      (Y!=0){                 // 若有按鍵被按下 
-  37   3                              if(Y==8) Ycode=0;        
-  38   3                              else if (Y==4) Ycode=1; 
-  39   3                              else if (Y==2) Ycode=2; 
-  40   3                              else if (Y==1) Ycode=3; 
-  41   3                              Kcode=4*Ycode + X;              // 計算按鍵值
-  42   3                              for(i=0;i<3;i++)
-  43   3                                      DisplayData[3-i]=DisplayData[2-i];// 顯示資料移位
-  44   3                              DisplayData[0]=Kcode;                   // 將鍵值存入個位數
-  45   3                              BEEP(1);                                        // 嗶一聲 
-  46   3                              while(Y!=0) Y=~keyInput & 0x0f;// 等待放開按鍵
-  47   3                      }
-  48   2                      DELAY500us(4);                                  // 延遲2ms
-  49   2              }
-  50   1      }
-  51          
-  52          void DELAY500us(int time){
-  53   1              int i,j;
-  54   1              for(i = 0;i<time;i++)
-C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:08:23 PAGE 2   
+  22          void DELAY100us(int);
+  23          
+  24          void main(){
+  25   1              while(1){
+  26   2                      keyscan();
+  27   2              }
+  28   1      }
+  29          //=== 4x4鍵盤掃瞄函數 ===
+  30          void keyscan() {
+  31   1              char X,Y,Ycode,Kcode,i;
+  32   1              for(X=0;X<4;X++){                       // 掃瞄4行
+  33   2                      seg7Output=0xff;                                // 關閉顯示信號(防殘影)
+  34   2                      keyInput=SCAN_CODE[X];          // 輸出掃瞄信號
+  35   2                      seg7Output=seg7hexCode[DisplayData[X]];         // 輸出顯示信號
+  36   2                      Y=~keyInput & 0x0f;                     // 讀取鍵盤  
+  37   2                      if      (Y!=0){                 // 若有按鍵被按下 
+  38   3                              if(Y==8) Ycode=0;        
+  39   3                              else if (Y==4) Ycode=1; 
+  40   3                              else if (Y==2) Ycode=2; 
+  41   3                              else if (Y==1) Ycode=3; 
+  42   3                              Kcode=4*Ycode + X;              // 計算按鍵值
+  43   3                              for(i=0;i<3;i++)
+  44   3                                      DisplayData[3-i]=DisplayData[2-i];// 顯示資料移位
+  45   3                              DisplayData[0]=Kcode;                   // 將鍵值存入個位數
+  46   3                              BEEP(1);                                        // 嗶一聲 
+  47   3                              while(Y!=0) Y=~keyInput & 0x0f;// 等待放開按鍵
+  48   3                      }
+  49   2                      DELAY500us(4);                                  // 延遲2ms
+  50   2              }
+  51   1      }
+  52          
+  53          void DELAY500us(int time){
+  54   1              int i,j;
+C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:27:00 PAGE 2   
 
-  55   1                      for(j=0;j<60;j++);//do nothing
-  56   1      }
-  57          
-  58          //==== 嗶聲函數 ========
-  59          void BEEP(char x) 
-  60          {       int     i,j;
-  61   1              for(i=0;i<x;i++)                                // 嗶x聲
-  62   1              {       for(j=0;j<50;j++)               // 重複吸放100次
-  63   2                      {       Buzzer=0;DELAY500us(1);// 蜂鳴器吸
-  64   3                              Buzzer=1;DELAY500us(1);// 蜂鳴器放
-  65   3                      } 
-  66   2                      DELAY500us(200);                        // 靜音0.1秒
-  67   2              } 
-  68   1      }
+  55   1              for(i = 0;i<time;i++)
+  56   1                      for(j=0;j<60;j++);//do nothing
+  57   1      }
+  58          void DELAY100us(int time){
+  59   1              int i,j;
+  60   1              for(i = 0;i<time;i++)
+  61   1                      for(j=0;j<12;j++);//do nothing
+  62   1      }
+  63          //==== 嗶聲函數 ========
+  64          void BEEP(char x) 
+  65          {       int     i,j;
+  66   1              for(i=0;i<x;i++)                                // 嗶x聲
+  67   1              {       for(j=0;j<100;j++)              // 重複吸放100次
+  68   2                      {       Buzzer=0;DELAY100us(1);// 蜂鳴器吸
+  69   3                              Buzzer=1;DELAY100us(1);// 蜂鳴器放
+  70   3                      } 
+  71   2                      DELAY500us(200);                        // 靜音0.1秒
+  72   2              } 
+  73   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    261    ----
+   CODE SIZE        =    299    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

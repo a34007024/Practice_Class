@@ -19,6 +19,7 @@ char DisplayData[4]={16,16,16,16};
 void DELAY500us(int);
 void keyscan();
 void BEEP(char);
+void DELAY100us(int);
 
 void main(){
 	while(1){
@@ -54,14 +55,18 @@ void DELAY500us(int time){
 	for(i = 0;i<time;i++)
 		for(j=0;j<60;j++);//do nothing
 }
-
+void DELAY100us(int time){
+	int i,j;
+	for(i = 0;i<time;i++)
+		for(j=0;j<12;j++);//do nothing
+}
 //==== 嗶聲函數 ========
 void BEEP(char x) 
 {	int	i,j;
 	for(i=0;i<x;i++) 				// 嗶x聲
-	{	for(j=0;j<50;j++)		// 重複吸放100次
-		{	Buzzer=0;DELAY500us(1);// 蜂鳴器吸
-			Buzzer=1;DELAY500us(1);// 蜂鳴器放
+	{	for(j=0;j<100;j++)		// 重複吸放100次
+		{	Buzzer=0;DELAY100us(1);// 蜂鳴器吸
+			Buzzer=1;DELAY100us(1);// 蜂鳴器放
 		} 
 	 	DELAY500us(200);			// 靜音0.1秒
 	} 
