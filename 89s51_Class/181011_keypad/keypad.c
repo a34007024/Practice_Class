@@ -34,11 +34,11 @@ void keyscan() {
 		seg7Output=seg7hexCode[DisplayData[X]];		// 輸出顯示信號
 		Y=~keyInput & 0x0f;			// 讀取鍵盤	 
 		if	(Y!=0){		    	// 若有按鍵被按下 
-			if(Y==1) Ycode=0;		// 第0列有按鍵按下 
-			else if (Y==2) Ycode=1;	// 第1列有按鍵按下 
-			else if (Y==4) Ycode=2;	// 第2列有按鍵按下 
-			else if (Y==8) Ycode=3;	// 第3列有按鍵按下 
-			Kcode=4*X + Ycode;		// 計算按鍵值
+			if(Y==8) Ycode=0;	 
+			else if (Y==4) Ycode=1; 
+			else if (Y==2) Ycode=2; 
+			else if (Y==1) Ycode=3; 
+			Kcode=4*Ycode + X;		// 計算按鍵值
 			for(i=0;i<3;i++)
 				DisplayData[3-i]=DisplayData[2-i];// 顯示資料移位
 			DisplayData[0]=Kcode;			// 將鍵值存入個位數

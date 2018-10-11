@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:00:54 PAGE 1   
+C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:08:23 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE KEYPAD
@@ -44,11 +44,11 @@ line level    source
   34   2                      seg7Output=seg7hexCode[DisplayData[X]];         // 輸出顯示信號
   35   2                      Y=~keyInput & 0x0f;                     // 讀取鍵盤  
   36   2                      if      (Y!=0){                 // 若有按鍵被按下 
-  37   3                              if(Y==1) Ycode=0;               // 第0列有按鍵按下 
-  38   3                              else if (Y==2) Ycode=1; // 第1列有按鍵按下 
-  39   3                              else if (Y==4) Ycode=2; // 第2列有按鍵按下 
-  40   3                              else if (Y==8) Ycode=3; // 第3列有按鍵按下 
-  41   3                              Kcode=4*X + Ycode;              // 計算按鍵值
+  37   3                              if(Y==8) Ycode=0;        
+  38   3                              else if (Y==4) Ycode=1; 
+  39   3                              else if (Y==2) Ycode=2; 
+  40   3                              else if (Y==1) Ycode=3; 
+  41   3                              Kcode=4*Ycode + X;              // 計算按鍵值
   42   3                              for(i=0;i<3;i++)
   43   3                                      DisplayData[3-i]=DisplayData[2-i];// 顯示資料移位
   44   3                              DisplayData[0]=Kcode;                   // 將鍵值存入個位數
@@ -62,7 +62,7 @@ line level    source
   52          void DELAY500us(int time){
   53   1              int i,j;
   54   1              for(i = 0;i<time;i++)
-C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:00:54 PAGE 2   
+C51 COMPILER V9.01   KEYPAD                                                                10/11/2018 14:08:23 PAGE 2   
 
   55   1                      for(j=0;j<60;j++);//do nothing
   56   1      }
