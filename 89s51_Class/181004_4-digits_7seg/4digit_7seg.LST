@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   4DIGIT_7SEG                                                           10/04/2018 14:42:10 PAGE 1   
+C51 COMPILER V9.01   4DIGIT_7SEG                                                           10/11/2018 10:43:24 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE 4DIGIT_7SEG
@@ -9,61 +9,84 @@ line level    source
 
    1          #include<reg51.h>
    2          #define seg7 P0
-   3          #define scan7seg P2
+   3          #define scan7seg P1
    4          sbit seg7dp = P0^7;
-   5          char seg7hexCode[16] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
-   6          int seg7number = 0;
-   7          char scan7segCode[4] = {0xf7,0xfb,0xfd,0xfe};//使用char比int節省空間
-   8          char show8051[4] = {8,0,5,1};
-   9          /*
-  10          接線說明:
-  11          a -> P0.0 (P0^0) a為LSB(最低位元)
-  12          b -> P0.1
-  13          依序a,b,c,d,e,f,g......
-  14          最後為dp -> P0.7 dp為MSB(最高位元)
-  15          D0 -> P2^0為LSB
-  16          依序接線
-  17          D3 -> P2^0為MSB
-  18          */
-  19          void delay(int ms);
-  20          void main(){
-  21   1              int i;
-  22   1              int time = 0;
-  23   1              while(1){
-  24   2                      seg7 = seg7hexCode[seg7number];//show number on 7Seg
-  25   2                      while(time <= 500){
-  26   3                              for(i = 0;i<4;i++){
-  27   4                                      scan7seg = scan7segCode[i];
-  28   4                                      seg7 = seg7hexCode[show8051[i]];
-  29   4                                      delay(2);
-  30   4                                      time +=2;
-  31   4                              }
-  32   3                      }
-  33   2                      time = 0;
-  34   2                      seg7 = 0xff;
-  35   2                      delay(500);
-  36   2              }
-  37   1      }
-  38          
-  39          void delay(int ms){
-  40   1              int i,j;
-  41   1              for(i = 0;i < ms;i++)
-  42   1                      for(j=0;j<120;j++);//do null
-  43   1      }
-  44          
+   5          sbit pb4 = P2^1;//7seg number add one when pressed
+   6          sbit pb3 = P2^0;//7seg number sub one when pressed
+   7          char seg7hexCode[16] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
+   8          int seg7number = 0;
+   9          char scan7segCode[4] = {0xf7,0xfb,0xfd,0xfe};//使用char比int節省空間
+  10          char show4numbers[4] = {0,0,0,0};//千位數至個位數
+  11          //===========================================
+  12          /*
+  13          接線說明:
+  14          a -> P0.0 (P0^0) a為LSB(最低位元)
+  15          b -> P0.1
+  16          依序a,b,c,d,e,f,g......
+  17          最後為dp -> P0.7 dp為MSB(最高位元)
+  18          D0 -> P1^0為LSB
+  19          依序接線
+  20          D3 -> P1^3為MSB
+  21          */
+  22          //===========================================
+  23          void delay(int ms);
+  24          int check7segNumber();
+  25          void main(){
+  26   1              int i;
+  27   1              while(1){
+  28   2                      seg7 = seg7hexCode[seg7number];//show number on 7Seg
+  29   2                      for(i = 0;i<4;i++){
+  30   3                              scan7seg = scan7segCode[i];
+  31   3                              seg7 = seg7hexCode[show4numbers[i]];
+  32   3                              delay(2);
+  33   3                      }
+  34   2                      if(pb4 == 0){
+  35   3                              delay(10);
+  36   3                              if(pb4 == 0){//判斷是否為雜訊
+  37   4                                      if(check7segNumber() == 9) seg7number = 0;
+  38   4                                      else seg7number +=1;
+  39   4                                      while(pb4 == 0);//wait until button released
+  40   4                              }
+  41   3                              delay(10);
+  42   3                      }
+  43   2                      if(pb3 == 0){
+  44   3                              delay(10);
+  45   3                              if(pb3 == 0){//判斷是否為雜訊
+  46   4                                      if(check7segNumber() == 0) seg7number = 9;
+  47   4                                      else seg7number -=1;
+  48   4                                      while(pb3 == 0);//wait until button released
+  49   4                              }
+  50   3                              delay(10);
+  51   3                      }
+  52   2                      
+  53   2              }
+  54   1      }
+  55          
+C51 COMPILER V9.01   4DIGIT_7SEG                                                           10/11/2018 10:43:24 PAGE 2   
+
+  56          void delay(int ms){
+  57   1              int i,j;
+  58   1              for(i = 0;i < ms;i++)
+  59   1                      for(j=0;j<120;j++);//do null
+  60   1      }
+  61          
+  62          int check7segNumber(){
+  63   1              if(seg7number >= 9) return 9;
+  64   1              else if(seg7number <= 0) return 0;
+  65   1              else return -1;
+  66   1      }
+  67          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    147    ----
+   CODE SIZE        =    219    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     26       4
+   DATA SIZE        =     26       2
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
-
-C51 COMPILER V9.01   4DIGIT_7SEG                                                           10/04/2018 14:42:10 PAGE 2   
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,121 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/11/2018  11:29:15  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE 4digits-7seg_Marquee.obj TO 4digits-7seg_Marquee
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  4digits-7seg_Marquee.obj (4DIGITS_7SEG_MARQUEE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  4digits-7seg_Marquee (4DIGITS_7SEG_MARQUEE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0025H     UNIT         ?DT?4DIGITS_7SEG_MARQUEE
+            DATA    002DH     0004H     UNIT         _DATA_GROUP_
+            IDATA   0031H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00C4H     UNIT         ?PR?MAIN?4DIGITS_7SEG_MARQUEE
+            CODE    08C4H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0950H     002AH     UNIT         ?C_INITSEG
+            CODE    097AH     0026H     UNIT         ?PR?_DELAY?4DIGITS_7SEG_MARQUEE
+
+
+
+OVERLAY MAP OF MODULE:   4digits-7seg_Marquee (4DIGITS_7SEG_MARQUEE)
+
+
+SEGMENT                                   DATA_GROUP 
+  +--> CALLED SEGMENT                   START    LENGTH
+-------------------------------------------------------
+?C_C51STARTUP                           -----    -----
+  +--> ?PR?MAIN?4DIGITS_7SEG_MARQUEE
+  +--> ?C_INITSEG
+
+?PR?MAIN?4DIGITS_7SEG_MARQUEE           002DH    0004H
+  +--> ?PR?_DELAY?4DIGITS_7SEG_MARQUEE
+
+
+
+SYMBOL TABLE OF MODULE:  4digits-7seg_Marquee (4DIGITS_7SEG_MARQUEE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        4DIGITS_7SEG_MARQUEE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  11:29:15  PAGE 2
+
+
+  D:0090H         PUBLIC        P1
+  D:0008H         PUBLIC        dataPointer
+  D:0009H         PUBLIC        mydata
+  C:097AH         PUBLIC        _delay
+  D:0011H         PUBLIC        scan7segCode
+  C:0800H         PUBLIC        main
+  D:0015H         PUBLIC        seg7hexCode
+  D:0029H         PUBLIC        DisplayData
+  -------         PROC          MAIN
+  -------         DO            
+  D:002DH         SYMBOL        i
+  D:002FH         SYMBOL        delayTime
+  -------         ENDDO         
+  C:0800H         LINE#         21
+  C:0800H         LINE#         23
+  C:0805H         LINE#         24
+  C:0808H         LINE#         25
+  C:080CH         LINE#         26
+  C:0813H         LINE#         27
+  C:0821H         LINE#         28
+  C:0821H         LINE#         29
+  C:0826H         LINE#         30
+  C:082FH         LINE#         31
+  C:083AH         LINE#         32
+  C:084CH         LINE#         33
+  C:085FH         LINE#         34
+  C:086CH         LINE#         35
+  C:0871H         LINE#         36
+  C:088CH         LINE#         37
+  C:0894H         LINE#         38
+  C:08A2H         LINE#         39
+  C:08ACH         LINE#         40
+  C:08AEH         LINE#         41
+  C:08AEH         LINE#         42
+  C:08BCH         LINE#         43
+  C:08C1H         LINE#         44
+  C:08C1H         LINE#         45
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:097AH         LINE#         48
+  C:097AH         LINE#         50
+  C:098AH         LINE#         51
+  C:099FH         LINE#         52
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        4DIGITS_7SEG_MARQUEE
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0113H BYTE (13%) *
+******************************************************************************
+
+Program Size: data=50.0 xdata=0 code=419
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

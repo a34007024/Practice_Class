@@ -1,0 +1,77 @@
+C51 COMPILER V9.01   4DIGITS_7SEG_MARQUEE                                                  10/11/2018 11:29:15 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 4DIGITS_7SEG_MARQUEE
+OBJECT MODULE PLACED IN 4digits-7seg_Marquee.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 4digits-7seg_Marquee.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define seg7 P0
+   3          #define scan7seg P1
+   4          sbit seg7dp = P0^7;
+   5          char seg7hexCode[20] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
+   6          char scan7segCode[4] = {0xf7,0xfb,0xfd,0xfe};//使用char比int節省空間
+   7          char DisplayData[4];
+   8          char mydata[8] = {8,0,5,1,19,19,19,19};
+   9          char dataPointer = 0;
+  10          /*
+  11          接線說明:
+  12          a -> P0.0 (P0^0) a為LSB(最低位元)
+  13          b -> P0.1
+  14          依序a,b,c,d,e,f,g......
+  15          最後為dp -> P0.7 dp為MSB(最高位元)
+  16          D0 -> P1^0為LSB
+  17          依序接線
+  18          D3 -> P1^3為MSB
+  19          */
+  20          void delay(int ms);
+  21          void main(){
+  22   1              int i;
+  23   1              int delayTime = 0;
+  24   1              seg7hexCode[19] = 0xff;
+  25   1              for(i = 0;i<4;i++){
+  26   2                      DisplayData[i] = 19;//19在seg7hexCode裡為null
+  27   2              }
+  28   1              while(1){
+  29   2                      for(i = 0;i<4;i++){
+  30   3                              scan7seg = scan7segCode[i];
+  31   3                              seg7 = seg7hexCode[DisplayData[i]];
+  32   3                              delay(2);delayTime +=2;
+  33   3                      }
+  34   2                      if(delayTime >= 300){
+  35   3                              for(i = 0;i<4;i++){
+  36   4                                      if(i<=2) DisplayData[i] = DisplayData[i+1];
+  37   4                                      if(i==3){
+  38   5                                              DisplayData[i] = mydata[dataPointer];
+  39   5                                              if(dataPointer == 7) dataPointer = 0;
+  40   5                                              else dataPointer += 1;
+  41   5                                      }
+  42   4                              }
+  43   3                              delayTime = 0;
+  44   3                      }
+  45   2              }
+  46   1      }
+  47          
+  48          void delay(int ms){
+  49   1              int i,j;
+  50   1              for(i = 0;i < ms;i++)
+  51   1                      for(j=0;j<120;j++);//do null
+  52   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.01   4DIGITS_7SEG_MARQUEE                                                  10/11/2018 11:29:15 PAGE 2   
+
+   CODE SIZE        =    234    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     37       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

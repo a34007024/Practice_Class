@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/04/2018  14:42:10  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/11/2018  10:43:25  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -23,31 +23,33 @@ LINK MAP OF MODULE:  4digit_7seg (4DIGIT_7SEG)
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
             DATA    0008H     001AH     UNIT         ?DT?4DIGIT_7SEG
-            DATA    0022H     0004H     UNIT         _DATA_GROUP_
-            IDATA   0026H     0001H     UNIT         ?STACK
+            DATA    0022H     0002H     UNIT         _DATA_GROUP_
+            IDATA   0024H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
             CODE    0800H     008CH     UNIT         ?C_C51STARTUP
-            CODE    088CH     006DH     UNIT         ?PR?MAIN?4DIGIT_7SEG
-            CODE    08F9H     0026H     UNIT         ?PR?_DELAY?4DIGIT_7SEG
-            CODE    091FH     0023H     UNIT         ?C_INITSEG
+            CODE    088CH     0089H     UNIT         ?PR?MAIN?4DIGIT_7SEG
+            CODE    0915H     002AH     UNIT         ?PR?_DELAY?4DIGIT_7SEG
+            CODE    093FH     0028H     UNIT         ?PR?CHECK7SEGNUMBER?4DIGIT_7SEG
+            CODE    0967H     0023H     UNIT         ?C_INITSEG
 
 
 
 OVERLAY MAP OF MODULE:   4digit_7seg (4DIGIT_7SEG)
 
 
-SEGMENT                          DATA_GROUP 
-  +--> CALLED SEGMENT          START    LENGTH
-----------------------------------------------
-?C_C51STARTUP                  -----    -----
+SEGMENT                                   DATA_GROUP 
+  +--> CALLED SEGMENT                   START    LENGTH
+-------------------------------------------------------
+?C_C51STARTUP                           -----    -----
   +--> ?PR?MAIN?4DIGIT_7SEG
   +--> ?C_INITSEG
 
-?PR?MAIN?4DIGIT_7SEG           0022H    0004H
+?PR?MAIN?4DIGIT_7SEG                    0022H    0002H
   +--> ?PR?_DELAY?4DIGIT_7SEG
+  +--> ?PR?CHECK7SEGNUMBER?4DIGIT_7SEG
 
 
 
@@ -57,56 +59,84 @@ SYMBOL TABLE OF MODULE:  4digit_7seg (4DIGIT_7SEG)
   ----------------------------------
 
   -------         MODULE        4DIGIT_7SEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  10:43:25  PAGE 2
+
+
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/04/2018  14:42:10  PAGE 2
-
-
+  D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:0008H         PUBLIC        seg7number
-  C:08F9H         PUBLIC        _delay
-  D:000AH         PUBLIC        show8051
-  D:000EH         PUBLIC        scan7segCode
+  B:00A0H.0       PUBLIC        pb3
+  B:00A0H.1       PUBLIC        pb4
+  C:0919H         PUBLIC        _delay
+  D:000AH         PUBLIC        scan7segCode
   C:088CH         PUBLIC        main
-  D:0012H         PUBLIC        seg7hexCode
+  D:000EH         PUBLIC        seg7hexCode
+  C:093FH         PUBLIC        check7segNumber
+  D:001EH         PUBLIC        show4numbers
   -------         PROC          MAIN
   -------         DO            
   D:0022H         SYMBOL        i
-  D:0024H         SYMBOL        time
   -------         ENDDO         
-  C:088CH         LINE#         20
-  C:088CH         LINE#         22
-  C:0891H         LINE#         23
-  C:0891H         LINE#         24
-  C:0899H         LINE#         25
-  C:08A6H         LINE#         26
-  C:08B8H         LINE#         27
-  C:08C1H         LINE#         28
-  C:08CCH         LINE#         29
-  C:08D3H         LINE#         30
-  C:08DEH         LINE#         31
-  C:08E8H         LINE#         32
-  C:08E8H         LINE#         33
-  C:08EDH         LINE#         34
-  C:08F0H         LINE#         35
-  C:08F7H         LINE#         36
+  C:088CH         LINE#         25
+  C:088CH         LINE#         27
+  C:088CH         LINE#         28
+  C:0894H         LINE#         29
+  C:0899H         LINE#         30
+  C:08A2H         LINE#         31
+  C:08ADH         LINE#         32
+  C:08B4H         LINE#         33
+  C:08C7H         LINE#         34
+  C:08CAH         LINE#         35
+  C:08CDH         LINE#         36
+  C:08D0H         LINE#         37
+  C:08DFH         LINE#         38
+  C:08E7H         LINE#         39
+  C:08EAH         LINE#         40
+  C:08EAH         LINE#         41
+  C:08EDH         LINE#         42
+  C:08EDH         LINE#         43
+  C:08F0H         LINE#         44
+  C:08F3H         LINE#         45
+  C:08F6H         LINE#         46
+  C:0904H         LINE#         47
+  C:090CH         LINE#         48
+  C:090FH         LINE#         49
+  C:090FH         LINE#         50
+  C:0912H         LINE#         51
+  C:0912H         LINE#         53
   -------         ENDPROC       MAIN
+  C:0915H         SYMBOL        L?0037
+  -------         PROC          L?0036
+  -------         ENDPROC       L?0036
+  C:0915H         SYMBOL        L?0037
   -------         PROC          _DELAY
   D:0006H         SYMBOL        ms
   -------         DO            
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
-  C:08F9H         LINE#         39
-  C:08F9H         LINE#         41
-  C:0909H         LINE#         42
-  C:091EH         LINE#         43
+  C:0919H         LINE#         56
+  C:0919H         LINE#         58
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/11/2018  10:43:25  PAGE 3
+
+
+  C:0929H         LINE#         59
+  C:093EH         LINE#         60
   -------         ENDPROC       _DELAY
+  -------         PROC          CHECK7SEGNUMBER
+  C:093FH         LINE#         62
+  C:093FH         LINE#         63
+  C:0951H         LINE#         64
+  C:0962H         LINE#         65
+  C:0966H         LINE#         66
+  -------         ENDPROC       CHECK7SEGNUMBER
   -------         ENDMOD        4DIGIT_7SEG
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00B5H BYTE ( 8%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00FDH BYTE (12%) *
 ******************************************************************************
 
-Program Size: data=39.0 xdata=0 code=325
+Program Size: data=37.0 xdata=0 code=397
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
