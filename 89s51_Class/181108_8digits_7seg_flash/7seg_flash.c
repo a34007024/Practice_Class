@@ -1,4 +1,4 @@
-/*
+﻿/*
 programmer	:LuckyPig
 fuctions	:8位元的七節顯示器顯示八位數資料
 version		:20181108A

@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        11/08/2018  13:59:37  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/08/2018  14:21:34  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,7 +59,7 @@ SEGMENT                                       DATA_GROUP
 ?C_C51STARTUP                               -----    -----
   +--> ?PR?MAIN?INTERRUPT_AND_TIMER
   +--> ?C_INITSEG
-BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  13:59:37  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  14:21:34  PAGE 2
 
 
 
@@ -102,24 +102,24 @@ SYMBOL TABLE OF MODULE:  interrupt_and_timer (INTERRUPT_AND_TIMER)
   C:0938H         LINE#         24
   C:093FH         LINE#         25
   C:0956H         LINE#         26
-  C:095BH         LINE#         28
+  C:095BH         LINE#         27
   -------         ENDPROC       MAIN
   -------         PROC          INT0_BLINK0
   -------         DO            
   D:0036H         SYMBOL        owo
   -------         ENDDO         
-  C:088CH         LINE#         30
-  C:0899H         LINE#         32
-  C:089FH         LINE#         33
-  C:08A2H         LINE#         34
-  C:08A5H         LINE#         35
-  C:08ACH         LINE#         36
-  C:08AFH         LINE#         37
-  C:08B6H         LINE#         38
-  C:08C9H         LINE#         39
-  C:08D1H         LINE#         40
+  C:088CH         LINE#         29
+  C:0899H         LINE#         31
+  C:089FH         LINE#         32
+  C:08A2H         LINE#         33
+  C:08A5H         LINE#         34
+  C:08ACH         LINE#         35
+  C:08AFH         LINE#         36
+  C:08B6H         LINE#         37
+  C:08C9H         LINE#         38
+  C:08D1H         LINE#         39
   -------         ENDPROC       INT0_BLINK0
-BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  13:59:37  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  14:21:34  PAGE 3
 
 
   C:09B9H         SYMBOL        L?0044
@@ -132,11 +132,11 @@ SYMBOL TABLE OF MODULE:  interrupt_and_timer (INTERRUPT_AND_TIMER)
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
+  C:09BDH         LINE#         55
   C:09BDH         LINE#         56
   C:09BDH         LINE#         57
-  C:09BDH         LINE#         58
-  C:09CDH         LINE#         59
-  C:09E2H         LINE#         60
+  C:09CDH         LINE#         58
+  C:09E2H         LINE#         59
   -------         ENDPROC       _DELAY
   -------         PROC          _LEFT
   D:0030H         SYMBOL        x
@@ -144,17 +144,17 @@ SYMBOL TABLE OF MODULE:  interrupt_and_timer (INTERRUPT_AND_TIMER)
   D:0031H         SYMBOL        i
   D:0001H         SYMBOL        j
   -------         ENDDO         
-  C:095DH         LINE#         62
+  C:095DH         LINE#         61
+  C:095FH         LINE#         62
   C:095FH         LINE#         63
-  C:095FH         LINE#         64
-  C:096FH         LINE#         65
-  C:0972H         LINE#         66
-  C:0974H         LINE#         67
-  C:0977H         LINE#         68
-  C:097FH         LINE#         69
-  C:0983H         LINE#         70
-  C:0986H         LINE#         71
-  C:098AH         LINE#         72
+  C:096FH         LINE#         64
+  C:0972H         LINE#         65
+  C:0974H         LINE#         66
+  C:0977H         LINE#         67
+  C:097FH         LINE#         68
+  C:0983H         LINE#         69
+  C:0986H         LINE#         70
+  C:098AH         LINE#         71
   -------         ENDPROC       _LEFT
   -------         PROC          _RIGHT
   D:0032H         SYMBOL        x
@@ -162,37 +162,37 @@ SYMBOL TABLE OF MODULE:  interrupt_and_timer (INTERRUPT_AND_TIMER)
   D:0033H         SYMBOL        i
   D:0001H         SYMBOL        j
   -------         ENDDO         
-  C:098BH         LINE#         74
+  C:098BH         LINE#         73
+  C:098DH         LINE#         74
   C:098DH         LINE#         75
-  C:098DH         LINE#         76
-  C:099DH         LINE#         77
-  C:09A0H         LINE#         78
-  C:09A2H         LINE#         79
-  C:09A5H         LINE#         80
-  C:09ADH         LINE#         81
-  C:09B1H         LINE#         82
-  C:09B4H         LINE#         83
-  C:09B8H         LINE#         84
+  C:099DH         LINE#         76
+  C:09A0H         LINE#         77
+  C:09A2H         LINE#         78
+  C:09A5H         LINE#         79
+  C:09ADH         LINE#         80
+  C:09B1H         LINE#         81
+  C:09B4H         LINE#         82
+  C:09B8H         LINE#         83
   -------         ENDPROC       _RIGHT
   -------         PROC          _BEEP
   D:0001H         SYMBOL        x
   -------         DO            
   D:0034H         SYMBOL        i
   D:0082H         SYMBOL        j
-BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  13:59:37  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  14:21:34  PAGE 4
 
 
   -------         ENDDO         
-  C:08DCH         LINE#         86
+  C:08DCH         LINE#         85
+  C:08DEH         LINE#         86
   C:08DEH         LINE#         87
-  C:08DEH         LINE#         88
-  C:08F8H         LINE#         89
-  C:08FBH         LINE#         90
-  C:0904H         LINE#         91
-  C:0909H         LINE#         92
-  C:0912H         LINE#         93
-  C:0919H         LINE#         94
-  C:0923H         LINE#         95
+  C:08F8H         LINE#         88
+  C:08FBH         LINE#         89
+  C:0904H         LINE#         90
+  C:0909H         LINE#         91
+  C:0912H         LINE#         92
+  C:0919H         LINE#         93
+  C:0923H         LINE#         94
   -------         ENDPROC       _BEEP
   -------         ENDMOD        INTERRUPT_AND_TIMER
 

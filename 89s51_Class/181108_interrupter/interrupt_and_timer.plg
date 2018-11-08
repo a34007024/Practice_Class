@@ -176,3 +176,85 @@ linking...
 Program Size: data=57.0 xdata=0 code=530
 creating hex file from "interrupt_and_timer"...
 "interrupt_and_timer" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BEEP?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=526
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=531
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=531
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=531
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=531
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=531
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=531
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BEEP?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=530
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 3 Warning(s).

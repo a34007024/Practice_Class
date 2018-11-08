@@ -21,10 +21,9 @@ main()
 	while(1){				//	無窮迴圈,程式一直跑 	
 		seg7Scan = seg7scanCode[7];//固定最後一個seg7顯示
 		seg7 = seg7hexCode[countNumber];
-		delay(1000);
+		delay(300);
 		if(countNumber < 9)countNumber += 1;
 		else countNumber = 0;
-		//BEEP(1);			// 嗶1聲 
 	}			
 }
 void int0_blink0() interrupt 0 using 1{
@@ -32,9 +31,9 @@ void int0_blink0() interrupt 0 using 1{
 	for(owo=0;owo<3;owo++){
 		seg7Scan = seg7scanCode[7];
 		seg7 = seg7hexCode[0];
-		delay(300);
+		delay(100);
 		seg7 = 0xff;//turn off
-		delay(300);
+		delay(100);
 	}
 	seg7 = seg7hexCode[countNumber];
 }	
