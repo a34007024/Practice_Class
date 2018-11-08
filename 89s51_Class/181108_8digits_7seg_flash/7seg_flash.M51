@@ -1,0 +1,125 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/08/2018  10:27:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE 7seg_flash.obj TO 7seg_flash
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  7seg_flash.obj (7SEG_FLASH)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  7seg_flash (7SEG_FLASH)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     002DH     UNIT         ?DT?7SEG_FLASH
+            DATA    0035H     0006H     UNIT         _DATA_GROUP_
+            IDATA   003BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     007CH     UNIT         ?PR?MAIN?7SEG_FLASH
+            CODE    0908H     003CH     UNIT         ?PR?_DELAY?7SEG_FLASH
+            CODE    0944H     0038H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   7seg_flash (7SEG_FLASH)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?7SEG_FLASH
+  +--> ?C_INITSEG
+
+?PR?MAIN?7SEG_FLASH            0035H    0006H
+  +--> ?PR?_DELAY?7SEG_FLASH
+
+
+
+SYMBOL TABLE OF MODULE:  7seg_flash (7SEG_FLASH)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        7SEG_FLASH
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  10:27:00  PAGE 2
+
+
+  D:0090H         PUBLIC        P1
+  D:0008H         PUBLIC        dataPointer
+  D:0009H         PUBLIC        phoneNumber
+  C:091EH         PUBLIC        _delay
+  D:0011H         PUBLIC        homeNumber
+  D:0019H         PUBLIC        scan7segCode
+  C:088CH         PUBLIC        main
+  D:0021H         PUBLIC        seg7hexCode
+  -------         PROC          MAIN
+  -------         DO            
+  D:0035H         SYMBOL        i
+  D:0037H         SYMBOL        j
+  D:0039H         SYMBOL        displayTime
+  -------         ENDDO         
+  C:088CH         LINE#         23
+  C:088CH         LINE#         25
+  C:0891H         LINE#         26
+  C:0894H         LINE#         27
+  C:0894H         LINE#         28
+  C:08A1H         LINE#         29
+  C:08B3H         LINE#         30
+  C:08B5H         LINE#         31
+  C:08B5H         LINE#         32
+  C:08B8H         LINE#         33
+  C:08C0H         LINE#         34
+  C:08CAH         LINE#         35
+  C:08CAH         LINE#         36
+  C:08D7H         LINE#         37
+  C:08E9H         LINE#         38
+  C:08EBH         LINE#         39
+  C:08EBH         LINE#         40
+  C:08EEH         LINE#         41
+  C:08F6H         LINE#         42
+  C:0900H         LINE#         43
+  C:0900H         LINE#         44
+  C:0905H         LINE#         45
+  -------         ENDPROC       MAIN
+  -------         PROC          L?0027
+  -------         ENDPROC       L?0027
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:091EH         LINE#         48
+  C:091EH         LINE#         50
+  C:092EH         LINE#         51
+  C:0943H         LINE#         52
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        7SEG_FLASH
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00EFH BYTE (11%) *
+******************************************************************************
+
+Program Size: data=60.0 xdata=0 code=383
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/08/2018  10:27:00  PAGE 3
+
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
