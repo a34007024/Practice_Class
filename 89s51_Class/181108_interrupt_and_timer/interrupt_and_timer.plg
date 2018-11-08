@@ -1,0 +1,178 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\¡i¹q¤T¤A·¨Â`©Ó¡j\Practice_Class\89s51_Class\181108_interrupt_and_timer\interrupt_and_timer.uvproj
+Project File Date:  11/08/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+Program Size: data=35.0 xdata=0 code=327
+"interrupt_and_timer" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=35.0 xdata=0 code=327
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=35.0 xdata=0 code=327
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+INTERRUPT_AND_TIMER.C(16): warning C206: 'int1_RIGHT': missing function-prototype
+INTERRUPT_AND_TIMER.C(18): warning C206: 'int0_LEFT': missing function-prototype
+INTERRUPT_AND_TIMER.C(23): error C231: 'int0_LEFT': redefinition
+INTERRUPT_AND_TIMER.C(26): error C231: 'int0_LEFT': redefinition
+INTERRUPT_AND_TIMER.C(29): error C231: 'int1_RIGHT': redefinition
+INTERRUPT_AND_TIMER.C(32): error C231: 'int1_RIGHT': redefinition
+Target not created
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+Program Size: data=35.0 xdata=0 code=333
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+Program Size: data=35.0 xdata=0 code=327
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+Program Size: data=35.0 xdata=0 code=331
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+Program Size: data=35.0 xdata=0 code=331
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+INTERRUPT_AND_TIMER.C(17): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(18): error C141: syntax error near 'int'
+INTERRUPT_AND_TIMER.C(18): error C202: 'i': undefined identifier
+INTERRUPT_AND_TIMER.C(21): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(23): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(23): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(24): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(48): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(50): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(62): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(65): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(74): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(77): error C202: 'LED': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+INTERRUPT_AND_TIMER.C(17): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(18): error C141: syntax error near 'int'
+INTERRUPT_AND_TIMER.C(18): error C202: 'i': undefined identifier
+INTERRUPT_AND_TIMER.C(19): error C141: syntax error near 'int'
+INTERRUPT_AND_TIMER.C(19): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(22): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(24): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(24): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(25): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(49): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(51): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(63): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(66): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(75): error C202: 'LED': undefined identifier
+INTERRUPT_AND_TIMER.C(78): error C202: 'LED': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+INTERRUPT_AND_TIMER.C(19): error C141: syntax error near 'int'
+INTERRUPT_AND_TIMER.C(19): error C202: 'i': undefined identifier
+INTERRUPT_AND_TIMER.C(20): error C141: syntax error near 'int'
+INTERRUPT_AND_TIMER.C(20): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(23): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(25): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(25): error C202: 'countNumber': undefined identifier
+INTERRUPT_AND_TIMER.C(26): error C202: 'countNumber': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INT0_BLINK0?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+Program Size: data=59.0 xdata=0 code=542
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=527
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=527
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=527
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BEEP?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=522
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BEEP?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=530
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling interrupt_and_timer.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LEFT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_RIGHT?INTERRUPT_AND_TIMER
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BEEP?INTERRUPT_AND_TIMER
+Program Size: data=57.0 xdata=0 code=530
+creating hex file from "interrupt_and_timer"...
+"interrupt_and_timer" - 0 Error(s), 3 Warning(s).
