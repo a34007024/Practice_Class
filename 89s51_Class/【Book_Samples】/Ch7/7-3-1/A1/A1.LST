@@ -1,0 +1,89 @@
+C51 COMPILER V9.01   A1                                                                    02/12/2012 16:37:03 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h> 
+   2          #define StepMotor P0                    // Port 0連接步進馬達 
+   3          #define STEPS   100                             // 定義步進數 
+   4          #define Speed   5                               // 定義步進馬達速度(每步0.5S) 
+   5          sbit    PB1=P2^0;                               // 1相激磁信號100步
+   6          sbit    PB2=P2^1;                               // 2相激磁信號100步
+   7          sbit    PB3=P2^2;                               // 1-2相激磁信號100步
+   8          sbit    Buzzer=P3^7;    
+   9          char code PHASE1[4]={1,2,4,8};  // 1相激磁信號陣列
+  10          char code PHASE2[4]={3,6,12,9}; // 2相激磁信號陣列
+  11          char code PHASE1_2[8]={1,3,2,6,4,12,8,9}; // 1-2相激磁信號陣列
+  12          void    SM_driver(char *, bit);         // 宣告驅動函數  
+  13          void    DELAY1ms(int);                          // 宣告延時函數
+  14          void    DELAY500us(int);                        // 宣告延時函數
+  15          void    BEEP(char);                             // 宣告嗶聲函數
+  16          // =========================================================
+  17          main()
+  18          {       StepMotor=0;                                            // 關閉步進馬達 
+  19   1              PB1=PB2=PB3=1;                                          // 按鈕開關初始化 
+  20   1              while(1)                                                        // 無窮盡迴圈 
+  21   1              {       if (!PB1) 
+  22   2                              SM_driver(PHASE1,0);            // 1相驅動  
+  23   2                      else if (!PB2)
+  24   2                              SM_driver(PHASE2,0);            // 2相驅動
+  25   2                      else if (!PB3)
+  26   2                              SM_driver(PHASE1_2,1);          // 1-2相驅動
+  27   2              }
+  28   1      }
+  29          // =========================================================
+  30          void    SM_driver(char *PHASE, bit F4_8) 
+  31          {       char i,j,x;                                     // 宣告變數
+  32   1              if(F4_8) x=8; else x=4;                 // 判斷一個週期幾步
+  33   1              for(i=0;i<STEPS/4;i++)                  // 執行STEP/4個週期
+  34   1                      for(j=0;j<x;j++)                        // 總共x個信號
+  35   1                      {       StepMotor=PHASE[j];             // 輸出到步進馬達
+  36   2                              DELAY1ms(Speed*100);    // 延遲Speed * 0.5秒
+  37   2                      }
+  38   1              BEEP(2);
+  39   1              StepMotor=0;                                            // 關閉步進馬達 
+  40   1      }
+  41          // =========================================================
+  42          void    DELAY1ms(int x) 
+  43          {       int i,j;                                        // 宣告變數
+  44   1              for(i=0;i<x;i++)                        // 外迴圈(x*1ms)
+  45   1                      for(j=0;j<120;j++);             // 內迴圈(1ms)
+  46   1      }
+  47          // =========================================================
+  48          void    DELAY500us(int x) 
+  49          {       int i,j;                                        // 宣告變數
+  50   1              for(i=0;i<x;i++)                        // 外迴圈(x*1ms)
+  51   1                      for(j=0;j<60;j++);              // 內迴圈(0.5ms)
+  52   1      }
+  53          // =========================================================
+  54          void    BEEP(char x) 
+  55          {       int i,j;                                        // 宣告變數
+C51 COMPILER V9.01   A1                                                                    02/12/2012 16:37:03 PAGE 2   
+
+  56   1              for(i=0;i<x;i++)                        // x聲 
+  57   1              {       for(j=0;j<100;j++)                      // 100次
+  58   2                      {       Buzzer=0;DELAY500us(1); // 吸 
+  59   3                              Buzzer=1;DELAY500us(1); // 放 
+  60   3                      }       
+  61   2                      DELAY500us(200);                // 延遲0.1秒  
+  62   2              } 
+  63   1      }
+  64          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    288    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

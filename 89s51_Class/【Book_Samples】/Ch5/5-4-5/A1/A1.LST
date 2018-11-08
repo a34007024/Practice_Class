@@ -1,0 +1,96 @@
+C51 COMPILER V9.01   A1                                                                    02/08/2012 16:46:51 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>               // 包含reg51.h標頭檔 
+   2          #define LED      P1                             // 定義LED接至Port 1
+   3          void    FLASH(char);            // 宣告閃爍函數
+   4          void    LEFT(void);                     // 宣告單燈左移函數
+   5          void    RIGHT(void);            // 宣告單燈右移函數
+   6          void    DELAY1ms(int);          // 宣告延時函數
+   7          //==主程式======================================
+   8          main()                          
+   9          {       char RevChar;                   // 宣告變數
+  10   1              TMOD |= 0x20;                   // 設定Timer 1採Mode 2
+  11   1              PCON &= 0x7f;                   // 設定SMOD=0
+  12   1              TH1=TL1=0xfd;                   // 填入計時量 
+  13   1              TR1=1;                                  // 啟動Timer 1
+  14   1              SCON=0x50;                              // 設定串列埠採Mode 1
+  15   1              while(1)
+  16   1              {       while(!RI);                     // 等待接收完成
+  17   2                      RevChar=(SBUF-0x30);// 將接收到的資料轉為數字 
+  18   2                      switch (RevChar)
+  19   2                      {       case 1:                 // 閃爍指令 
+  20   3                              {       FLASH(3);
+  21   4                                      break;
+  22   4                              }
+  23   3                              case 2:                 // 單燈左移指令 
+  24   3                              {       LEFT();
+  25   4                                      break;
+  26   4                              }
+  27   3                              case 3:                 // 單燈右移指令 
+  28   3                              {       RIGHT();
+  29   4                                      break;
+  30   4                              }
+  31   3                      }
+  32   2                      RI=0;                   // 清除RI旗標(重新接收)
+  33   2              } 
+  34   1      } 
+  35          //====================================
+  36          void    FLASH(char x)
+  37          {       char i;
+  38   1              LED=0xff;
+  39   1              for(i=0;i<x;i++)
+  40   1              {       DELAY1ms(100);
+  41   2                      LED=0;
+  42   2                      DELAY1ms(100);
+  43   2                      LED=0xff;
+  44   2              }       
+  45   1      }
+  46          //====================================
+  47          void    LEFT(void)
+  48          {       char i;
+  49   1              LED=0xfe;
+  50   1              for(i=0;i<7;i++)
+  51   1              {       DELAY1ms(100);
+  52   2                      LED=(LED<<1)|0x01;
+  53   2              }
+  54   1              DELAY1ms(100);LED=0xff;
+  55   1      }
+C51 COMPILER V9.01   A1                                                                    02/08/2012 16:46:51 PAGE 2   
+
+  56          //====================================
+  57          void    RIGHT(void)
+  58          {       char i;
+  59   1              LED=0x7f;
+  60   1              for(i=0;i<7;i++)
+  61   1              {       DELAY1ms(100);
+  62   2                      LED=(LED>>1)|0x80;
+  63   2              }
+  64   1              DELAY1ms(100);LED=0xff;
+  65   1      }
+  66          //====================================
+  67          void    DELAY1ms(int x)
+  68          {       char i,j;
+  69   1              for(i=0;i<x;i++)
+  70   1                      for(j=0;j<120;j++);
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    201    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,41 @@
+C51 COMPILER V9.01   CH1                                                                   02/01/2012 16:16:39 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH1
+OBJECT MODULE PLACED IN Ch1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>               // 包含reg51.h標頭檔  
+   2          #define LED             P1                      // 設定輸出埠  
+   3          void delay1ms(int);                     // 宣告延時函數  
+   4          //==========================================
+   5          void main(void)
+   6          {       char  pat=0x0f;                 // 宣告變數
+   7   1              LED=pat;                                // 指定初值(輸出到LED)
+   8   1              while(1)                                // 無窮盡迴圈
+   9   1              {       delay1ms(250);          // 呼叫延時函數(延遲250ms)
+  10   2                      LED=~LED;                       // 將LED反相
+  11   2              }
+  12   1      }
+  13          //==========================================
+  14          void delay1ms(int x)            // 延時函數  
+  15          {       int     i,j;                            // 宣告變數
+  16   1              for(i=0;i<x;i++)                // 外迴圈(x ms)(沒有分號)
+  17   1                      for(j=0;j<120;j++);     // 內迴圈(1 ms)(有分號)
+  18   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     53    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

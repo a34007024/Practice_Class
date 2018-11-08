@@ -1,0 +1,167 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/10/2012  23:12:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Ch6-5-2.obj TO Ch6-5-2
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Ch6-5-2.obj (CH6_5_2)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SLDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  Ch6-5-2 (CH6_5_2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?CH6_5_2
+            DATA    000CH     0003H     UNIT         _DATA_GROUP_
+            IDATA   000FH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00CEH     UNIT         ?C?LIB_CODE
+            CODE    00DCH     00B8H     UNIT         ?PR?MAIN?CH6_5_2
+            CODE    0194H     007FH     UNIT         ?CO?CH6_5_2
+            CODE    0213H     0044H     UNIT         ?C?LDIV
+            CODE    0257H     0026H     UNIT         ?PR?_DELAY1MS?CH6_5_2
+            CODE    027DH     001EH     UNIT         ?PR?_BEAT?CH6_5_2
+            CODE    029BH     0018H     UNIT         ?PR?_DELAY?CH6_5_2
+            CODE    02B3H     000CH     UNIT         ?C_C51STARTUP
+            CODE    02BFH     0009H     UNIT         ?PR?TONE_INT?CH6_5_2
+
+
+
+OVERLAY MAP OF MODULE:   Ch6-5-2 (CH6_5_2)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?CH6_5_2
+
+?PR?MAIN?CH6_5_2               000CH    0001H
+  +--> ?CO?CH6_5_2
+  +--> ?PR?_BEAT?CH6_5_2
+  +--> ?PR?_DELAY1MS?CH6_5_2
+
+?PR?_BEAT?CH6_5_2              000DH    0002H
+  +--> ?PR?_DELAY?CH6_5_2
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/10/2012  23:12:32  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  Ch6-5-2 (CH6_5_2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CH6_5_2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:0257H         PUBLIC        _DELAY1ms
+  B:00B0H.7       PUBLIC        Buzzer
+  D:00A8H         PUBLIC        IE
+  C:0194H         PUBLIC        BaseTone
+  C:01F9H         PUBLIC        BEAT
+  C:027DH         PUBLIC        _beat
+  C:00DCH         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  C:01DEH         PUBLIC        SONG
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:02BFH         PUBLIC        TONE_int
+  D:0008H         PUBLIC        t0H
+  C:029BH         PUBLIC        _DELAY
+  D:000AH         PUBLIC        t0L
+  -------         PROC          MAIN
+  -------         DO            
+  D:000CH         SYMBOL        i
+  -------         ENDDO         
+  C:00DCH         LINE#         37
+  C:00DCH         LINE#         38
+  C:00DCH         LINE#         39
+  C:00DEH         LINE#         40
+  C:00E1H         LINE#         41
+  C:00E4H         LINE#         42
+  C:00E4H         LINE#         43
+  C:00E7H         LINE#         44
+  C:00E9H         LINE#         45
+  C:00F7H         LINE#         46
+  C:0133H         LINE#         48
+  C:0179H         LINE#         50
+  C:0183H         LINE#         51
+  C:0185H         LINE#         52
+  C:0188H         LINE#         53
+  C:018AH         LINE#         54
+  C:0191H         LINE#         55
+  -------         ENDPROC       MAIN
+  -------         PROC          _BEAT
+  D:000DH         SYMBOL        x
+  -------         DO            
+  D:000EH         SYMBOL        i
+  -------         ENDDO         
+  C:027DH         LINE#         58
+  C:027FH         LINE#         59
+  C:027FH         LINE#         60
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/10/2012  23:12:32  PAGE 3
+
+
+  C:028FH         LINE#         61
+  C:029AH         LINE#         62
+  -------         ENDPROC       _BEAT
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0257H         LINE#         64
+  C:0257H         LINE#         65
+  C:0257H         LINE#         66
+  C:0267H         LINE#         67
+  C:027CH         LINE#         68
+  -------         ENDPROC       _DELAY1MS
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:029BH         LINE#         70
+  C:029BH         LINE#         71
+  C:029BH         LINE#         72
+  C:02B2H         LINE#         73
+  -------         ENDPROC       _DELAY
+  -------         PROC          TONE_INT
+  C:02BFH         LINE#         75
+  C:02BFH         LINE#         76
+  C:02C5H         LINE#         77
+  C:02C7H         LINE#         78
+  -------         ENDPROC       TONE_INT
+  -------         ENDMOD        CH6_5_2
+
+  -------         MODULE        ?C?SLDIV
+  C:0213H         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:004AH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+Program Size: data=16.0 xdata=0 code=704
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

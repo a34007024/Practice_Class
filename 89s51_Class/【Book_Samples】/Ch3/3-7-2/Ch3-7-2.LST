@@ -1,0 +1,64 @@
+C51 COMPILER V9.01   CH3_7_2                                                               02/04/2012 22:12:51 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH3_7_2
+OBJECT MODULE PLACED IN Ch3-7-2.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch3-7-2.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                               // 包含reg51.h標頭檔  
+   2          #define SEGP  P0                                // 定義顯示信號埠 
+   3          #define SCANP P2                                // 定義掃瞄信號埠 
+   4          void    display(char);                  // 宣告掃瞄函數 
+   5          void    DELAY1ms(int);                  // 宣告延時函數 
+   6          // 七節顯示器編碼表，TAB[10]為空白
+   7          char code TAB[11]={     0xc0,0xf9,0xa4,0xb0,0x99,
+   8                                                  0x92,0x83,0xf8,0x80,0x98,0xff};
+   9          // 低態驅動掃瞄碼
+  10          char code SCAN_CODE[8]={        0x7f,0xbf,0xdf,0xef,
+  11                                                                  0xf7,0xfb,0xfd,0xfe };  
+  12          // 顯示資料
+  13          char code DISP[23]={10,10,10,10,10,10,10,10,
+  14                                                  2,7,0,9,1,6,3,0,
+  15                                                  10,10,10,10,10,10,10 };
+  16          //==== 主程式 =========================================
+  17          main()           
+  18          {       char i;                                         // 宣告變數 
+  19   1              while(1)                                        // 無窮盡迴圈 
+  20   1              {       for(i=0;i<16;i++)               // 呼叫掃瞄函數64次 
+  21   2                              display(i);                     // 約16ms*64=0.5s
+  22   2              }
+  23   1      }
+  24          //=== 八位掃瞄函數 ===
+  25          void    display(char x) 
+  26          {       char i,j;
+  27   1              for(i=0;i<30;i++)               // 重複掃瞄30次
+  28   1              {       for(j=0;j<8;j++)        // 每次掃瞄4個字
+  29   2                      {       SCANP=0xff;             // 關閉掃瞄線(防殘影)
+  30   3                              SEGP=TAB[DISP[x+j]];//輸出顯示信號
+  31   3                              SCANP=SCAN_CODE[j];     // 輸出掃瞄信號
+  32   3                              DELAY1ms(2);            // 延遲2ms(顯示)
+  33   3                      }
+  34   2              }
+  35   1      }
+  36          //==== 延時函數(1ms) ==============================
+  37          void DELAY1ms(int x) 
+  38          {       int     i,j;
+  39   1              for(i=0;i<x;i++)                        // 外迴圈(1ms*x)
+  40   1                      for(j=0;j<120;j++);             // 內迴圈(1ms)
+  41   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    172    ----
+   CONSTANT SIZE    =     42    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

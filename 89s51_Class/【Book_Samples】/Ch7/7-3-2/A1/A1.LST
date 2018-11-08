@@ -1,0 +1,92 @@
+C51 COMPILER V9.01   A1                                                                    02/12/2012 16:34:30 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h> 
+   2          #define StepMotor P0                    // Port 0連接步進馬達 
+   3          #define STEPS   100                             // 定義步進數 
+   4          #define Speed   5                               // 定義步進馬達速度(每步0.5S) 
+   5          sbit    PB1=P2^0;                               // 1相激磁信號100步 
+   6          sbit    PB2=P2^1;                               // 2相激磁信號100步 
+   7          sbit    PB3=P2^2;                               // 1-2相激磁信號100步 
+   8          sbit    STOP=P2^3;                              // 停止鍵 
+   9          char    S1=1;                                   // 1相激磁信號
+  10          char    S2=3;                                   // 2相激磁信號
+  11          void    SM_driver(char);                // 宣告驅動函數  
+  12          void    DELAY1ms(int);                  // 宣告延時函數
+  13          bit             STOP_F=0;
+  14          // =========================================================
+  15          main()
+  16          {       StepMotor=0;                                            // 關閉步進馬達 
+  17   1              PB1=PB2=PB3=STOP=1;                                     // 按鈕開關初始化 
+  18   1              while(1)                                                        // 無窮盡迴圈 
+  19   1              {       if (!PB1)  SM_driver(1);                // 1相驅動  
+  20   2                      else if (!PB2) SM_driver(2);    // 2相驅動
+  21   2                      else if (!PB3) SM_driver(3);    // 1-2相驅動
+  22   2                      STOP_F=0;
+  23   2              }
+  24   1      }
+  25          // =========================================================
+  26          void    SM_driver(char PHASE) 
+  27          {       char i,j;                                                       // 宣告變數
+  28   1              for(i=0;i<STEPS/4;i++)                          // 執行STEP/4個週期
+  29   1              {       S1=1;S2=3;                                              // 初始化
+  30   2                      for (j=0;j<4;j++)                               // 判斷週期結束
+  31   2                      {       switch (PHASE)
+  32   3                              {       case 1:                                         
+  33   4                                      {       StepMotor=S1;           // 1相驅動步進馬達
+  34   5                                              S1<<=1;                         // 下一個驅動信號 
+  35   5                                              break;
+  36   5                                      }
+  37   4                                      case 2:                                         
+  38   4                                      {       StepMotor=S2;           // 2相驅動步進馬達
+  39   5                                              S2<<=1;                         // 下一個驅動信號 
+  40   5                                              if(S2==0x18) S2=9;      // 調整驅動信號 
+  41   5                                              break;
+  42   5                                      }
+  43   4                                      case 3:                                         
+  44   4                                      {       StepMotor=S1;           // 1相驅動步進馬達
+  45   5                                              S1<<=1;                         // 下一個驅動信號 
+  46   5                                              DELAY1ms(Speed*100);// 延遲Speed * 0.5秒
+  47   5                                              StepMotor=S2;           // 2相驅動步進馬達
+  48   5                                              if (STOP_F) break;
+  49   5                                              S2<<=1;                         // 下一個驅動信號 
+  50   5                                              if(S2==0x18) S2=9;      // 調整驅動信號 
+  51   5                                              break;
+  52   5                                      }
+  53   4                              }
+  54   3                              DELAY1ms(Speed*100);// 延遲Speed * 0.5秒
+  55   3                              if (STOP_F) break;
+C51 COMPILER V9.01   A1                                                                    02/12/2012 16:34:30 PAGE 2   
+
+  56   3                      }
+  57   2              }
+  58   1              StepMotor=0;                                            // 關閉步進馬達 
+  59   1      }
+  60          // =========================================================
+  61          void    DELAY1ms(int x) 
+  62          {       int i,j;                                        // 宣告變數
+  63   1              for(i=0;i<x;i++)                        // 外迴圈(x*1ms)
+  64   1                      for(j=0;j<120;j++)
+  65   1                              if (!STOP)
+  66   1                              { STOP_F=1;break; }             // 內迴圈(1ms)
+  67   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    205    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,74 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/08/2012  11:16:40  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Ch5-4-1.obj TO Ch5-4-1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Ch5-4-1.obj (CH5_4_1)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  Ch5-4-1 (CH5_4_1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0011H     UNIT         ?PR?MAIN?CH5_4_1
+            CODE    0014H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   Ch5-4-1 (CH5_4_1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?CH5_4_1
+
+
+
+SYMBOL TABLE OF MODULE:  Ch5-4-1 (CH5_4_1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CH5_4_1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:0098H.0       PUBLIC        RI
+  B:00B0H.2       PUBLIC        load
+  C:0003H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  -------         PROC          MAIN
+  C:0003H         LINE#         5
+  C:0003H         LINE#         6
+  C:0006H         LINE#         7
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/08/2012  11:16:40  PAGE 2
+
+
+  C:0006H         LINE#         8
+  C:000AH         LINE#         9
+  C:000CH         LINE#         10
+  C:000FH         LINE#         11
+  C:0012H         LINE#         12
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        CH5_4_1
+
+Program Size: data=9.0 xdata=0 code=32
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

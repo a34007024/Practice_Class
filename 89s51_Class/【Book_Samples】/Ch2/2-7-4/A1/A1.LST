@@ -1,0 +1,39 @@
+C51 COMPILER V9.01   A1                                                                    02/02/2012 16:22:43 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>               // 包含reg51.h標頭檔  
+   2          sbit    OFF=P2^0;                       // 宣告OFF開關位址 
+   3          sbit    FORWARD=P2^1;           // 宣告正轉按鈕開關位址 
+   4          sbit    REVERSE=P2^2;           // 宣告反轉按鈕開關位址 
+   5          sbit    MS_F=P1^0;                      // 宣告正轉線圈位址 
+   6          sbit    MS_R=P1^1;                      // 宣告反轉線圈位址 
+   7          //==== 主程式 =========================================
+   8          main()           
+   9          {       OFF=FORWARD=REVERSE=1;          // 初始化 
+  10   1              MS_F=MS_R=1;                            // 初始化(關閉電磁開關線圈) 
+  11   1              while(1)                                        // 無窮盡迴圈 
+  12   1              {       if (!OFF) MS_F=MS_R=1;                          // 偵測OFF開關 
+  13   2                      else if (!FORWARD && MS_R) MS_F=0;      // 偵測正轉按鈕開關  
+  14   2                      else if (!REVERSE && MS_F) MS_R=0;      // 偵測反轉按鈕開關  
+  15   2              }
+  16   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     37    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

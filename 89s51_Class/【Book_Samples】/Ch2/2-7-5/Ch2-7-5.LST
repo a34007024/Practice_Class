@@ -1,0 +1,47 @@
+C51 COMPILER V9.01   CH2_7_5                                                               02/02/2012 16:49:16 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH2_7_5
+OBJECT MODULE PLACED IN Ch2-7-5.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch2-7-5.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                       // 包含reg51.h標頭檔  
+   2          #define wait  20                                // 定義防彈跳延遲時間(ms) 
+   3          #define LED  P1                                 // 定義LED連接到Port 1 
+   4          sbit    PB=P2^0;                                // 宣告按鈕開關位址 
+   5          void    DELAY1ms(int);                  // 宣告延時函數 
+   6          //==== 主程式 =========================================
+   7          main()           
+   8          {       PB=1;                                           // 初始化 
+   9   1              LED=0xff;                                       // 初始化 
+  10   1              while(1)                                        // 無窮盡迴圈 
+  11   1              {       if (!PB)                                // 偵測PB按鈕開關 
+  12   2                      {       DELAY1ms(wait);         // 延遲wait ms(按下防彈跳)
+  13   3                              while (!PB);            // 偵測PB按鈕開關按住不放
+  14   3                              LED=~LED;                       // PB按鈕開關放開後動作
+  15   3                              DELAY1ms(wait);         // 延遲wait ms(放開防彈跳)
+  16   3                      }
+  17   2              }
+  18   1      }
+  19          //==== 延時函數(1ms) ==============================
+  20          void    DELAY1ms(int x) 
+  21          {       int     i,j;
+  22   1              for(i=0;i<x;i++)                        // 外迴圈(1ms*x)
+  23   1                      for(j=0;j<120;j++);             // 內迴圈(1ms)
+  24   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     68    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,60 @@
+C51 COMPILER V9.01   CH7_3_3                                                               02/12/2012 16:51:25 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH7_3_3
+OBJECT MODULE PLACED IN Ch7-3-3.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch7-3-3.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h> 
+   2          #define StepMotor P0                    // Port 0連接步進馬達 
+   3          #define SW      P2                                      // 定義開關位址 
+   4          #define Speed   5                               // 定義步進馬達速度(每步0.5S) 
+   5          char code PHASE1[4]={1,2,4,8};  // 1相激磁信號陣列
+   6          char code PHASE2[4]={3,6,12,9}; // 2相激磁信號陣列
+   7          void    DELAY1ms(int);                          // 宣告延時函數
+   8          // =========================================================
+   9          main()
+  10          {       char i;                                                 // 宣告變數 
+  11   1              StepMotor=0;                                    // 關閉步進馬達 
+  12   1              SW=0xff;                                                // 指撥開關初始化 
+  13   1              while(1)                                                // 無窮盡迴圈 
+  14   1              {       switch (~SW&0x03)
+  15   2                      {       case 1: 
+  16   3                              {       for(i=0;i<4;i++)                // 正轉
+  17   4                                      {       StepMotor=PHASE1[i];// 輸出到步進馬達
+  18   5                                              DELAY1ms(Speed*100);// 延遲Speed * 0.5秒
+  19   5                                      }
+  20   4                                      break;  
+  21   4                              }
+  22   3                              case 2: 
+  23   3                              {       for(i=0;i<4;i++)                        // 反轉
+  24   4                                      {       StepMotor=PHASE1[3-i];  // 輸出到步進馬達
+  25   5                                              DELAY1ms(Speed*100);    // 延遲Speed * 0.5秒
+  26   5                                      }
+  27   4                                      break;  
+  28   4                              }
+  29   3                      }
+  30   2              }
+  31   1      }
+  32          // =========================================================
+  33          void    DELAY1ms(int x) 
+  34          {       int i,j;                                                // 宣告變數
+  35   1              for(i=0;i<x;i++)                                // 外迴圈(x*1ms)
+  36   1                      for(j=0;j<120;j++);             // 內迴圈(1ms)
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    133    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

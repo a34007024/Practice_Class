@@ -1,0 +1,52 @@
+C51 COMPILER V9.01   CH2_7_6                                                               02/02/2012 18:53:18 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH2_7_6
+OBJECT MODULE PLACED IN Ch2-7-6.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch2-7-6.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                       // 包含reg51.h標頭檔  
+   2          #define LED  P1                                 // 定義LED連接到Port 1 
+   3          #define DIP_SW  P0                              // 定義指撥開關連接到Port 0 
+   4          #define Read_SW ~DIP_SW&0x03    // 定義篩選bit0與bit1 
+   5          //==== 主程式 =========================================
+   6          main()           
+   7          {       DIP_SW=0xff;                                    // 初始化 
+   8   1              LED=0xff;                                               // 初始化 
+   9   1              while(1)                                                // 無窮盡迴圈 
+  10   1              {       switch (Read_SW)                        // 讀取指撥開關 
+  11   2                      {       case 0:                                 // 若bit1=0、bit0=0
+  12   3                              {       LED=0xff;                       // 關閉LED
+  13   4                                      break;                          // 跳出 
+  14   4                              }
+  15   3                              case 1:                                 // 若bit1=0、bit0=1
+  16   3                              {       LED=0xf0;                       // LED高四位元滅、高四位元亮  
+  17   4                                      break;                          // 跳出 
+  18   4                              }
+  19   3                              case 2:                                 // 若bit1=1、bit0=0
+  20   3                              {       LED=0x0f;                       // LED高四位元亮、高四位元滅 
+  21   4                                      break;                          // 跳出     
+  22   4                              }
+  23   3                              case 3:                                 // 若bit1=1、bit0=1
+  24   3                              {       LED=0;                          // LED全亮 
+  25   4                                      break;                          // 跳出 
+  26   4                              }
+  27   3                      }
+  28   2              }
+  29   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     43    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

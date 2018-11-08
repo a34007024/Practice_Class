@@ -1,0 +1,96 @@
+C51 COMPILER V9.01   CH4_6_1                                                               02/06/2012 15:37:11 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH4_6_1
+OBJECT MODULE PLACED IN Ch4-6-1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch4-6-1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>       // 包含reg51.h標頭檔
+   2          #define LED      P1                     // 定義LED接至Port 1
+   3          void DELAY500us(int);   // 宣告延遲函數 
+   4          void LEFT(char);                // 宣告單燈左移函數
+   5          void RIGHT(char);               // 宣告單燈右移函數
+   6          void BEEP(char);                // 宣告嗶聲函數
+   7          sbit Buzzer=P3^7;               // 宣告蜂鳴器位址 
+   8          //==主程式================================
+   9          main()                           
+  10          {       IE=0x85;                //      啟用INT 0,INT 1中斷(0x85=10000101)
+  11   1              IP=0x01;                //      設定高優先等級
+  12   1              LED=0;                  //      初值(LED全亮)   
+  13   1              while(1)                                //      無窮迴圈,程式一直跑 
+  14   1              {       DELAY500us(500);        //      延遲0.25秒 
+  15   2                      LED=~LED;                       //      LED反相
+  16   2                      BEEP(1);                        // 嗶一聲 
+  17   2              }                       
+  18   1      }                               
+  19          // === INT 0的中斷副程式 - 單燈左移1圈 ===
+  20          void int0_LEFT(void) interrupt 0 //using 1      
+  21          {       unsigned saveLED=LED;   // 儲存中斷前LED狀態
+  22   1              LEFT(3);                                        // 單燈左移3圈
+  23   1              LED=saveLED;                            // 恢復中斷前LED狀態
+  24   1      }       
+  25          // === INT 1中斷副程式 - 單燈右移1圈 ===
+  26          void int1_RIGHT(void) interrupt 2 //using 2 
+  27          {       unsigned saveLED=LED;           // 儲存中斷前LED狀態
+  28   1              RIGHT(3);                                       // 單燈右移3圈
+  29   1              LED=saveLED;                            // 恢復中斷前LED狀態
+  30   1      }       
+  31          // === 延時函數(500us) ===
+  32          void DELAY500us(int x) 
+  33          {       int i,j;                                        // 宣告整數變數i,j 
+  34   1              for (i=0;i<x;i++)                       // 外迴圈 
+  35   1                      for (j=0;j<60;j++);             // 內迴圈 
+  36   1      }                                       
+  37          // === 單燈左移函數 ==
+  38          void LEFT(char x)
+  39          {       char i, j;                              // 宣告變數i,j
+  40   1              for(i=0;i<x;i++)                // i迴圈,執行x圈 
+  41   1              {       LED=0xfe;                       // 初始狀態=1111 1110,最右燈亮
+  42   2                      for(j=0;j<7;j++)        //      j迴圈,左移7次
+  43   2                      {       DELAY500us(500);                //      延遲500 0.5m=0.25s
+  44   3                              LED=(LED<<1)|0x01;      //      左移1位後,LSB設為1
+  45   3                      }                       
+  46   2                      DELAY500us(500);        //      延遲0.25s
+  47   2              }       
+  48   1      }               
+  49          // === 單燈右移函數 ===
+  50          void RIGHT(char x)      
+  51          {       char i, j;                              // 宣告變數i,j
+  52   1              for(i=0;i<x;i++)                // i迴圈,執行x圈 
+  53   1              {       LED=0x7f;                       // 初始狀態=0111 1111,最左燈亮
+  54   2                      for(j=0;j<7;j++)        //      j迴圈,右移7次
+  55   2                      {       DELAY500us(500);        //      延遲500 0.5m=0.25s
+C51 COMPILER V9.01   CH4_6_1                                                               02/06/2012 15:37:11 PAGE 2   
+
+  56   3                              LED=(LED>>1)|0x80;      //      右移1位後,MSB設為1
+  57   3                      }                       
+  58   2                      DELAY500us(500);        //      延遲0.25s
+  59   2              }       
+  60   1      }               
+  61          // === 嗶聲函數 ===
+  62          void BEEP(char x) 
+  63          {       int     i,j;
+  64   1              for(i=0;i<x;i++)                                // 嗶x聲
+  65   1              {       for(j=0;j<100;j++)              // 重複吸放100次
+  66   2                      {       Buzzer=0;DELAY500us(1);// 蜂鳴器吸
+  67   3                              Buzzer=1;DELAY500us(1);// 蜂鳴器放
+  68   3                      } 
+  69   2                      DELAY500us(200);                        // 靜音0.1秒
+  70   2              } 
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    370    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

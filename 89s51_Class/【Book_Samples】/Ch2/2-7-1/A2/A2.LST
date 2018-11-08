@@ -1,0 +1,66 @@
+C51 COMPILER V9.01   A2                                                                    02/02/2012 11:25:18 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A2
+OBJECT MODULE PLACED IN A2.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A2.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>               // 包含reg51.h標頭檔  
+   2          sbit    DIP_SW=P0^0;            // 宣告指撥開關位址  
+   3          sbit    Buzzer= P3^7;           // 宣告蜂鳴器位址 
+   4          void    BEEP1(unsigned char);// 宣告嗶聲函數(1K) 
+   5          void    BEEP2(unsigned char);// 宣告嗶聲函數(2K) 
+   6          void    DELAY250us(int);        // 宣告0.25ms延時函數 
+   7          //==== 主程式 =========================================
+   8          main()           
+   9          {       DIP_SW=Buzzer=1;                        // 初始設定 
+  10   1              while(1)                                        // 無窮盡迴圈
+  11   1                      while(!DIP_SW)                  // 若DIP_SW=0
+  12   1                      {        BEEP1(1);                      // 1K嗶聲函數
+  13   2                               BEEP2(1);                      // 2K嗶聲函數
+  14   2                      }
+  15   1      }
+  16          //==== 嗶聲函數 ==============================
+  17          void    BEEP1(unsigned char x)
+  18          {       unsigned char i,j;
+  19   1              for(i=0;i<x;i++)                // 產生x聲  
+  20   1              {       for(j=0;j<100;j++)      // 蜂鳴器吸放100次  
+  21   2                      {       Buzzer=0;DELAY250us(2); // 蜂鳴器吸0.5ms  
+  22   3                              Buzzer=1;DELAY250us(2); // 蜂鳴器放0.5ms
+  23   3                      }
+  24   2                      DELAY250us(400);        // 蜂鳴器靜音0.1秒(0.25ms*400)  
+  25   2              }
+  26   1      }
+  27          //==== 嗶聲函數 ==============================
+  28          void    BEEP2(unsigned char x)
+  29          {       unsigned char i,j;
+  30   1              for(i=0;i<x;i++)                // 產生x聲  
+  31   1              {       for(j=0;j<200;j++)      // 蜂鳴器吸放200次  
+  32   2                      {       Buzzer=0;DELAY250us(1); // 蜂鳴器吸0.25ms  
+  33   3                              Buzzer=1;DELAY250us(1); // 蜂鳴器放0.25ms
+  34   3                      }
+  35   2                      DELAY250us(400);        // 蜂鳴器靜音0.1秒(0.25ms*400)  
+  36   2              }
+  37   1      }
+  38          //==== 延時函數(0.25ms) ==============================
+  39          void    DELAY250us(int x) 
+  40          {       int     i,j;
+  41   1              for(i=0;i<x;i++)                // 外迴圈(0.25ms*x)
+  42   1                      for(j=0;j<30;j++);      // 內迴圈(0.25ms)
+  43   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    165    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

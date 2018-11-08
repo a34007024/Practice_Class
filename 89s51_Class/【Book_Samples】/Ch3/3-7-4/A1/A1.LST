@@ -1,0 +1,198 @@
+C51 COMPILER V9.01   A1                                                                    02/05/2012 15:22:58 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                               // 包含reg51.h標頭檔  
+   2          #define SEGP P0                                 // 定義顯示信號埠 
+   3          #define KEYP P2                                 // 定義鍵盤埠 
+   4          void    keyscan(void);                  // 宣告鍵盤掃瞄函數 
+   5          void    DELAY500us(int);                // 宣告延時函數(1ms) 
+   6          void    BEEP(char);                             // 宣告嗶聲函數 
+   7          void    Dcount(void);                   // 宣告倒數函數 
+   8          void    SCAN_SEG(void);                 // 宣告掃瞄函數 
+   9          void    Modify(void);                   // 宣告調整函數         
+  10          sbit    HP=P1^0;                                // 宣告高功率輸出埠位址
+  11          sbit    MP=P1^1;                                // 宣告中功率輸出埠位址
+  12          sbit    LP=P1^2;                                // 宣告低功率輸出埠位址
+  13          sbit    Buzzer=P3^7;                    // 宣告蜂鳴器位址
+  14          bit     BF=0;                                   // 宣告嗶聲旗標(預設不響)
+  15          bit     HP_F=0;                                 // 宣告高功率旗標(預設不動作)
+  16          bit     MP_F=0;                                 // 宣告中功率旗標(預設不動作)
+  17          bit     LP_F=0;                                 // 宣告低功率旗標(預設不動作)
+  18          // 七節顯示器編碼表
+  19          char code TAB[11]={     0xc0,0xf9,0xa4,0xb0,0x99,
+  20                                                  0x92,0x82,0xf8,0x80,0x98,  0xff};       
+  21          // 低態驅動掃瞄碼
+  22          char code SCAN_CODE[8]={        0x7f,0xbf,0xdf,0xef,
+  23                                                                  0xf7,0xfb,0xfd,0xfe };  
+  24          // 顯示資料
+  25          char DISP[4]={0,10,10,10};// 初值為0 
+  26          //==== 主程式 =========================================
+  27          main()           
+  28          {       HP=MP=LP=1;             // 關閉負載輸出
+  29   1      while(1)
+  30   1              {       keyscan();              // 呼叫鍵盤掃瞄函數 
+  31   2                      if (HP_F)               // 高功率輸出
+  32   2                      {       HP=0;           // 開啟高功率輸出
+  33   3                              Dcount();       // 倒數 
+  34   3                              HP_F=0;         // 取消HP_F旗標  
+  35   3                              HP=1;           // 關閉高功率輸出       
+  36   3                              BEEP(2);        // 嗶兩聲 
+  37   3                      } 
+  38   2                      if (MP_F)               // 中功率輸出
+  39   2                      {       MP=0;           // 開啟中功率輸出
+  40   3                              Dcount();       // 倒數 
+  41   3                              MP_F=0;         // 取消MP_F旗標  
+  42   3                              MP=1;           // 關閉中功率輸出       
+  43   3                              BEEP(2);        // 嗶兩聲 
+  44   3                      } 
+  45   2                      if (LP_F)               // 低功率輸出
+  46   2                      {       LP=0;           // 開啟低功率輸出
+  47   3                              Dcount();       // 倒數 
+  48   3                              LP_F=0;         // 取消LP_F旗標  
+  49   3                              LP=1;           // 關閉低功率輸出       
+  50   3                              BEEP(2);        // 嗶兩聲 
+  51   3                      } 
+  52   2              }
+  53   1      }
+  54          //=== 4 4鍵盤掃瞄函數 ===
+  55          void keyscan(void)      // 掃瞄後將傳回按鍵值
+C51 COMPILER V9.01   A1                                                                    02/05/2012 15:22:58 PAGE 2   
+
+  56          {       char X,Y, Ycode,Kcode,i;
+  57   1              for(X=0;X<4;X++)                        // 掃瞄4行
+  58   1              {       SEGP=0xff;                              // 關閉顯示信號(防殘影)
+  59   2                      KEYP=SCAN_CODE[X];      // 輸出掃瞄信號
+  60   2                      SEGP=TAB[DISP[X]];      // 輸出顯示信號
+  61   2                      Y=~KEYP & 0x0f;         // 讀取鍵盤
+  62   2                      if      (Y!=0)                  // 若有按鍵被按下
+  63   2                      {       if(Y==1) Ycode=0;               // 第0列有按鍵按下
+  64   3                              else if (Y==2) Ycode=1; // 第1列有按鍵按下
+  65   3                              else if (Y==4) Ycode=2; // 第2列有按鍵按下
+  66   3                              else if (Y==8) Ycode=3; // 第3列有按鍵按下
+  67   3                              Kcode=4*X + Ycode;              // 計算按鍵值
+  68   3                              if (BF) BEEP(1);                        // 嗶一聲
+  69   3                              // === 數字鍵 ===
+  70   3                              if (Kcode<10 && Kcode>=0 )      // 若是數字鍵
+  71   3                              {       for(i=0;i<3;i++)                        
+  72   4                                              DISP[3-i]=DISP[2-i];// 顯示資料移位
+  73   4                                      DISP[0]=Kcode;                  // 將鍵值存入個位數
+  74   4                              }
+  75   3                              while(Y!=0) Y=~KEYP & 0x0f;// 等待放開按鍵
+  76   3                              // === 功能鍵 ===
+  77   3                              // === F 鍵 ===
+  78   3                              if (Kcode==0x0f ) BF=!BF;       // 切換嗶聲
+  79   3                              // === e 鍵 ===
+  80   3                              if (Kcode==0x0e )                       // 清除
+  81   3                              {       for(i=0;i<3;i++)                        
+  82   4                                              DISP[i]=10;                     // 千位~十位數填入空白
+  83   4                                      DISP[0]=0;                                      // 個位數填入0
+  84   4                              }
+  85   3                              // === d 鍵 ===
+  86   3                              if (Kcode==0x0d )                       // 刪字
+  87   3                              {       for(i=0;i<3;i++)                        
+  88   4                                              DISP[i]=DISP[i+1];      // 顯示資料右移
+  89   4                                      DISP[3]=10;                             // 千位數填入空白
+  90   4                              }
+  91   3                              // === c 鍵 ===
+  92   3                              if (Kcode==0x0c )                       // 高功率
+  93   3                              {       HP_F=1; Modify();       }
+  94   3                              // === b 鍵 ===
+  95   3                              if (Kcode==0x0b )                       // 中功率
+  96   3                              {       MP_F=1; Modify();       }
+  97   3                              // === a 鍵 ===
+  98   3                              if (Kcode==0x0a )                       // 低功率
+  99   3                              {       LP_F=1; Modify();       }
+ 100   3                      }
+ 101   2                      DELAY500us(4);                                  // 延遲2ms
+ 102   2              }
+ 103   1      }
+ 104          //==== 延時函數(0.5ms) ==============================
+ 105          void DELAY500us(int x) 
+ 106          {       int     i,j;
+ 107   1              for(i=0;i<x;i++)                                // 外迴圈(0.5ms*x)
+ 108   1                      for(j=0;j<60;j++);              // 內迴圈(0.5ms)
+ 109   1      }
+ 110          //==== 嗶聲函數 ==============================
+ 111          void BEEP(char x) 
+ 112          {       int     i,j;
+ 113   1              for(i=0;i<x;i++)                                // 嗶x聲
+ 114   1              {       for(j=0;j<100;j++)              // 重複吸放100次
+ 115   2                      {       Buzzer=0;DELAY500us(1);// 蜂鳴器吸
+ 116   3                              Buzzer=1;DELAY500us(1);// 蜂鳴器放
+ 117   3                      } 
+C51 COMPILER V9.01   A1                                                                    02/05/2012 15:22:58 PAGE 3   
+
+ 118   2                      DELAY500us(200);                        // 靜音0.1秒
+ 119   2              } 
+ 120   1      }
+ 121          //==== 倒數函數 ==============================
+ 122          void    Dcount(void)                    
+ 123          {       char i;                                         // 宣告變數     
+ 124   1              for(i=0;i<4;i++)                        // 非0~9轉變為0 
+ 125   1                      if(DISP[i]>9 || DISP[i]<0) DISP[i]=0;
+ 126   1              while(1)
+ 127   1              {       if(DISP[3]==0 && DISP[2]==0 && DISP[1]==0 && DISP[0]==0)
+ 128   2                      {       DISP[3]=DISP[2]=DISP[1]=10;        // 千位數~十位數填入空白
+ 129   3                              break;                          // 結束倒數
+ 130   3                      }       
+ 131   2                      // === 延遲1s ===
+ 132   2                      for(i=0;i<50;i++)               // 延遲掃瞄50次(約1s)
+ 133   2                              SCAN_SEG();                     // 每次掃瞄約20ms
+ 134   2                      // === 倒數 ===
+ 135   2                      if (DISP[0]!=0) DISP[0]--;      // 秒之個位數減1
+ 136   2                      else    
+ 137   2                      {       DISP[0]=9;                      // 秒之個位數改為9(借位)
+ 138   3                              if (DISP[1]!=0)         DISP[1]--;      // 秒之十位數減1
+ 139   3                              else    
+ 140   3                              {       DISP[1]=5;              // 秒之十位數改為5(借位)
+ 141   4                                      if (DISP[2]!=0)         DISP[2]--;// 分之個位數減1
+ 142   4                                      else
+ 143   4                                      {       DISP[2]=9;      // 分之個位數改為9(借位)
+ 144   5                                              DISP[3]--;      // 分之十位數減1
+ 145   5                                      }
+ 146   4                              }
+ 147   3                      }                                               // 結束倒數
+ 148   2              }
+ 149   1      }
+ 150          //==== 掃瞄函數 ==============================
+ 151          void    SCAN_SEG(void)                  // 20ms 
+ 152          {       char X;                                         // 宣告變數     
+ 153   1              for(X=0;X<4;X++)                        // 掃瞄4行 
+ 154   1              {       SEGP=0xff;                              // 關閉顯示信號(防殘影)
+ 155   2                      KEYP=SCAN_CODE[X];      // 輸出掃瞄信號 
+ 156   2                      SEGP=TAB[DISP[X]];      // 輸出顯示信號 
+ 157   2                      DELAY500us(8);          // 延遲4ms
+ 158   2              }
+ 159   1              DELAY500us(8);          // 延遲4ms
+ 160   1      }
+ 161          //==== 調整函數 ============================
+ 162          void    Modify(void)                                    
+ 163          {       bit i=0;                                                // 宣告變數     
+ 164   1              if (DISP[3]<10 && DISP[3]>5)    // 調整分之十位數  
+ 165   1              {       DISP[3]=5;i=1; }
+ 166   1              if (DISP[1]<10 && DISP[1]>5)    // 調整秒之十位數               
+ 167   1              {       DISP[1]=5;i=1; }
+ 168   1              if (i) { BEEP(2); i=0;}                 // 嗶聲    
+ 169   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    713    ----
+   CONSTANT SIZE    =     19    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      4       1
+C51 COMPILER V9.01   A1                                                                    02/05/2012 15:22:58 PAGE 4   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\89S51\Ch2\2-7-3\Ch2-7-3.uvproj
+Project File Date:  02/02/2012
+
+<h2>Output:</h2>
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+compiling Ch2-7-3.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY500US?CH2_7_3
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _DELAY1MS
+    MODULE:  Ch2-7-3.obj (CH2_7_3)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY1MS
+    MODULE:  Ch2-7-3.obj (CH2_7_3)
+    ADDRESS: 0020H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY1MS
+    MODULE:  Ch2-7-3.obj (CH2_7_3)
+    ADDRESS: 003AH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY1MS
+    MODULE:  Ch2-7-3.obj (CH2_7_3)
+    ADDRESS: 005EH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DELAY1MS
+    MODULE:  Ch2-7-3.obj (CH2_7_3)
+    ADDRESS: 0078H
+Program Size: data=12.0 xdata=0 code=189
+creating hex file from "Ch2-7-3"...
+"Ch2-7-3" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling Ch2-7-3.c...
+linking...
+Program Size: data=12.0 xdata=0 code=177
+creating hex file from "Ch2-7-3"...
+"Ch2-7-3" - 0 Error(s), 0 Warning(s).

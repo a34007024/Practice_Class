@@ -1,0 +1,36 @@
+C51 COMPILER V9.01   CH2_7_4                                                               02/02/2012 15:48:19 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH2_7_4
+OBJECT MODULE PLACED IN Ch2-7-4.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch2-7-4.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                               // 包含reg51.h標頭檔  
+   2          #define LED  P1                                 // 定義LED連接到Port 1 
+   3          sbit    ON=P2^0;                                // 宣告ON開關位址 
+   4          sbit    OFF=P2^1;                               // 宣告OFF開關位址 
+   5          //==== 主程式 =========================================
+   6          main()           
+   7          {       ON=OFF=1;                                               // 初始化 
+   8   1              LED=0xff;                                               // 初始化 
+   9   1              while(1)                                                // 無窮盡迴圈 
+  10   1              {       if (!OFF) LED=0xff;             // 偵測OFF開關 
+  11   2                      else if (!ON) LED=0;            // 偵測OFF開關
+  12   2              }
+  13   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     22    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

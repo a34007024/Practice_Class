@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   7SEG_FLASH                                                            11/08/2018 10:27:00 PAGE 1   
+C51 COMPILER V9.01   7SEG_FLASH                                                            11/08/2018 10:39:54 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE 7SEG_FLASH
@@ -7,72 +7,77 @@ COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 7seg_flash.c BROWSE DEBUG OBJECTEXT
 
 line level    source
 
-   1          #include<reg51.h>
-   2          #define seg7 P0
-   3          #define scan7seg P1
-   4          sbit seg7dp = P0^7;
-   5          char seg7hexCode[20] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
-   6          // 7-seg對應顯示輸出0~9
-   7          char scan7segCode[8] = {0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe};//使用char比int節省空間
-   8          //7-seg的掃描碼
-   9          char homeNumber[8] = {2,7,0,9,1,6,3,0};
-  10          char phoneNumber[8] = {1,2,3,4,5,6,7,8};
-  11          char dataPointer = 0;
-  12          /*
-  13          接線說明:
-  14          a -> P0.0 (P0^0) a為LSB(最低位元)
-  15          b -> P0.1
-  16          依序a,b,c,d,e,f,g......
-  17          最後為dp -> P0.7 dp為MSB(最高位元)
-  18          D0 -> P1^0為LSB
-  19          依序接線
-  20          D3 -> P1^3為MSB
-  21          */
-  22          void delay(int ms);
-  23          void main(){
-  24   1              int i,j;
-  25   1              int displayTime = 0;
-  26   1              seg7hexCode[19] = 0xff;//清除顯示器
-  27   1              while(1){
-  28   2                      if(displayTime <= 1000){
-  29   3                              for(i = 0;i<8;i++){
-  30   4                                      seg7 = seg7hexCode[homeNumber[i]];
-  31   4                                      scan7seg = scan7segCode[i];
-  32   4                                      delay(1);
-  33   4                                      displayTime +=1;
-  34   4                              }
-  35   3                      }
-  36   2                      else if(displayTime <= 2000){
-  37   3                              for(i = 0;i<8;i++){
-  38   4                                      seg7 = seg7hexCode[phoneNumber[i]];
-  39   4                                      scan7seg = scan7segCode[i];
-  40   4                                      delay(1);
-  41   4                                      displayTime +=1;
-  42   4                              }
-  43   3                      }
-  44   2                      else displayTime = 0;
-  45   2              }
-  46   1      }
-*** WARNING C280 IN LINE 24 OF 7SEG_FLASH.C: 'j': unreferenced local variable
-  47          
-  48          void delay(int ms){
-  49   1              int i,j;
-  50   1              for(i = 0;i < ms;i++)
-  51   1                      for(j=0;j<120;j++);//do null
-  52   1      }
+   1          /*
+   2          programmer      :LuckyPig
+   3          fuctions        :8位元的七節顯示器顯示八位數資料
+   4          version         :20181108A
+   5          */
+   6          /*
+   7          接線說明:
+   8          a -> P0.0 (P0^0) a為LSB(最低位元)
+   9          b -> P0.1
+  10          依序a,b,c,d,e,f,g......
+  11          最後為dp -> P0.7 dp為MSB(最高位元)
+  12          D0 -> P1^0為LSB
+  13          依序接線
+  14          D3 -> P1^3為MSB
+  15          */
+  16          #include<reg51.h>
+  17          #define seg7 P0
+  18          #define scan7seg P1
+  19          sbit seg7dp = P0^7;
+  20          char seg7hexCode[20] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
+  21          // 7-seg對應顯示輸出0~9
+  22          char scan7segCode[8] = {0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe};//使用char比int節省空間
+  23          //7-seg的掃描碼
+  24          char homeNumber[8] = {2,7,0,9,1,6,3,0};
+  25          char phoneNumber[8] = {1,2,3,4,5,6,7,8};
+  26          char dataPointer = 0;
+  27          void display8digitsData(char dataIn[]);
+  28          void delay(int ms);
+  29          int displayTime = 0;
+  30          void main(){
+  31   1              //int i;
+  32   1              seg7hexCode[19] = 0xff;//清除顯示器
+  33   1              while(1){
+  34   2                      if(displayTime <= 2000){
+  35   3                              display8digitsData(homeNumber);
+  36   3                      }
+  37   2                      else if(displayTime <= 4000){
+  38   3                              display8digitsData(phoneNumber);
+  39   3                      }
+  40   2                      else displayTime = 0;
+  41   2              }
+  42   1      }
+  43          
+  44          void delay(int ms){
+  45   1              int i,j;
+  46   1              for(i = 0;i < ms;i++)
+  47   1                      for(j=0;j<120;j++);//do null
+  48   1      }
+  49          
+  50          void display8digitsData(char dataIn[]){
+  51   1              int i = 0;
+  52   1              for(i = 0;i<8;i++){
+  53   2                      seg7 = seg7hexCode[dataIn[i]];
+  54   2                      scan7seg = scan7segCode[i];
+  55   2                      delay(1);
+C51 COMPILER V9.01   7SEG_FLASH                                                            11/08/2018 10:39:54 PAGE 2   
 
+  56   2                      displayTime +=1;
+  57   2              }
+  58   1      }
 
-C51 COMPILER V9.01   7SEG_FLASH                                                            11/08/2018 10:27:00 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    184    ----
+   CODE SIZE        =    172    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     45       6
+   DATA SIZE        =     47       5
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

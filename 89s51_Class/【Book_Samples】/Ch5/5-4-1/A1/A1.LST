@@ -1,0 +1,56 @@
+C51 COMPILER V9.01   A1                                                                    02/08/2012 11:16:26 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>       // 包含reg51.h標頭檔 
+   2          #define LED      P1                     // 定義LED接至Port 1
+   3          #define counts   50000  // 定義計數量(50000) 
+   4          #define t0H (65536-counts)/256  // 定義計數起點(TH) 
+   5          #define t0L (65536-counts)%256  // 定義計數起點(TL) 
+   6          sbit    load=P3^2;              // 定義load接腳的位址 
+   7          void    DELAY1ms(int);          // 宣告延遲函數
+   8          //==主程式======================================
+   9          main()                          
+  10          {       EA=ES=ET0=1;            // 設定T0,ES中斷
+  11   1              TH0=t0H;TL0=t0L;        // 填入計數量起點 
+  12   1              TMOD=0x01;                      // 設定Timer 0為Mode 1 
+  13   1              TR0=1;                          // 啟動Timer 0 
+  14   1              SCON=0x11;                      // 設定為mode 0、REN=1、RI=1
+  15   1              while(1) 
+  16   1              {       LED=~LED;               // LED交互閃爍
+  17   2                      DELAY1ms(250);
+  18   2              }
+  19   1      }
+  20          void T0_int(void) interrupt 1
+  21          {       TH0=t0H;TL0=t0L;        // 填入計數量起點 
+  22   1              load=0;load=1;          // 產生負脈波 
+  23   1      }
+  24          void ES_int(void) interrupt 4
+  25          {       LED=SBUF;                       // 將串列輸入反映到LED
+  26   1              RI=0;                           // 清除RI旗標
+  27   1      }
+  28          void    DELAY1ms(int x)
+  29          {       int i,j;
+  30   1              for(i=0;i<x;i++)
+  31   1                      for(j=0;j<120;j++);
+  32   1      }
+  33          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     87    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

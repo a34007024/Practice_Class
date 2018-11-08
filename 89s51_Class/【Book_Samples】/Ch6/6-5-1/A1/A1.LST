@@ -1,0 +1,75 @@
+C51 COMPILER V9.01   A1                                                                    02/11/2012 08:59:59 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define  LED P1                 // 定義 LED 位址 
+   3          #define  KEY P2                 // 定義按鍵位址 
+   4          sbit Buzzer=P3^7;               // 宣告蜂鳴器位址 
+   5          unsigned int code BaseTone[8]={ // 宣告基本音階陣列
+   6          //  0    1       2       3       4       5       6       7
+   7                  956,852,759,716,638,568,506,478};
+   8          int t0H,t0L;                    // 宣告變數
+   9          void DELAY1ms(int);     // 宣告延時函數
+  10          void Sound(char);       // 宣告發音函數
+  11          // ==================================================
+  12          main()
+  13          {       Buzzer=1;                       // 初始化
+  14   1              KEY=0xff;                       // 初始化
+  15   1              IE=0x82;                        // 啟用Timer 0中斷
+  16   1              TMOD=TMOD|1;            // 設定Timer 0 Mode 1
+  17   1              while(1)                        // 無窮盡迴圈
+  18   1              {       switch (~KEY)           // 讀取按鍵
+  19   2                      {       case 0x01:Sound(0);break;                       // Do
+  20   3                              case 0x02:Sound(1);break;                       // Re
+  21   3                              case 0x04:Sound(2);break;                       // Mi
+  22   3                              case 0x08:Sound(3);break;                       // Fa
+  23   3                              case 0x10:Sound(4);break;                       // So
+  24   3                              case 0x20:Sound(5);break;                       // La
+  25   3                              case 0x40:Sound(6);break;                       // Si
+  26   3                              case 0x80:Sound(7);break;                       // Do#
+  27   3                      }
+  28   2              }
+  29   1      }
+  30          // ==================================================
+  31          void Sound(char x)
+  32          {       TH0=t0H=(65536-BaseTone[x])/256;
+  33   1              // 載入所要播音階之高8位元
+  34   1              TL0=t0L=(65536-BaseTone[x])%256;
+  35   1              // 載入所要播音階之低8位元
+  36   1              LED=~(1<<x);    // 發音
+  37   1              TR0=1;DELAY1ms(200);    // 發音
+  38   1              TR0=0;LED=0xff;                 // 停止發音
+  39   1      }
+  40          // ==================================================
+  41          void DELAY1ms(int x)
+  42          {       int i,j;
+  43   1              for(i=0;i<x;i++)
+  44   1                      for(j=0;j<120;j++);
+  45   1      }
+  46          // ==================================================
+  47          void TONE_int(void) interrupt 1
+  48          {       TH0=t0H; TL0=t0L;// 重新填入計時量
+  49   1              Buzzer=!Buzzer;         // 切換蜂鳴器
+  50   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    290    ----
+   CONSTANT SIZE    =     16    ----
+C51 COMPILER V9.01   A1                                                                    02/11/2012 08:59:59 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,155 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/05/2012  10:17:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE A2.obj TO A2
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  A2.obj (A2)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  A2 (A2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         _DATA_GROUP_
+            DATA    000DH     0004H     UNIT         ?DT?A2
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00B7H     UNIT         ?PR?KEYSCAN?A2
+            CODE    00BAH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0146H     0048H     UNIT         ?PR?_BEEP?A2
+            CODE    018EH     0026H     UNIT         ?PR?_DELAY500US?A2
+            CODE    01B4H     0019H     UNIT         ?CO?A2
+            CODE    01CDH     0007H     UNIT         ?C_INITSEG
+            CODE    01D4H     0005H     UNIT         ?PR?MAIN?A2
+
+
+
+OVERLAY MAP OF MODULE:   A2 (A2)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?A2
+  +--> ?C_INITSEG
+
+?PR?MAIN?A2                    -----    -----
+  +--> ?PR?KEYSCAN?A2
+
+?PR?KEYSCAN?A2                 0008H    0003H
+  +--> ?CO?A2
+  +--> ?PR?_BEEP?A2
+  +--> ?PR?_DELAY500US?A2
+
+?PR?_BEEP?A2                   000BH    0002H
+  +--> ?PR?_DELAY500US?A2
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/05/2012  10:17:41  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  A2 (A2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        A2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00B0H.7       PUBLIC        Buzzer
+  C:0146H         PUBLIC        _BEEP
+  C:01C5H         PUBLIC        SCAN_CODE
+  C:01D4H         PUBLIC        main
+  D:000DH         PUBLIC        DISP
+  C:01B4H         PUBLIC        TAB
+  C:018EH         PUBLIC        _DELAY500us
+  C:0003H         PUBLIC        keyscan
+  -------         PROC          MAIN
+  C:01D4H         LINE#         18
+  C:01D4H         LINE#         19
+  -------         ENDPROC       MAIN
+  -------         PROC          KEYSCAN
+  -------         DO            
+  D:0008H         SYMBOL        X
+  D:0009H         SYMBOL        Y
+  D:000AH         SYMBOL        Ycode
+  D:0007H         SYMBOL        Kcode
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         22
+  C:0003H         LINE#         23
+  C:0003H         LINE#         24
+  C:0006H         LINE#         25
+  C:0009H         LINE#         26
+  C:0026H         LINE#         27
+  C:0042H         LINE#         28
+  C:0049H         LINE#         29
+  C:004BH         LINE#         30
+  C:0053H         LINE#         31
+  C:005DH         LINE#         32
+  C:0067H         LINE#         33
+  C:006FH         LINE#         34
+  C:0078H         LINE#         35
+  C:007AH         LINE#         36
+  C:0090H         LINE#         37
+  C:0092H         LINE#         38
+  C:0097H         LINE#         39
+  C:00A4H         LINE#         40
+  C:00A4H         LINE#         41
+  C:00ABH         LINE#         42
+  C:00B9H         LINE#         43
+  -------         ENDPROC       KEYSCAN
+  -------         PROC          _DELAY500US
+  D:0006H         SYMBOL        x
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/05/2012  10:17:41  PAGE 3
+
+
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:018EH         LINE#         45
+  C:018EH         LINE#         46
+  C:018EH         LINE#         47
+  C:019EH         LINE#         48
+  C:01B3H         LINE#         49
+  -------         ENDPROC       _DELAY500US
+  -------         PROC          _BEEP
+  D:0001H         SYMBOL        x
+  -------         DO            
+  D:000BH         SYMBOL        i
+  D:0082H         SYMBOL        j
+  -------         ENDDO         
+  C:0146H         LINE#         51
+  C:0148H         LINE#         52
+  C:0148H         LINE#         53
+  C:0162H         LINE#         54
+  C:0165H         LINE#         55
+  C:016EH         LINE#         56
+  C:0173H         LINE#         57
+  C:017CH         LINE#         58
+  C:0183H         LINE#         59
+  C:018DH         LINE#         60
+  -------         ENDPROC       _BEEP
+  -------         ENDMOD        A2
+
+Program Size: data=18.0 xdata=0 code=473
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

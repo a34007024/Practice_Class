@@ -1,0 +1,20 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\89S51\Ch5\Ch5-4-2\A1\A1.uvproj
+Project File Date:  02/08/2012
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling A1.C...
+A1.C(24): warning C206: 'DELAT1ms': missing function-prototype
+A1.C(24): error C267: 'DELAT1ms': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling A1.C...
+linking...
+Program Size: data=10.0 xdata=0 code=119
+creating hex file from "A1"...
+"A1" - 0 Error(s), 0 Warning(s).

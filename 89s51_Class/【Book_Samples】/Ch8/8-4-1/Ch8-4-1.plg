@@ -1,0 +1,154 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\89S51\Ch8\8-4-1\Ch8-4-1.uvproj
+Project File Date:  02/15/2012
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(56): error C141: syntax error near 'void'
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(85): error C231: 'TH0': redefinition
+CH8-4-1.C(85): error C231: 'TH0': redefinition
+CH8-4-1.C(85): error C231: 'TL0': redefinition
+CH8-4-1.C(85): error C231: 'TL0': redefinition
+CH8-4-1.C(86): error C141: syntax error near '}'
+CH8-4-1.C(98): error C141: syntax error near '='
+CH8-4-1.C(101): error C141: syntax error near '='
+CH8-4-1.C(101): error C141: syntax error near '='
+CH8-4-1.C(101): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near 'P0'
+CH8-4-1.C(108): error C141: syntax error near '='
+CH8-4-1.C(108): error C141: syntax error near '='
+CH8-4-1.C(108): error C141: syntax error near '='
+CH8-4-1.C(110): error C141: syntax error near '}'
+CH8-4-1.C(114): error C141: syntax error near 'P0'
+CH8-4-1.C(115): error C141: syntax error near '='
+CH8-4-1.C(115): error C141: syntax error near '='
+CH8-4-1.C(115): error C141: syntax error near '='
+CH8-4-1.C(117): error C141: syntax error near '}'
+CH8-4-1.C(121): error C211: call not to a function
+CH8-4-1.C(121): error C208: 'function': too many actual parameters
+CH8-4-1.C(126): error C202: 'str': undefined identifier
+CH8-4-1.C(129): error C202: 'str': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(97): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(106): error C141: syntax error near 'P0'
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(109): error C141: syntax error near '}'
+CH8-4-1.C(113): error C141: syntax error near 'P0'
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(116): error C141: syntax error near '}'
+CH8-4-1.C(120): error C211: call not to a function
+CH8-4-1.C(120): error C208: 'function': too many actual parameters
+CH8-4-1.C(125): error C202: 'str': undefined identifier
+CH8-4-1.C(128): error C202: 'str': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(97): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(120): error C211: call not to a function
+CH8-4-1.C(120): error C208: 'function': too many actual parameters
+CH8-4-1.C(125): error C202: 'str': undefined identifier
+CH8-4-1.C(128): error C202: 'str': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(97): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(100): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(107): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(114): error C141: syntax error near '='
+CH8-4-1.C(120): error C211: call not to a function
+CH8-4-1.C(120): error C208: 'function': too many actual parameters
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(120): error C211: call not to a function
+CH8-4-1.C(120): error C208: 'function': too many actual parameters
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(129): warning C206: 'DELAY1ms': missing function-prototype
+CH8-4-1.C(129): error C267: 'DELAY1ms': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+linking...
+Program Size: data=23.2 xdata=0 code=754
+creating hex file from "Ch8-4-1"...
+"Ch8-4-1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+linking...
+Program Size: data=23.2 xdata=0 code=754
+creating hex file from "Ch8-4-1"...
+"Ch8-4-1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+linking...
+Program Size: data=23.2 xdata=0 code=754
+creating hex file from "Ch8-4-1"...
+"Ch8-4-1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?WRITE_STR?CH8_4_1
+Program Size: data=20.2 xdata=0 code=813
+creating hex file from "Ch8-4-1"...
+"Ch8-4-1" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+CH8-4-1.C(133): error C141: syntax error near 'char'
+CH8-4-1.C(133): error C202: 'i': undefined identifier
+CH8-4-1.C(133): error C202: 'i': undefined identifier
+CH8-4-1.C(133): error C202: 'i': undefined identifier
+CH8-4-1.C(133): error C141: syntax error near ')'
+Target not created
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+linking...
+Program Size: data=14.2 xdata=0 code=677
+creating hex file from "Ch8-4-1"...
+"Ch8-4-1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+linking...
+Program Size: data=14.2 xdata=0 code=677
+creating hex file from "Ch8-4-1"...
+"Ch8-4-1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Ch8-4-1.C...
+linking...
+Program Size: data=14.1 xdata=0 code=632
+creating hex file from "Ch8-4-1"...
+"Ch8-4-1" - 0 Error(s), 0 Warning(s).

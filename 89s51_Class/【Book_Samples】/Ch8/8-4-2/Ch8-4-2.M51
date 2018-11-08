@@ -1,0 +1,268 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/16/2012  18:00:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Ch8-4-2.obj TO Ch8-4-2
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Ch8-4-2.obj (CH8_4_2)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?OFFX256)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  Ch8-4-2 (CH8_4_2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            DATA    000BH     0002H     UNIT         ?DT?CH8_4_2
+                    000DH     0013H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0005H     UNIT         ?C_INITSEG
+                    0008H     0003H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0240H     UNIT         ?CO?CH8_4_2
+            CODE    024EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    02DAH     0064H     UNIT         ?PR?WRITE_BMP?CH8_4_2
+            CODE    033EH     0063H     UNIT         ?PR?FLASH_INT?CH8_4_2
+            CODE    03A1H     0038H     UNIT         ?PR?FLASH?CH8_4_2
+            CODE    03D9H     0032H     UNIT         ?PR?_BEEP?CH8_4_2
+            CODE    040BH     0026H     UNIT         ?PR?_DELAY500US?CH8_4_2
+            CODE    0431H     001EH     UNIT         ?PR?INIT8?CH8_4_2
+            CODE    044FH     0016H     UNIT         ?PR?MAIN?CH8_4_2
+            CODE    0465H     0011H     UNIT         ?C?LIB_CODE
+            CODE    0476H     000EH     UNIT         ?PR?CHECK_BF?CH8_4_2
+            CODE    0484H     000EH     UNIT         ?PR?_WRITE_INST?CH8_4_2
+            CODE    0492H     000EH     UNIT         ?PR?_WRITE_CHAR?CH8_4_2
+
+
+
+OVERLAY MAP OF MODULE:   Ch8-4-2 (CH8_4_2)
+
+
+SEGMENT                            BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT           START    LENGTH     START    LENGTH
+-------------------------------------------------------------------
+?PR?FLASH_INT?CH8_4_2           -----    -----      -----    -----
+  +--> ?PR?FLASH?CH8_4_2
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2012  18:00:19  PAGE 2
+
+
+  +--> ?PR?_BEEP?CH8_4_2
+
+?PR?FLASH?CH8_4_2               0020H.0  0000H.1    0008H    0003H
+  +--> ?PR?_WRITE_INST?CH8_4_2
+  +--> ?PR?_DELAY500US?CH8_4_2
+
+?PR?_WRITE_INST?CH8_4_2         -----    -----      -----    -----
+  +--> ?PR?CHECK_BF?CH8_4_2
+
+?PR?_BEEP?CH8_4_2               -----    -----      0008H    0002H
+  +--> ?PR?_DELAY500US?CH8_4_2
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP                   -----    -----      -----    -----
+  +--> ?PR?MAIN?CH8_4_2
+  +--> ?C_INITSEG
+
+?PR?MAIN?CH8_4_2                -----    -----      -----    -----
+  +--> ?PR?INIT8?CH8_4_2
+  +--> ?PR?WRITE_BMP?CH8_4_2
+
+?PR?INIT8?CH8_4_2               -----    -----      -----    -----
+  +--> ?PR?_WRITE_INST?CH8_4_2
+
+?PR?WRITE_BMP?CH8_4_2           -----    -----      -----    -----
+  +--> ?PR?_WRITE_INST?CH8_4_2
+  +--> ?CO?CH8_4_2
+  +--> ?PR?_WRITE_CHAR?CH8_4_2
+
+?PR?_WRITE_CHAR?CH8_4_2         -----    -----      -----    -----
+  +--> ?PR?CHECK_BF?CH8_4_2
+
+
+
+SYMBOL TABLE OF MODULE:  Ch8-4-2 (CH8_4_2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CH8_4_2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00B0H         PUBLIC        P3
+  B:00B0H.7       PUBLIC        Buzzer
+  B:0080H.7       PUBLIC        BF
+  D:00A8H         PUBLIC        IE
+  C:03A1H         PUBLIC        flash
+  D:000BH         PUBLIC        int_CNT
+  C:03D9H         PUBLIC        _BEEP
+  C:033EH         PUBLIC        Flash_int
+  C:000EH         PUBLIC        BMPpic
+  B:00B0H.2       PUBLIC        RS
+  C:044FH         PUBLIC        main
+  B:00B0H.1       PUBLIC        RW
+  C:0492H         PUBLIC        _write_char
+  D:0089H         PUBLIC        TMOD
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2012  18:00:19  PAGE 3
+
+
+  B:00B0H.0       PUBLIC        E
+  D:008CH         PUBLIC        TH0
+  C:02DAH         PUBLIC        write_bmp
+  C:0484H         PUBLIC        _write_inst
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:0476H         PUBLIC        check_BF
+  C:0431H         PUBLIC        INIT8
+  C:040BH         PUBLIC        _DELAY500us
+  -------         PROC          MAIN
+  C:044FH         LINE#         24
+  C:044FH         LINE#         25
+  C:0452H         LINE#         26
+  C:0455H         LINE#         27
+  C:0458H         LINE#         28
+  C:045BH         LINE#         29
+  C:0461H         LINE#         30
+  C:0463H         LINE#         31
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY500US
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:040BH         LINE#         34
+  C:040BH         LINE#         35
+  C:040BH         LINE#         36
+  C:041BH         LINE#         37
+  C:0430H         LINE#         38
+  -------         ENDPROC       _DELAY500US
+  -------         PROC          _BEEP
+  D:0008H         SYMBOL        x
+  -------         DO            
+  D:0009H         SYMBOL        i
+  D:0001H         SYMBOL        j
+  -------         ENDDO         
+  C:03D9H         LINE#         40
+  C:03DBH         LINE#         41
+  C:03DBH         LINE#         42
+  C:03EBH         LINE#         43
+  C:03EDH         LINE#         44
+  C:03F6H         LINE#         45
+  C:03FBH         LINE#         46
+  C:03FFH         LINE#         47
+  C:0406H         LINE#         48
+  C:040AH         LINE#         49
+  -------         ENDPROC       _BEEP
+  -------         PROC          FLASH_INT
+  C:033EH         LINE#         51
+  C:035BH         LINE#         52
+  C:0369H         LINE#         53
+  C:036DH         LINE#         54
+  C:037BH         LINE#         55
+  C:0380H         LINE#         56
+  C:0380H         LINE#         57
+  C:0386H         LINE#         58
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2012  18:00:19  PAGE 4
+
+
+  -------         ENDPROC       FLASH_INT
+  -------         PROC          INIT8
+  C:0431H         LINE#         60
+  C:0431H         LINE#         61
+  C:0436H         LINE#         62
+  C:043BH         LINE#         63
+  C:0440H         LINE#         64
+  C:0445H         LINE#         65
+  C:044AH         LINE#         66
+  -------         ENDPROC       INIT8
+  -------         PROC          CHECK_BF
+  C:0476H         LINE#         69
+  C:0476H         LINE#         70
+  C:0478H         LINE#         72
+  C:047AH         LINE#         73
+  C:0480H         LINE#         74
+  C:0483H         LINE#         75
+  -------         ENDPROC       CHECK_BF
+  -------         PROC          _WRITE_INST
+  D:0007H         SYMBOL        inst
+  C:0484H         LINE#         77
+  C:0484H         LINE#         78
+  C:0487H         LINE#         79
+  C:0489H         LINE#         80
+  C:048FH         LINE#         81
+  -------         ENDPROC       _WRITE_INST
+  -------         PROC          _WRITE_CHAR
+  D:0007H         SYMBOL        CHAR
+  C:0492H         LINE#         84
+  C:0492H         LINE#         85
+  C:0495H         LINE#         86
+  C:0497H         LINE#         87
+  C:049DH         LINE#         88
+  -------         ENDPROC       _WRITE_CHAR
+  -------         PROC          WRITE_BMP
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:02DAH         LINE#         91
+  C:02DAH         LINE#         92
+  C:02DAH         LINE#         93
+  C:02DFH         LINE#         94
+  C:02E2H         LINE#         95
+  C:02EBH         LINE#         96
+  C:02F0H         LINE#         97
+  C:02F3H         LINE#         98
+  C:02FEH         LINE#         99
+  C:0322H         LINE#         100
+  C:0332H         LINE#         101
+  C:033DH         LINE#         102
+  -------         ENDPROC       WRITE_BMP
+  -------         PROC          FLASH
+  B:0020H.0       SYMBOL        TG
+  D:0008H         SYMBOL        count
+  D:0009H         SYMBOL        time
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/16/2012  18:00:19  PAGE 5
+
+
+  D:0001H         SYMBOL        i
+  -------         ENDDO         
+  C:03A1H         LINE#         104
+  C:03A1H         LINE#         105
+  C:03A1H         LINE#         106
+  C:03AFH         LINE#         107
+  C:03B2H         LINE#         108
+  C:03B6H         LINE#         110
+  C:03BBH         LINE#         111
+  C:03C2H         LINE#         112
+  C:03C5H         LINE#         113
+  C:03C9H         LINE#         115
+  C:03CEH         LINE#         116
+  C:03D5H         LINE#         117
+  C:03D8H         LINE#         118
+  -------         ENDPROC       FLASH
+  -------         ENDMOD        CH8_4_2
+
+  -------         MODULE        ?C?OFFX256
+  C:0465H         PUBLIC        ?C?OFFX256
+  -------         ENDMOD        ?C?OFFX256
+
+Program Size: data=14.1 xdata=0 code=1181
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

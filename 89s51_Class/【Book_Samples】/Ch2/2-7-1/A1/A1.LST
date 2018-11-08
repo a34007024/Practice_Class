@@ -1,0 +1,51 @@
+C51 COMPILER V9.01   A1                                                                    02/02/2012 11:26:28 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>               // 包含reg51.h標頭檔  
+   2          sbit    DIP_SW=P0^0;            // 宣告指撥開關位址  
+   3          sbit    Buzzer= P3^7;           // 宣告蜂鳴器位址 
+   4          void    BEEP(unsigned char);            // 宣告嗶聲函數 
+   5          void    DELAY250us(int);        // 宣告0.25ms延時函數 
+   6          //==== 主程式 =========================================
+   7          main()           
+   8          {       DIP_SW=Buzzer=1;                        // 初始設定 
+   9   1              while(1)                                        // 無窮盡迴圈
+  10   1                      while(!DIP_SW) BEEP(1); // 若DIP_SW=0，則呼叫嗶聲函數
+  11   1      }
+  12          //==== 嗶聲函數 ==============================
+  13          void    BEEP(unsigned char x)
+  14          {       unsigned char i,j;
+  15   1              for(i=0;i<x;i++)                // 產生x聲  
+  16   1              {       for(j=0;j<200;j++)      // 蜂鳴器吸放200次  
+  17   2                      {       Buzzer=0;DELAY250us(1); // 蜂鳴器吸0.25ms  
+  18   3                              Buzzer=1;DELAY250us(1); // 蜂鳴器放0.25ms
+  19   3                      }
+  20   2                      DELAY250us(400);        // 蜂鳴器靜音0.1秒(0.25ms*400)  
+  21   2              }
+  22   1      }
+  23          //==== 延時函數(0.25ms) ==============================
+  24          void    DELAY250us(int x) 
+  25          {       int     i,j;
+  26   1              for(i=0;i<x;i++)                // 外迴圈(0.25ms*x)
+  27   1                      for(j=0;j<30;j++);      // 內迴圈(0.25ms)
+  28   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    106    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

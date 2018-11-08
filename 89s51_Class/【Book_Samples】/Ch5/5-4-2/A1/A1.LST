@@ -1,0 +1,57 @@
+C51 COMPILER V9.01   A1                                                                    02/08/2012 11:54:15 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>               // 包含reg51.h標頭檔 
+   2          #define SW       P0                     // 定義SW接至Port 0
+   3          #define LED      P1                     // 定義LED接至Port 1
+   4          void LEFT(void);                // 宣告LEFT函數  
+   5          void DELAY1ms(int);             // 宣告延時函數  
+   6          //==主程式======================================
+   7          main()                          
+   8          {       SW=0xff;                                // 設定SW輸入埠
+   9   1              EA=ES=1;                                // 設定串列埠中斷
+  10   1              SBUF=SW;                                // 將SW的值透過串列埠輸出
+  11   1              SCON=0;                                 // 設定為mode 0、REN=0、TI=0
+  12   1              while(1) LEFT();                // 單燈左移 
+  13   1      }
+  14          // ===================================
+  15          void ES_int(void) interrupt 4
+  16          {       SBUF=SW;                        // 將SW的值透過串列埠輸出
+  17   1              TI=0;                           // 清除TI旗標
+  18   1      }
+  19          // ===================================
+  20          void LEFT(void) 
+  21          {       char i;
+  22   1              LED=0xfe;                       // 單燈左移初值 
+  23   1              for(i=0;i<7;i++)
+  24   1              {       DELAY1ms(100);  // 延遲100ms
+  25   2                      LED=(LED<<1)|1; // 單燈左移
+  26   2              }
+  27   1              DELAY1ms(100);  // 延遲100ms
+  28   1      } 
+  29          // ===================================
+  30          void DELAY1ms(int x)  
+  31          {       int i,j;
+  32   1              for(i=0;i<x;i++)
+  33   1                      for(j=0;j<120;j++);
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    101    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

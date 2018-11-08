@@ -1,0 +1,84 @@
+C51 COMPILER V9.01   A1                                                                    02/08/2012 16:23:16 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>       // 包含reg51.h標頭檔 
+   2          #define LED      P1                     // 定義LED接至Port 1
+   3          sbit    PB=P2^0;                // 宣告按鈕開關位址 
+   4          char    pat=0x0f;               // 宣告開關信號變數  
+   5          void    wait(void);             // 宣告防彈跳函數 
+   6          void    LEFT(void);             // 宣告單燈左移函數
+   7          void    RIGHT(void);    // 宣告單燈右移函數
+   8          void    DELAY1ms(int);  // 宣告延時函數
+   9          //==主程式======================================
+  10          main()                          
+  11          {       PB=1;                           // 設定PB為輸入埠
+  12   1              PCON|=0x80;                     // 將SMOD位元設定為1
+  13   1              SCON=0x90;                      // 將串列埠採mode 2
+  14   1              while(1)
+  15   1              {       if (!PB)                // 若開關按下 
+  16   2                      {       wait();         // 防彈跳               
+  17   3                              while(!PB);     // 等待開關放開 
+  18   3                              wait();         // 防彈跳               
+  19   3                              SBUF=pat;       // 輸出指令 
+  20   3                              pat=~pat;       // 切換狀態 
+  21   3                      }
+  22   2                      while(!RI);             // 等待接收完成
+  23   2                      RI=TI=0;                // 清除RI,TI旗標(重傳)
+  24   2                      if (SBUF==0x0f) LEFT(); // 若接收到的單燈左移指令，則執行單燈左移 
+  25   2                      if (SBUF==0xf0) RIGHT();// 若接收到的單燈右移指令，則執行單燈右移 
+  26   2              } 
+  27   1      } 
+  28          //====================================
+  29          void    wait(void)
+  30          {       char i,j;
+  31   1              for(i=0;i<30;i++)
+  32   1                      for(j=0;j<120;j++);
+  33   1      } 
+  34          //====================================
+  35          void    LEFT(void)
+  36          {       char i;
+  37   1              LED=0xfe;
+  38   1              for(i=0;i<7;i++)
+  39   1              {       DELAY1ms(100);
+  40   2                      LED=(LED<<1)|0x01;
+  41   2              }
+  42   1              DELAY1ms(100);LED=0xff;
+  43   1      }
+  44          //====================================
+  45          void    RIGHT(void)
+  46          {       char i;
+  47   1              LED=0x7f;
+  48   1              for(i=0;i<7;i++)
+  49   1              {       DELAY1ms(100);
+  50   2                      LED=(LED>>1)|0x80;
+  51   2              }
+  52   1              DELAY1ms(100);LED=0xff;
+  53   1      }
+  54          //====================================
+  55          void    DELAY1ms(int x)
+C51 COMPILER V9.01   A1                                                                    02/08/2012 16:23:16 PAGE 2   
+
+  56          {       char i,j;
+  57   1              for(i=0;i<x;i++)
+  58   1                      for(j=0;j<120;j++);
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    169    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

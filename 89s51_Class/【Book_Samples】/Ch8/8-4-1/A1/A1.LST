@@ -1,0 +1,159 @@
+C51 COMPILER V9.01   A1                                                                    02/15/2012 10:34:26 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h> 
+   2          // === 定義 LCD 介面 ==================
+   3          sbit    E=P3^0;                                 // 宣告E信號的輸出入埠 
+   4          sbit    RW=P3^1;                                // 宣告RW信號的輸出入埠 
+   5          sbit    RS=P3^2 ;                               // 宣告RS信號的輸出入埠 
+   6          sbit    BF=P0^7;                                // 定義忙碌旗標的位址 
+   7          #define LCDP P0                                 // Port 0連接LCD匯流排 
+   8          // === 定義 LED與蜂鳴器介面 ============
+   9          #define LED P1                                  // Port 1連接LED 
+  10          sbit    Buzzer=P3^7;                    // 宣告蜂鳴器位址 
+  11          // === 定義 Timer 0計時量(50ms) ============
+  12          #define t0H (65536-50000)/256   // 定義計數起點之高8位元 
+  13          #define t0L (65536-50000)%256   // 定義計數起點之低8位元 
+  14          char    int_CNT=0;                              // 宣告中斷次數計數器 
+  15          // === 宣告顯示內容 ============
+  16          char code message1[]=   "歡迎使用 LED控制器";
+  17          char code message2[]=   "現正展示單燈左移";
+  18          char code message3[]=   "現正展示單燈右移";  
+  19          // === 宣告LED變數 ============
+  20          bit             DIR=0;                                  // 宣告LED移動方向旗標 
+  21          char    LED_CNT=0;                              // 宣告LED移動計數器 
+  22          // === 宣告函數 ============
+  23          void    INIT8(void);                    // 宣告LCD初始化函數
+  24          void    check_BF(void);                 // 宣告檢查忙碌函數
+  25          void    write_inst(char);               // 宣告寫入指令函數
+  26          void    write_char(char);               // 宣告寫入字元函數
+  27          void    reverse(bit);                   // 宣告反白/還原函數
+  28          void    DELAY500us(int);                // 宣告延時函數
+  29          void    BEEP(char);                     // 宣告嗶聲函數
+  30          // =========================================================
+  31          main()
+  32          {       char i;                                         // 宣告變數
+  33   1              LED=0xff;                                       // 關閉LED 
+  34   1              INIT8();                                        // LCD初始化
+  35   1              write_inst(0x80);                       // LCD定址第0列
+  36   1              for(i=0;i<16;i++)
+  37   1                      write_char(message1[i]); // LCD顯示第0列
+  38   1              IE=0x82;                                        // 啟用Timer 0中斷 
+  39   1              TMOD |= 0x01;                           // 設定Timer 0 Mode 1 
+  40   1              TH0=t0H; TL0=t0L;                       // 設置計數量 
+  41   1              TR0=1;                                          // 啟動計數器(LED開動) 
+  42   1              while(1)                                        // 無窮盡迴圈 
+  43   1              {       DIR=0;                                  // 設定方向旗標
+  44   2                      write_inst(0x90);               // LCD定址第1列
+  45   2                      for(i=0;i<16;i++)
+  46   2                              write_char(message2[i]); // LCD顯示第1列(左移)
+  47   2                      DELAY500us(20000);              // 單燈左移10秒
+  48   2                      TR0=0; LED=0xff;                // 停止計時器，關閉LED
+  49   2                      BEEP(2);                                // 嗶兩聲
+  50   2                      TH0=t0H; TL0=t0L;               // 設置計數量 
+  51   2                      TR0=1;                                  // 啟動計數器(LED開動) 
+  52   2                      DIR=1;                                  // 設定方向旗標
+  53   2                      reverse(1);                             // 設定第1列反白 
+  54   2                      write_inst(0x90);               // LCD定址第1列
+  55   2                      for(i=0;i<16;i++)
+C51 COMPILER V9.01   A1                                                                    02/15/2012 10:34:26 PAGE 2   
+
+  56   2                              write_char(message3[i]); // LCD顯示第1列(右移)
+  57   2                      DELAY500us(20000);              // 單燈右移10秒
+  58   2                      TR0=0; LED=0xff;                // 停止計時器，關閉LED
+  59   2                      BEEP(2);                                // 嗶兩聲
+  60   2                      TH0=t0H; TL0=t0L;               // 設置計數量 
+  61   2                      TR0=1;                                  // 啟動計數器(LED開動) 
+  62   2                      reverse(1);                             // 設定第1列還原  
+  63   2              }
+  64   1      }
+  65          // =========================================================
+  66          void    DELAY500us(int x) 
+  67          {       int i,j;                                                // 宣告變數
+  68   1              for(i=0;i<x;i++)                                // 外迴圈(x*1ms)
+  69   1                      for(j=0;j<60;j++);                      // 內迴圈(0.5ms)
+  70   1      }
+  71          // =========================================================
+  72          void    BEEP(char x) 
+  73          {       char i,j;                                               // 宣告變數
+  74   1              for(i=0;i<x;i++)                                // 外迴圈(x聲)
+  75   1              {       for(j=0;j<100;j++)                      // 吸放100次 
+  76   2                      {       Buzzer=0;DELAY500us(1); // 吸0.5ms
+  77   3                              Buzzer=1;DELAY500us(1); // 放0.5ms
+  78   3                      }       
+  79   2                      DELAY500us(200);                        // 靜音(0.1s)
+  80   2              }       
+  81   1      }
+  82          // =========================================================
+  83          void LED_int(void)      interrupt 1     // 中斷副程式
+  84          {       if (++int_CNT==2)                                       // 判斷是否已中斷2次(0.1S)
+  85   1              {       int_CNT=0;                                              // 中斷次數計數器歸零
+  86   2                      if (++LED_CNT==8)                               // 判斷是否已移動7次
+  87   2                              LED_CNT=0;                                      // LED移動計數器歸零
+  88   2                      if (DIR)                                                // 若方向旗標為1(右移)
+  89   2                              LED=~(0x80>>LED_CNT);           //  LED右移
+  90   2                      else                                                    // 若方向旗標為0(左移)
+  91   2                              LED=~(0x01<<LED_CNT);           //  LED左移
+  92   2              }
+  93   1              TH0=t0H;TL0=t0L;                                        // 重填計時量
+  94   1      }
+  95          // === 8位元傳輸介面之LCM初始化函數 ===
+  96          void INIT8(void) 
+  97          {       write_inst(0x30);                       // 設定功能(8位元傳輸介面)
+  98   1              write_inst(0x30);                       // 設定功能(8位元傳輸介面)
+  99   1              write_inst(0x08);                       // 關閉顯示器
+ 100   1              write_inst(0x01);                       // 清除顯示器
+ 101   1              write_inst(0x06);                       // 設定輸入模式
+ 102   1              write_inst(0x0c);                       // 開啟顯示器
+ 103   1      }
+ 104          // === 檢查忙碌旗標函數 ===
+ 105          void check_BF(void)
+ 106          {       E=0;                                            // 禁能 
+ 107   1              do
+ 108   1              {       BF=1;                                   // 設定BF為輸入埠  
+ 109   2                      RS=0;RW=1;E=1;                  // 讀取BF與AC  
+ 110   2              }while(BF);                                     // 等待BF旗標為0
+ 111   1      }        
+ 112          // === 寫入指令函數 ==
+ 113          void write_inst(char inst)
+ 114          {       check_BF();                     // 檢查忙錄旗標函數 
+ 115   1              LCDP=inst;                      // 指令放入匯流排 
+ 116   1              RS=RW=0;E=1;            // 控制指令 
+ 117   1              check_BF();                     // 檢查忙錄旗標函數 
+C51 COMPILER V9.01   A1                                                                    02/15/2012 10:34:26 PAGE 3   
+
+ 118   1      } 
+ 119          // === 寫入字元函數===
+ 120          void write_char(char CHAR)
+ 121          {       check_BF();                     // 檢查忙錄旗標函數 
+ 122   1              LCDP=CHAR;                      // 字元放入匯流排 
+ 123   1              RS=1;RW=0;E=1;          // 控制指令 
+ 124   1              check_BF();                     // 檢查忙錄旗標函數 
+ 125   1      } 
+ 126          // === 反白/正常顯示函數 ===
+ 127          void reverse(bit row)
+ 128          {       write_inst(0x34);                               // 切換為擴充指令 
+ 129   1              if (!row) write_inst(0x04);             // 第0列反白或還原 
+ 130   1              else write_inst(0x05);                  // 第1列反白或還原 
+ 131   1              write_inst(0x30);                               // 切換為一般指令 
+ 132   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    456    ----
+   CONSTANT SIZE    =     53    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

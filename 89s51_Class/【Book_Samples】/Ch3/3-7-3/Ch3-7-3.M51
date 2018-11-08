@@ -1,0 +1,155 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/05/2012  08:13:29  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Ch3-7-3.obj TO Ch3-7-3
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Ch3-7-3.obj (CH3_7_3)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  Ch3-7-3 (CH3_7_3)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         _DATA_GROUP_
+            DATA    000DH     0004H     UNIT         ?DT?CH3_7_3
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00ACH     UNIT         ?PR?KEYSCAN?CH3_7_3
+            CODE    00AFH     008CH     UNIT         ?C_C51STARTUP
+            CODE    013BH     0048H     UNIT         ?PR?_BEEP?CH3_7_3
+            CODE    0183H     0026H     UNIT         ?PR?_DELAY500US?CH3_7_3
+            CODE    01A9H     0019H     UNIT         ?CO?CH3_7_3
+            CODE    01C2H     0007H     UNIT         ?C_INITSEG
+            CODE    01C9H     0005H     UNIT         ?PR?MAIN?CH3_7_3
+
+
+
+OVERLAY MAP OF MODULE:   Ch3-7-3 (CH3_7_3)
+
+
+SEGMENT                           DATA_GROUP 
+  +--> CALLED SEGMENT           START    LENGTH
+-----------------------------------------------
+?C_C51STARTUP                   -----    -----
+  +--> ?PR?MAIN?CH3_7_3
+  +--> ?C_INITSEG
+
+?PR?MAIN?CH3_7_3                -----    -----
+  +--> ?PR?KEYSCAN?CH3_7_3
+
+?PR?KEYSCAN?CH3_7_3             0008H    0003H
+  +--> ?CO?CH3_7_3
+  +--> ?PR?_BEEP?CH3_7_3
+  +--> ?PR?_DELAY500US?CH3_7_3
+
+?PR?_BEEP?CH3_7_3               000BH    0002H
+  +--> ?PR?_DELAY500US?CH3_7_3
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/05/2012  08:13:29  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  Ch3-7-3 (CH3_7_3)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CH3_7_3
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00B0H.7       PUBLIC        Buzzer
+  C:013BH         PUBLIC        _BEEP
+  C:01BAH         PUBLIC        SCAN_CODE
+  C:01C9H         PUBLIC        main
+  D:000DH         PUBLIC        DISP
+  C:01A9H         PUBLIC        TAB
+  C:0183H         PUBLIC        _DELAY500us
+  C:0003H         PUBLIC        keyscan
+  -------         PROC          MAIN
+  C:01C9H         LINE#         18
+  C:01C9H         LINE#         19
+  -------         ENDPROC       MAIN
+  -------         PROC          KEYSCAN
+  -------         DO            
+  D:0008H         SYMBOL        X
+  D:0009H         SYMBOL        Y
+  D:000AH         SYMBOL        Ycode
+  D:0007H         SYMBOL        Kcode
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         22
+  C:0003H         LINE#         23
+  C:0003H         LINE#         24
+  C:0006H         LINE#         25
+  C:0009H         LINE#         26
+  C:001EH         LINE#         27
+  C:0037H         LINE#         28
+  C:003EH         LINE#         29
+  C:0040H         LINE#         30
+  C:0048H         LINE#         31
+  C:0052H         LINE#         32
+  C:005CH         LINE#         33
+  C:0064H         LINE#         34
+  C:006DH         LINE#         35
+  C:006FH         LINE#         36
+  C:0085H         LINE#         37
+  C:0087H         LINE#         38
+  C:008CH         LINE#         39
+  C:0099H         LINE#         40
+  C:0099H         LINE#         41
+  C:00A0H         LINE#         42
+  C:00AEH         LINE#         43
+  -------         ENDPROC       KEYSCAN
+  -------         PROC          _DELAY500US
+  D:0006H         SYMBOL        x
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/05/2012  08:13:29  PAGE 3
+
+
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0183H         LINE#         45
+  C:0183H         LINE#         46
+  C:0183H         LINE#         47
+  C:0193H         LINE#         48
+  C:01A8H         LINE#         49
+  -------         ENDPROC       _DELAY500US
+  -------         PROC          _BEEP
+  D:0001H         SYMBOL        x
+  -------         DO            
+  D:000BH         SYMBOL        i
+  D:0082H         SYMBOL        j
+  -------         ENDDO         
+  C:013BH         LINE#         51
+  C:013DH         LINE#         52
+  C:013DH         LINE#         53
+  C:0157H         LINE#         54
+  C:015AH         LINE#         55
+  C:0163H         LINE#         56
+  C:0168H         LINE#         57
+  C:0171H         LINE#         58
+  C:0178H         LINE#         59
+  C:0182H         LINE#         60
+  -------         ENDPROC       _BEEP
+  -------         ENDMOD        CH3_7_3
+
+Program Size: data=18.0 xdata=0 code=462
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

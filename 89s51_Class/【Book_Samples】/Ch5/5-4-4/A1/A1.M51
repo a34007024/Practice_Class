@@ -1,0 +1,168 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/08/2012  16:23:16  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE A1.obj TO A1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  A1.obj (A1)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  A1 (A1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?A1
+            DATA    0009H     0001H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0033H     UNIT         ?PR?MAIN?A1
+            CODE    00C2H     0023H     UNIT         ?PR?LEFT?A1
+            CODE    00E5H     0023H     UNIT         ?PR?RIGHT?A1
+            CODE    0108H     0023H     UNIT         ?PR?_DELAY1MS?A1
+            CODE    012BH     000DH     UNIT         ?PR?WAIT?A1
+            CODE    0138H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   A1 (A1)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?A1
+  +--> ?C_INITSEG
+
+?PR?MAIN?A1                    -----    -----
+  +--> ?PR?WAIT?A1
+  +--> ?PR?LEFT?A1
+  +--> ?PR?RIGHT?A1
+
+?PR?LEFT?A1                    0009H    0001H
+  +--> ?PR?_DELAY1MS?A1
+
+?PR?RIGHT?A1                   0009H    0001H
+  +--> ?PR?_DELAY1MS?A1
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/08/2012  16:23:16  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  A1 (A1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        A1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:00E5H         PUBLIC        RIGHT
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:010CH         PUBLIC        _DELAY1ms
+  B:00A0H.0       PUBLIC        PB
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:008FH         PUBLIC        main
+  C:00C2H         PUBLIC        LEFT
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  C:012BH         PUBLIC        wait
+  D:0008H         PUBLIC        pat
+  -------         PROC          MAIN
+  C:008FH         LINE#         10
+  C:008FH         LINE#         11
+  C:0091H         LINE#         12
+  C:0094H         LINE#         13
+  C:0097H         LINE#         14
+  C:0097H         LINE#         15
+  C:009AH         LINE#         16
+  C:009DH         LINE#         17
+  C:00A0H         LINE#         18
+  C:00A3H         LINE#         19
+  C:00A6H         LINE#         20
+  C:00A9H         LINE#         21
+  C:00A9H         LINE#         22
+  C:00ACH         LINE#         23
+  C:00B0H         LINE#         24
+  C:00B8H         LINE#         25
+  C:00C0H         LINE#         26
+  -------         ENDPROC       MAIN
+  -------         PROC          WAIT
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:012BH         LINE#         29
+  C:012BH         LINE#         30
+  C:012BH         LINE#         31
+  C:012DH         LINE#         32
+  C:0137H         LINE#         33
+  -------         ENDPROC       WAIT
+  -------         PROC          LEFT
+  -------         DO            
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/08/2012  16:23:16  PAGE 3
+
+
+  C:00C2H         LINE#         35
+  C:00C2H         LINE#         36
+  C:00C2H         LINE#         37
+  C:00C5H         LINE#         38
+  C:00C8H         LINE#         39
+  C:00CBH         LINE#         40
+  C:00D3H         LINE#         41
+  C:00DEH         LINE#         42
+  C:00E4H         LINE#         43
+  -------         ENDPROC       LEFT
+  -------         PROC          RIGHT
+  -------         DO            
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+  C:00E5H         LINE#         45
+  C:00E5H         LINE#         46
+  C:00E5H         LINE#         47
+  C:00E8H         LINE#         48
+  C:00EBH         LINE#         49
+  C:00EEH         LINE#         50
+  C:00F6H         LINE#         51
+  C:0101H         LINE#         52
+  C:0107H         LINE#         53
+  -------         ENDPROC       RIGHT
+  C:0108H         SYMBOL        L?0034
+  -------         PROC          L?0033
+  -------         ENDPROC       L?0033
+  C:0108H         SYMBOL        L?0034
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:010CH         LINE#         55
+  C:010CH         LINE#         56
+  C:010CH         LINE#         57
+  C:0121H         LINE#         58
+  C:012AH         LINE#         59
+  -------         ENDPROC       _DELAY1MS
+  -------         ENDMOD        A1
+
+Program Size: data=11.0 xdata=0 code=316
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

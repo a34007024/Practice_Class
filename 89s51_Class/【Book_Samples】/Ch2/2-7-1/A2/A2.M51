@@ -1,0 +1,137 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/02/2012  11:25:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE A2.obj TO A2
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  A2.obj (A2)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  A2 (A2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0036H     UNIT         ?PR?_BEEP1?A2
+            CODE    0039H     0036H     UNIT         ?PR?_BEEP2?A2
+            CODE    006FH     0026H     UNIT         ?PR?_DELAY250US?A2
+            CODE    0095H     0013H     UNIT         ?PR?MAIN?A2
+            CODE    00A8H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   A2 (A2)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?A2
+
+?PR?MAIN?A2                    -----    -----
+  +--> ?PR?_BEEP1?A2
+  +--> ?PR?_BEEP2?A2
+
+?PR?_BEEP1?A2                  0008H    0003H
+  +--> ?PR?_DELAY250US?A2
+
+?PR?_BEEP2?A2                  0008H    0003H
+  +--> ?PR?_DELAY250US?A2
+
+
+
+SYMBOL TABLE OF MODULE:  A2 (A2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/02/2012  11:25:18  PAGE 2
+
+
+
+  -------         MODULE        A2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00B0H         PUBLIC        P3
+  B:00B0H.7       PUBLIC        Buzzer
+  C:0095H         PUBLIC        main
+  C:0003H         PUBLIC        _BEEP1
+  C:0039H         PUBLIC        _BEEP2
+  B:0080H.0       PUBLIC        DIP_SW
+  C:006FH         PUBLIC        _DELAY250us
+  -------         PROC          MAIN
+  C:0095H         LINE#         8
+  C:0095H         LINE#         9
+  C:0099H         LINE#         10
+  C:0099H         LINE#         11
+  C:009CH         LINE#         12
+  C:00A1H         LINE#         13
+  C:00A6H         LINE#         14
+  -------         ENDPROC       MAIN
+  -------         PROC          _BEEP1
+  D:0008H         SYMBOL        x
+  -------         DO            
+  D:0009H         SYMBOL        i
+  D:000AH         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         17
+  C:0005H         LINE#         18
+  C:0005H         LINE#         19
+  C:000FH         LINE#         20
+  C:0012H         LINE#         21
+  C:001BH         LINE#         22
+  C:0024H         LINE#         23
+  C:002DH         LINE#         24
+  C:0034H         LINE#         25
+  C:0038H         LINE#         26
+  -------         ENDPROC       _BEEP1
+  -------         PROC          _BEEP2
+  D:0008H         SYMBOL        x
+  -------         DO            
+  D:0009H         SYMBOL        i
+  D:000AH         SYMBOL        j
+  -------         ENDDO         
+  C:0039H         LINE#         28
+  C:003BH         LINE#         29
+  C:003BH         LINE#         30
+  C:0045H         LINE#         31
+  C:0048H         LINE#         32
+  C:0051H         LINE#         33
+  C:005AH         LINE#         34
+  C:0063H         LINE#         35
+  C:006AH         LINE#         36
+  C:006EH         LINE#         37
+  -------         ENDPROC       _BEEP2
+  -------         PROC          _DELAY250US
+  D:0006H         SYMBOL        x
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/02/2012  11:25:18  PAGE 3
+
+
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:006FH         LINE#         39
+  C:006FH         LINE#         40
+  C:006FH         LINE#         41
+  C:007FH         LINE#         42
+  C:0094H         LINE#         43
+  -------         ENDPROC       _DELAY250US
+  -------         ENDMOD        A2
+
+Program Size: data=12.0 xdata=0 code=180
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

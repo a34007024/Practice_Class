@@ -1,0 +1,41 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\89S51\Ch6\6-5-1\A1\A1.uvproj
+Project File Date:  02/11/2012
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling A1.C...
+A1.C(38): error C251: illegal octal digit
+A1.C(38): error C251: illegal octal digit
+A1.C(38): error C251: illegal octal digit
+Target not created
+Build target 'Target 1'
+compiling A1.C...
+A1.C(38): error C202: 'o53': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling A1.C...
+A1.C(38): error C141: syntax error near 'o53'
+A1.C(38): error C202: 'o53': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling A1.C...
+A1.C(38): error C141: syntax error near 'o5'
+A1.C(38): error C202: 'o5': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling A1.C...
+linking...
+Program Size: data=14.0 xdata=0 code=597
+creating hex file from "A1"...
+"A1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling A1.C...
+linking...
+Program Size: data=14.0 xdata=0 code=598
+creating hex file from "A1"...
+"A1" - 0 Error(s), 0 Warning(s).

@@ -1,0 +1,88 @@
+C51 COMPILER V9.01   A1                                                                    02/02/2012 20:04:08 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                       // 包含reg51.h標頭檔  
+   2          #define LED  P1                                 // 定義LED連接到Port 1 
+   3          #define DIP_SW  P0                              // 定義指撥開關連接到Port 0 
+   4          #define Read_SW ~DIP_SW&0x03    // 定義篩選bit0與bit1 
+   5          void    DELAY1ms(int);                  // 宣告1ms延時函數 
+   6          void    LEFT(char);                     // 宣告單燈左移函數 
+   7          void    RIGHT(char);                    // 宣告單燈右移函數 
+   8          //==== 主程式 =========================================
+   9          main()           
+  10          {       DIP_SW=0xff;                                    // 初始化 
+  11   1              LED=0xff;                                               // 初始化 
+  12   1              while(1)                                                // 無窮盡迴圈 
+  13   1              {       switch (Read_SW)                        // 讀取指撥開關 
+  14   2                      {       case 0:                                 // 若bit1=0、bit0=0
+  15   3                              {       LED=0xff;                       // 關閉LED
+  16   4                                      break;                          // 跳出 
+  17   4                              }
+  18   3                              case 1:                                 // 若bit1=0、bit0=1
+  19   3                              {       LEFT(1);                        // LED單燈左移  
+  20   4                                      break;                          // 跳出 
+  21   4                              }
+  22   3                              case 2:                                 // 若bit1=1、bit0=0
+  23   3                              {       RIGHT(1);                       // LED單燈右移  
+  24   4                                      break;                          // 跳出     
+  25   4                              }
+  26   3                              case 3:                                 // 若bit1=1、bit0=1
+  27   3                              {       LEFT(1);                        // LED單燈左移  
+  28   4                                      RIGHT(1);                       // LED單燈右移   
+  29   4                                      break;                          // 跳出 
+  30   4                              }
+  31   3                      }
+  32   2              }
+  33   1      }
+  34          //==== 單燈左移函數 ==============================
+  35          void    LEFT(char x)
+  36          {       char i,j;
+  37   1              for(i=0;i<x;i++)                // 產生x圈單燈左移  
+  38   1              {       LED=0xfe;                       // 設定單燈左移初值0xfe=1111 1110 
+  39   2                      for(j=0;j<7;j++)        // 移位7次
+  40   2                      {       DELAY1ms(100);  // 延遲0.1秒(即顯示0.1秒)  
+  41   3                              LED=(LED<<1)|1;// LED左移一位，而最右邊強制為1
+  42   3                      }
+  43   2                      DELAY1ms(100);  // 延遲0.1秒(即顯示0.1秒) 
+  44   2              }
+  45   1      }
+  46          //==== 單燈右移函數 ==============================
+  47          void    RIGHT(char x)
+  48          {       char i,j;
+  49   1              for(i=0;i<x;i++)                // 產生x圈單燈右移  
+  50   1              {       LED=0x7f;                       // 設定單燈右移初值0x7f=0111 1111 
+  51   2                      for(j=0;j<7;j++)        // 移位7次  
+  52   2                      {       DELAY1ms(100);  // 延遲0.1秒(即顯示0.1秒)  
+  53   3                              LED=(LED>>1)|0x80;// LED右移一位，而最左邊強制為1
+  54   3                      }
+  55   2                      DELAY1ms(100);  // 延遲0.1秒(即顯示0.1秒) 
+C51 COMPILER V9.01   A1                                                                    02/02/2012 20:04:08 PAGE 2   
+
+  56   2              }
+  57   1      }
+  58          //==== 延時函數(1ms) ==============================
+  59          void    DELAY1ms(int x) 
+  60          {       int     i,j;
+  61   1              for(i=0;i<x;i++)                        // 外迴圈(1ms*x)
+  62   1                      for(j=0;j<120;j++);     // 內迴圈(1ms)
+  63   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    204    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

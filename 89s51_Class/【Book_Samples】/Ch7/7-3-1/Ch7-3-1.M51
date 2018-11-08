@@ -1,0 +1,135 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/12/2012  16:36:20  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Ch7-3-1.obj TO Ch7-3-1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Ch7-3-1.obj (CH7_3_1)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+
+
+LINK MAP OF MODULE:  Ch7-3-1 (CH7_3_1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0006H     UNIT         _DATA_GROUP_
+                    000EH     0012H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0053H     UNIT         ?PR?_SM_DRIVER?CH7_3_1
+            CODE    0056H     0034H     UNIT         ?PR?MAIN?CH7_3_1
+            CODE    008AH     002DH     UNIT         ?C?LIB_CODE
+            CODE    00B7H     0026H     UNIT         ?PR?_DELAY1MS?CH7_3_1
+            CODE    00DDH     0010H     UNIT         ?CO?CH7_3_1
+            CODE    00EDH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   Ch7-3-1 (CH7_3_1)
+
+
+SEGMENT                           BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?CH7_3_1
+
+?PR?MAIN?CH7_3_1               -----    -----      -----    -----
+  +--> ?CO?CH7_3_1
+  +--> ?PR?_SM_DRIVER?CH7_3_1
+
+?PR?_SM_DRIVER?CH7_3_1         0020H.0  0000H.1    0008H    0006H
+  +--> ?PR?_DELAY1MS?CH7_3_1
+
+
+
+SYMBOL TABLE OF MODULE:  Ch7-3-1 (CH7_3_1)
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/12/2012  16:36:20  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CH7_3_1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:00B7H         PUBLIC        _DELAY1ms
+  C:0003H         PUBLIC        _SM_driver
+  C:00DDH         PUBLIC        PHASE1
+  C:00E1H         PUBLIC        PHASE2
+  C:0056H         PUBLIC        main
+  C:00E5H         PUBLIC        PHASE1_2
+  B:00A0H.0       PUBLIC        PB1
+  B:00A0H.1       PUBLIC        PB2
+  B:00A0H.2       PUBLIC        PB3
+  -------         PROC          MAIN
+  C:0056H         LINE#         14
+  C:0056H         LINE#         15
+  C:0059H         LINE#         16
+  C:005FH         LINE#         17
+  C:005FH         LINE#         18
+  C:0062H         LINE#         19
+  C:006AH         LINE#         20
+  C:006DH         LINE#         21
+  C:007AH         LINE#         22
+  C:007DH         LINE#         23
+  C:0088H         LINE#         24
+  -------         ENDPROC       MAIN
+  -------         PROC          _SM_DRIVER
+  D:0008H         SYMBOL        PHASE
+  B:0020H.0       SYMBOL        F4_8
+  -------         DO            
+  D:000BH         SYMBOL        i
+  D:000CH         SYMBOL        j
+  D:000DH         SYMBOL        x
+  -------         ENDDO         
+  C:0003H         LINE#         27
+  C:0009H         LINE#         28
+  C:0009H         LINE#         29
+  C:0014H         LINE#         30
+  C:0017H         LINE#         31
+  C:0027H         LINE#         32
+  C:003CH         LINE#         33
+  C:0043H         LINE#         34
+  C:0052H         LINE#         35
+  C:0055H         LINE#         36
+  -------         ENDPROC       _SM_DRIVER
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:00B7H         LINE#         38
+  C:00B7H         LINE#         39
+  C:00B7H         LINE#         40
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/12/2012  16:36:20  PAGE 3
+
+
+  C:00C7H         LINE#         41
+  C:00DCH         LINE#         42
+  -------         ENDPROC       _DELAY1MS
+  -------         ENDMOD        CH7_3_1
+
+  -------         MODULE        ?C?CLDOPTR
+  C:008AH         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+Program Size: data=15.1 xdata=0 code=249
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

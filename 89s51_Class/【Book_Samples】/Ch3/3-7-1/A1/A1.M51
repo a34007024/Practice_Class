@@ -1,0 +1,113 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/04/2012  21:35:50  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE A1.obj TO A1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  A1.obj (A1)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  A1 (A1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0071H     UNIT         ?PR?_DISPLAY?A1
+            CODE    0074H     0026H     UNIT         ?PR?_DELAY1MS?A1
+            CODE    009AH     0022H     UNIT         ?CO?A1
+            CODE    00BCH     000CH     UNIT         ?PR?MAIN?A1
+            CODE    00C8H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   A1 (A1)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?A1
+
+?PR?MAIN?A1                    -----    -----
+  +--> ?PR?_DISPLAY?A1
+
+?PR?_DISPLAY?A1                0008H    0003H
+  +--> ?CO?A1
+  +--> ?PR?_DELAY1MS?A1
+
+
+
+SYMBOL TABLE OF MODULE:  A1 (A1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        A1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2012  21:35:50  PAGE 2
+
+
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0074H         PUBLIC        _DELAY1ms
+  C:00A4H         PUBLIC        SCAN_CODE
+  C:00BCH         PUBLIC        main
+  C:00ACH         PUBLIC        DISP
+  C:009AH         PUBLIC        TAB
+  C:0003H         PUBLIC        _display
+  -------         PROC          MAIN
+  C:00BCH         LINE#         16
+  C:00BCH         LINE#         17
+  C:00BCH         LINE#         18
+  C:00C1H         LINE#         19
+  C:00C6H         LINE#         20
+  -------         ENDPROC       MAIN
+  -------         PROC          _DISPLAY
+  D:0008H         SYMBOL        x
+  -------         DO            
+  D:0009H         SYMBOL        i
+  D:000AH         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         23
+  C:0005H         LINE#         24
+  C:0005H         LINE#         25
+  C:0008H         LINE#         26
+  C:000BH         LINE#         27
+  C:000EH         LINE#         28
+  C:0041H         LINE#         29
+  C:0056H         LINE#         30
+  C:005DH         LINE#         31
+  C:0068H         LINE#         32
+  C:0073H         LINE#         33
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0074H         LINE#         35
+  C:0074H         LINE#         36
+  C:0074H         LINE#         37
+  C:0084H         LINE#         38
+  C:0099H         LINE#         39
+  -------         ENDPROC       _DELAY1MS
+  -------         ENDMOD        A1
+
+Program Size: data=12.0 xdata=0 code=212
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

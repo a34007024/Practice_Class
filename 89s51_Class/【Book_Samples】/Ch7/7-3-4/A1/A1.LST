@@ -1,0 +1,118 @@
+C51 COMPILER V9.01   A1                                                                    02/12/2012 20:58:30 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h> 
+   2          #define StepMotor P0                    // Port 0連接步進馬達 
+   3          #define LED P1                                  // Port 1連接LED 
+   4          #define STEPS   100                             // 定義步數 
+   5          #define Speed   5                               // 定義步進馬達速度(每步0.5S) 
+   6          #define t0H (65536-50000)/256   // 定義計數起點之高8位元 
+   7          #define t0L (65536-50000)%256   // 定義計數起點之低8位元 
+   8          #define t1H (65536-500)/256             // 定義計數起點之高8位元 
+   9          #define t1L (65536-500)%256             // 定義計數起點之低8位元 
+  10          char code PHASE1[4]={1,2,4,8};  // 1相激磁信號陣列 
+  11          sbit    Buzzer=P3^7;                    // 宣告蜂鳴器位址 
+  12          bit             FR_Flag=0;                              // 宣告正反轉旗標 
+  13          char    int_CNT=0;                              // 宣告中斷次數計數器 
+  14          char    i=0,j=0;                                // 宣告變數 
+  15          void    DELAY1ms(int);                  // 宣告延時函數
+  16          void    BEEP(char);                     // 宣告嗶聲函數
+  17          void    LEFT(char);                     // 宣告單燈左移函數
+  18          void    RIGHT(char);                    // 宣告單燈左移函數
+  19          // =========================================================
+  20          main()
+  21          {       StepMotor=0;                                    // 關閉步進馬達 
+  22   1              IE=0x8a;                                                // 啟用Timer 0, Timer 1中斷 1000 1010
+  23   1              TMOD |= 0x11;                                   // 設定Timer 0 Mode 1,Timer 1 Mode 1 
+  24   1              PT1=1;
+  25   1              TH0=t0H; TL0=t0L;                               // 設置計數量 
+  26   1              TH1=t1H; TL1=t1L;                               // 設置計數量 
+  27   1              TR0=1;                                                  // 啟動計數器(步進馬達開動) 
+  28   1              while(1)                                                // 無窮盡迴圈 
+  29   1              {       LEFT(1);                                        // 單燈左移
+  30   2                      RIGHT(1);                                       // 單燈右移
+  31   2                      BEEP(2);                                        // 嗶兩聲
+  32   2              } 
+  33   1      }
+  34          // =========================================================
+  35          void    DELAY1ms(int x) 
+  36          {       int i,j;                                                // 宣告變數
+  37   1              for(i=0;i<x;i++)                                // 外迴圈(x*1ms)
+  38   1                      for(j=0;j<120;j++);                     // 內迴圈(1ms)
+  39   1      }
+  40          // =========================================================
+  41          void    BEEP(char x) 
+  42          {       char i;                                                 // 宣告變數
+  43   1              for(i=0;i<x;i++)                                // 外迴圈(x聲)
+  44   1              {       TR1=1;                                          // 開啟Timer 1
+  45   2                      DELAY1ms(100);                          // 發音0.1s
+  46   2                      TR1=0;                                          // 關閉Timer 1
+  47   2                      DELAY1ms(100);                          // 靜音(0.1s)
+  48   2              }       
+  49   1      }
+  50          // =========================================================
+  51          void SM_int(void)       interrupt 1                     // 中斷副程式
+  52          {       if (++int_CNT==10)                                      // 若已中斷10次(0.5S)
+  53   1              {       int_CNT=0;                                              // 中斷計數器歸零
+  54   2                      if (++i==STEPS)                                 // 若已STEPS步
+  55   2                      {       i=0;                                            // 計數器歸零
+C51 COMPILER V9.01   A1                                                                    02/12/2012 20:58:30 PAGE 2   
+
+  56   3                              FR_Flag=!FR_Flag;                       // 改變方向旗標
+  57   3                      }
+  58   2                      if (++j==4) j=0;                                // 調整激磁指標
+  59   2                      if (FR_Flag) StepMotor=PHASE1[j];       // 正轉 
+  60   2                      else StepMotor=PHASE1[3-j];                     // 反轉
+  61   2                      DELAY1ms(200);                                  // 延遲0.2秒
+  62   2              }
+  63   1              TH0=t0H;TL0=t0L;                                        // 重填計時量 
+  64   1      }
+  65          // =========================================================
+  66          void BZ_int(void)       interrupt 3                     // 中斷副程式
+  67          {       Buzzer=!Buzzer;                                         // 切換Buzzer
+  68   1              TH1=t1H;TL1=t1L;                                        // 重填計時量 
+  69   1      }
+  70          // =========================================================
+  71          void    LEFT(char x)                            // 單燈左移函數
+  72          {       char i,j;                                               // 宣告變數
+  73   1              for(i=0;i<x;i++)                                // 外迴圈(x圈)
+  74   1              {       LED=0xfe;                                       // LED初值
+  75   2                      for(j=0;j<7;j++)                        // 內迴圈(7次)
+  76   2                      {       DELAY1ms(100);                  // 延遲0.1秒
+  77   3                              LED=(LED<<1)|1;                 // 左移
+  78   3                      } 
+  79   2                      DELAY1ms(100);                          // 延遲0.1秒
+  80   2              } 
+  81   1      }
+  82          // =========================================================
+  83          void    RIGHT(char x)                           // 單燈右移函數
+  84          {       char i,j;                                               // 宣告變數
+  85   1              for(i=0;i<x;i++)                                // 外迴圈(x圈)
+  86   1              {       LED=0x7f;                                       // LED初值
+  87   2                      for(j=0;j<7;j++)                        // 內迴圈(7次)
+  88   2                      {       DELAY1ms(100);                  // 延遲0.1秒
+  89   3                              LED=(LED>>1)|0x80;              // 右移
+  90   3                      } 
+  91   2                      DELAY1ms(100);                          // 延遲0.1秒
+  92   2              } 
+  93   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    342    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

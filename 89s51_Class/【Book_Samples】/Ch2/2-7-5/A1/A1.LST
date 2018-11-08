@@ -1,0 +1,69 @@
+C51 COMPILER V9.01   A1                                                                    02/02/2012 17:06:53 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                       // 包含reg51.h標頭檔  
+   2          #define wait  20                                // 定義防彈跳延遲時間(ms) 
+   3          #define LED  P1                                 // 定義LED連接到Port 1 
+   4          sbit    PB=P2^0;                                // 宣告按鈕開關位址 
+   5          void    DELAY1ms(int);                  // 宣告延時函數 
+   6          sbit    Buzzer= P3^7;                   // 宣告蜂鳴器位址 
+   7          void    BEEP(char);                             // 宣告嗶聲函數 
+   8          void    DELAY500us(int);                // 宣告0.5ms延時函數 
+   9          //==== 主程式 =========================================
+  10          main()           
+  11          {       PB=1;                                           // 初始化 
+  12   1              LED=0xff;                                       // 初始化 
+  13   1              while(1)                                        // 無窮盡迴圈 
+  14   1              {       if (!PB)                                // 偵測PB按鈕開關 
+  15   2                      {       BEEP(1);                        // 以嗶聲代替按下防彈跳
+  16   3                              while (!PB);            // 偵測PB按鈕開關按住不放
+  17   3                              LED=~LED;                       // PB按鈕開關放開後動作 
+  18   3                              DELAY1ms(wait);         // 延遲wait ms(放開防彈跳)
+  19   3                      }
+  20   2              }
+  21   1      }
+  22          //==== 延時函數(1ms) ==============================
+  23          void    DELAY1ms(int x) 
+  24          {       int     i,j;
+  25   1              for(i=0;i<x;i++)                        // 外迴圈(1ms*x)
+  26   1                      for(j=0;j<120;j++);             // 內迴圈(1ms)
+  27   1      }
+  28          //==== 嗶聲函數 ==============================
+  29          void    BEEP(char x)
+  30          {       char i,j;
+  31   1              for(i=0;i<x;i++)                // 產生x聲  
+  32   1              {       for(j=0;j<100;j++)// 蜂鳴器吸放100次  
+  33   2                      {       Buzzer=0;DELAY500us(1); // 蜂鳴器吸0.5ms  
+  34   3                              Buzzer=1;DELAY500us(1); // 蜂鳴器放0.5ms
+  35   3                      }
+  36   2                      DELAY500us(200); // 蜂鳴器靜音0.1秒(0.5ms*200)  
+  37   2              }
+  38   1      }
+  39          //==== 延時函數(0.5ms) ==============================
+  40          void    DELAY500us(int x) 
+  41          {       int     i,j;
+  42   1              for(i=0;i<x;i++)                        // 外迴圈(0.5ms*x)
+  43   1                      for(j=0;j<60;j++);      // 內迴圈(0.5ms)
+  44   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    166    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.01   A1                                                                    02/02/2012 17:06:53 PAGE 2   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

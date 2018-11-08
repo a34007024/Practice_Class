@@ -1,0 +1,83 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/08/2012  11:34:45  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Ch5-4-2.obj TO Ch5-4-2
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Ch5-4-2.obj (CH5_4_2)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  Ch5-4-2 (CH5_4_2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0012H     UNIT         ?PR?MAIN?CH5_4_2
+            CODE    0015H     000CH     UNIT         ?C_C51STARTUP
+                    0021H     0002H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     0006H     UNIT         ?PR?ES_INT?CH5_4_2
+
+
+
+OVERLAY MAP OF MODULE:   Ch5-4-2 (CH5_4_2)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?CH5_4_2
+
+
+
+SYMBOL TABLE OF MODULE:  Ch5-4-2 (CH5_4_2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CH5_4_2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.1       PUBLIC        TI
+  C:0003H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/08/2012  11:34:45  PAGE 2
+
+
+  C:0026H         PUBLIC        ES_int
+  -------         PROC          MAIN
+  C:0003H         LINE#         5
+  C:0003H         LINE#         6
+  C:0006H         LINE#         7
+  C:000AH         LINE#         8
+  C:000DH         LINE#         9
+  C:0010H         LINE#         10
+  -------         ENDPROC       MAIN
+  -------         PROC          ES_INT
+  C:0026H         LINE#         13
+  C:0026H         LINE#         14
+  C:0029H         LINE#         15
+  C:002BH         LINE#         16
+  -------         ENDPROC       ES_INT
+  -------         ENDMOD        CH5_4_2
+
+Program Size: data=9.0 xdata=0 code=42
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

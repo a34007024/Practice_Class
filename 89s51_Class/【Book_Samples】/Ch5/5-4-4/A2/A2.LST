@@ -1,0 +1,62 @@
+C51 COMPILER V9.01   A2                                                                    02/08/2012 16:23:05 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A2
+OBJECT MODULE PLACED IN A2.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A2.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>       // 包含reg51.h標頭檔 
+   2          #define SW       P2                     // 定義SW接至Port 0
+   3          #define LED      P1                     // 定義LED接至Port 1
+   4          #define keys ~SW&0x03   // 定義按鍵遮罩 
+   5          char    pat=0x0f;               // 宣告開關信號變數  
+   6          void    wait(void);             // 宣告防彈跳函數 
+   7          //==主程式======================================
+   8          main()                          
+   9          {       char R_key;
+  10   1              SW=0xff;                        // 設定SW為輸入埠
+  11   1              PCON|=0x80;                     // 將SMOD位元設定為1
+  12   1              SCON=0x90;                      // 將串列埠採mode 2
+  13   1              while(1)
+  14   1              {       R_key=keys;
+  15   2                      wait();                 // 防彈跳
+  16   2                      while(keys!=0); // 等待開關放開 
+  17   2                      wait();                 // 防彈跳
+  18   2                      switch (keys)   // 判斷按鍵  
+  19   2                      {       case 1:         // 傳送單燈左移指令  
+  20   3                              {       SBUF=0x0f;
+  21   4                                      break;
+  22   4                              }
+  23   3                              case 2:         // 傳送單燈右移指令 
+  24   3                              {       SBUF=0xf0;
+  25   4                                      break;
+  26   4                              }
+  27   3                      }
+  28   2                      while(!RI);             // 等待接收完成
+  29   2                      RI=TI=0;                // 清除RI,TI旗標(重傳)
+  30   2                      if (SBUF==0x0f) LED=0x00;// 若接收到的開啟指令，則LED全開  
+  31   2                      if (SBUF==0xf0) LED=0xff;// 若接收到的關閉指令，則LED全關  
+  32   2              } 
+  33   1      } 
+  34          //====================================
+  35          void    wait(void)
+  36          {       char i,j;
+  37   1              for(i=0;i<30;i++)
+  38   1                      for(j=0;j<120;j++);
+  39   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     86    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

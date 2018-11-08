@@ -1,0 +1,33 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\89S51\Ch7\7-3-3\Ch7-3-3.uvproj
+Project File Date:  02/12/2012
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Ch7-3-3.C...
+CH7-3-3.C(15): error C202: 'i': undefined identifier
+CH7-3-3.C(16): error C202: 'i': undefined identifier
+CH7-3-3.C(22): error C202: 'i': undefined identifier
+CH7-3-3.C(23): error C202: 'i': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Ch7-3-3.C...
+CH7-3-3.C(17): error C202: 'PHASE': undefined identifier
+CH7-3-3.C(24): error C202: 'PHASE': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling Ch7-3-3.C...
+linking...
+Program Size: data=10.0 xdata=0 code=156
+creating hex file from "Ch7-3-3"...
+"Ch7-3-3" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Ch7-3-3.C...
+linking...
+Program Size: data=10.0 xdata=0 code=156
+creating hex file from "Ch7-3-3"...
+"Ch7-3-3" - 0 Error(s), 0 Warning(s).

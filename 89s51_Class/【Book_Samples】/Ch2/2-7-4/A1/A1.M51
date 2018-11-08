@@ -1,0 +1,75 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/02/2012  16:22:43  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE A1.obj TO A1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  A1.obj (A1)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  A1 (A1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0025H     UNIT         ?PR?MAIN?A1
+            CODE    0028H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   A1 (A1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?A1
+
+
+
+SYMBOL TABLE OF MODULE:  A1 (A1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        A1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  B:00A0H.1       PUBLIC        FORWARD
+  B:00A0H.2       PUBLIC        REVERSE
+  C:0003H         PUBLIC        main
+  B:0090H.0       PUBLIC        MS_F
+  B:0090H.1       PUBLIC        MS_R
+  B:00A0H.0       PUBLIC        OFF
+  -------         PROC          MAIN
+  C:0003H         LINE#         8
+  C:0003H         LINE#         9
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/02/2012  16:22:43  PAGE 2
+
+
+  C:0009H         LINE#         10
+  C:000BH         LINE#         11
+  C:000BH         LINE#         12
+  C:0014H         LINE#         13
+  C:001EH         LINE#         14
+  C:0026H         LINE#         15
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        A1
+
+Program Size: data=9.0 xdata=0 code=52
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

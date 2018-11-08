@@ -1,0 +1,65 @@
+C51 COMPILER V9.01   CH7_3_1                                                               02/12/2012 16:36:20 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE CH7_3_1
+OBJECT MODULE PLACED IN Ch7-3-1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Ch7-3-1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h> 
+   2          #define StepMotor P0                    // Port 0連接步進馬達 
+   3          #define STEPS   100                             // 定義步進數 
+   4          #define Speed   5                               // 定義步進馬達速度(每步0.5S) 
+   5          sbit            PB1=P2^0;                               // 1相激磁信號100步
+   6          sbit            PB2=P2^1;                               // 2相激磁信號100步
+   7          sbit            PB3=P2^2;                               // 1-2相激磁信號100步
+   8          char code PHASE1[4]={1,2,4,8};  // 1相激磁信號陣列
+   9          char code PHASE2[4]={3,6,12,9}; // 2相激磁信號陣列
+  10          char code PHASE1_2[8]={1,3,2,6,4,12,8,9}; // 1-2相激磁信號陣列
+  11          void    SM_driver(char *, bit);         // 宣告驅動函數  
+  12          void    DELAY1ms(int);                          // 宣告延時函數
+  13          // =========================================================
+  14          main()
+  15          {       StepMotor=0;                                            // 關閉步進馬達 
+  16   1              PB1=PB2=PB3=1;                                          // 按鈕開關初始化 
+  17   1              while(1)                                                        // 無窮盡迴圈 
+  18   1              {       if (!PB1) 
+  19   2                              SM_driver(PHASE1,0);            // 1相驅動  
+  20   2                      else if (!PB2)
+  21   2                              SM_driver(PHASE2,0);            // 2相驅動
+  22   2                      else if (!PB3)
+  23   2                              SM_driver(PHASE1_2,1);          // 1-2相驅動
+  24   2              }
+  25   1      }
+  26          // =========================================================
+  27          void    SM_driver(char *PHASE, bit F4_8) 
+  28          {       char i,j,x;                                     // 宣告變數
+  29   1              if(F4_8) x=8; else x=4;                 // 判斷一個週期幾步
+  30   1              for(i=0;i<STEPS/4;i++)                  // 執行STEP/4個週期
+  31   1                      for(j=0;j<x;j++)                        // 總共x個信號
+  32   1                      {       StepMotor=PHASE[j];             // 輸出到步進馬達
+  33   2                              DELAY1ms(Speed*100);    // 延遲Speed * 0.5秒
+  34   2                      }
+  35   1              StepMotor=0;                                            // 關閉步進馬達 
+  36   1      }
+  37          // =========================================================
+  38          void    DELAY1ms(int x) 
+  39          {       int i,j;                                        // 宣告變數
+  40   1              for(i=0;i<x;i++)                        // 外迴圈(x*1ms)
+  41   1                      for(j=0;j<120;j++);             // 內迴圈(1ms)
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    173    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

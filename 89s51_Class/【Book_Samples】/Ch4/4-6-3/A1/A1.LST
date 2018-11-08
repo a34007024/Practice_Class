@@ -1,0 +1,217 @@
+C51 COMPILER V9.01   A1                                                                    02/07/2012 15:36:19 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE A1
+OBJECT MODULE PLACED IN A1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE A1.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>                       // 包含reg51.h標頭檔  
+   2          #define SEGP  P0                                // 定義顯示信號埠 
+   3          #define SCANP P1                                // 定義掃瞄埠 
+   4          #define count0 50000                    // 預設計數量(50ms)
+   5          #define count1 1000                             // 預設計數量(1ms)
+   6          #define t0H (65536-count0)/256  // 預設計數起點(50ms)
+   7          #define t0L (65536-count0)%256  // 預設計數起點(50ms)
+   8          #define t1H (65536-count1)/256  // 預設計數起點(1ms)
+   9          #define t1L (65536-count1)%256  // 預設計數起點(1ms)
+  10          #define speed 500                               // 預設調整速度(500=250ms)
+  11                                                                          // 即0.25s，每秒跳4次
+  12          //char  T0_H,T0_L,T1_H,T1_L;    // 宣告計量變數 
+  13          char    int0_CNT=0;                             // 宣告預設中斷重複次數
+  14          char    SEGX=0;                                 // 宣告掃瞄指標
+  15          void    DELAY500us(int);                // 宣告延時函數 
+  16          void    BEEP(char);                             // 宣告嗶聲函數 
+  17          bit             _mode=0;                                // 宣告模式旗標
+  18                          // _mode=0：計時模式、_mode=1：調整模式
+  19          sbit    _H=P2^0;                                // 宣告時調整鍵位址
+  20          sbit    _M=P2^1;                                // 宣告分調整鍵位址
+  21          sbit    _Shift=P2^2;                    // 宣告Shift鍵位址
+  22          sbit    Buzzer=P3^7;                    // 宣告蜂鳴器位址
+  23          // 七節顯示器編碼表
+  24          char code TAB[12]={     0xc0,0xf9,0xa4,0xb0,0x99,
+  25                                                  0x92,0x82,0xf8,0x80,0x98, 
+  26                                                  0xff,0xbf};//   0xbf=1011 1111(-)
+  27          // 低態驅動掃瞄碼 
+  28          char code SCAN_CODE[8]={0x7f,0xbf,0xdf,0xef,
+  29                                                          0xf7,0xfb,0xfd,0xfe };  
+  30          // 顯示資料
+  31          //                       S0 S1 - M0 M1 -  H0 H1
+  32          char DISP[8]={0, 0,11,0,0,11,0, 0};// 初值為00-00-00 
+  33          // 時：H1=DISP[7], H0=DISP[6]
+  34          // 分：M1=DISP[4], M0=DISP[3]
+  35          // 秒：S1=DISP[1], S0=DISP[0]
+  36          //==== 主程式 =========================================
+  37          main()           
+  38          {       IE=0x8b;                                        // 啟用int0,T0,T1中斷 
+  39   1              PT1=1;                                          // Timer 1高優先等級 
+  40   1              IT0=1;                                          // 0=低態觸發,1=邊緣觸發 
+  41   1              TMOD=0x11;                                      // 設定T0,T1都為Mode 1
+  42   1              TH0=t0H;TL0=t0L;                        // T0填入計量  
+  43   1              TH1=t1H;TL1=t1L;                        // T1填入計量  
+  44   1              TR1=1;                                          // 啟動Timer 1(開始掃瞄) 
+  45   1              // Timer 0：計秒、Timer 1：掃瞄(顯示) 
+  46   1              while(1)
+  47   1              {       while(_mode)                    
+  48   2                      // ===== 調整模式 =====
+  49   2                      {       TR0=0;                                  // 停止計時
+  50   3                              DISP[0]=DISP[1]=0;              // 秒數歸零 
+  51   3                              // _H：時調整鍵
+  52   3                              // _M：分調整鍵
+  53   3                              // _Shift：Shift鍵
+  54   3                              // =======================
+  55   3                              // == 從00到23 ==(時數上調)
+C51 COMPILER V9.01   A1                                                                    02/07/2012 15:36:19 PAGE 2   
+
+  56   3                              // =======================
+  57   3                              if(!_H && _Shift)               // _H
+  58   3                              {       if (DISP[7]==2 && DISP[6]==3)// 23時
+  59   4                                      {       DISP[7]=0;DISP[6]=0;}           // 調回00時
+  60   4                                      else if (DISP[6]!=9) DISP[6]++;         // 時個位數加1
+  61   4                                              else
+  62   4                                              {       DISP[6]=0;              // 時個位數進位
+  63   5                                                      DISP[7]++;              // 時十位數加1
+  64   5                                              }
+  65   4                              }
+  66   3                              // =======================
+  67   3                              // == 從23到00 ==(時數下調)
+  68   3                              // =======================
+  69   3                              if(!_H && !_Shift)      // _Shift+_H
+  70   3                              {       if (DISP[7]==0 && DISP[6]==0)   // 00時
+  71   4                                      {       DISP[7]=2;DISP[6]=3;}           // 調回23時
+  72   4                                      else if (DISP[6]!=0) DISP[6]--; // 時個位數減1
+  73   4                                              else
+  74   4                                              {       DISP[6]=9;              // 時個位數借位
+  75   5                                                      DISP[7]--;              // 時十位數減1
+  76   5                                              }
+  77   4                              }
+  78   3                              // =======================
+  79   3                              // == 從00到59 ==(分數上調)
+  80   3                              // =======================
+  81   3                              if(!_M && _Shift)       // _Shift+_M
+  82   3                              {       if (DISP[4]==5 && DISP[3]==9)// 59分
+  83   4                                      {       DISP[4]=0;DISP[3]=0;}           // 調回00分
+  84   4                                      else if (DISP[3]!=9) DISP[3]++;         // 分個位數加1
+  85   4                                              else
+  86   4                                              {       DISP[3]=0;              // 分個位數進位
+  87   5                                                      DISP[4]++;              // 分十位數加1
+  88   5                                              }
+  89   4                              }
+  90   3                              // =======================
+  91   3                              // == 從59到00 ==(分數下調)
+  92   3                              // =======================
+  93   3                              if(!_M && !_Shift)      // _M
+  94   3                              {       if (DISP[4]==0 && DISP[3]==0)// 00分
+  95   4                                      {       DISP[4]=5;DISP[3]=9;}           // 調回59分
+  96   4                                      else if (DISP[3]!=0) DISP[3]--; // 分個位數減1
+  97   4                                              else
+  98   4                                              {       DISP[3]=9;              // 分個位數借位
+  99   5                                                      DISP[4]--;              // 分十位數減1
+ 100   5                                              }
+ 101   4                              }
+ 102   3                              DELAY500us(speed);// 延遲speed ms
+ 103   3                      }
+ 104   2                      // =====計時模式 =====
+ 105   2                      TR0=1;                                          // 開始計時 
+ 106   2                      if (    //DISP[7]==0 && DISP[6]==0 && 
+ 107   2                                      DISP[4]==0 && DISP[3]==0 && DISP[1]==0 && DISP[0]==0)
+ 108   2                      {       BEEP(2); DELAY500us(2000);}// 00時嗶兩聲 
+ 109   2              }
+ 110   1      }
+ 111          //=== 切換模式(int0) ===
+ 112          void mode_toggle(void) interrupt 0      
+ 113          {       _mode=!_mode;                           // 切換模式旗標
+ 114   1      }       
+ 115          //=== 秒產生中斷副程式(T0) ===
+ 116          // ====== 時：H1=DISP[7], H0=DISP[6] ======
+ 117          // ====== 分：M1=DISP[4], M0=DISP[3] ======
+C51 COMPILER V9.01   A1                                                                    02/07/2012 15:36:19 PAGE 3   
+
+ 118          // ====== 秒：S1=DISP[1], S0=DISP[0] ======
+ 119          void Oclock(void) interrupt 1 using 1   
+ 120          {       TH0=t0H;TL0=t0L;                        // T0填入計量  
+ 121   1              if (++int0_CNT==20)                     // 中斷次數超過20次(即1ms)
+ 122   1              {       int0_CNT=0;                             // 中斷次數歸零 
+ 123   2                      if (DISP[0]<9) DISP[0]++;
+ 124   2                      // 秒個位數加1
+ 125   2                      else 
+ 126   2                      // 秒個位數進位
+ 127   2                      {       if (DISP[1]<5) 
+ 128   3                              {       DISP[1]++;DISP[0]=0;  }
+ 129   3                              else
+ 130   3                              // 秒十位數進位
+ 131   3                              {       if (DISP[3]<9) 
+ 132   4                                      {       DISP[3]++;DISP[1]=DISP[0]=0;  }
+ 133   4                                      else
+ 134   4                                      // 分個位數進位
+ 135   4                                      {       if (DISP[4]<5) 
+ 136   5                                              {       DISP[4]++;
+ 137   6                                                      DISP[3]=DISP[1]=DISP[0]=0; 
+ 138   6                                              }
+ 139   5                                              else
+ 140   5                                              // 分十位數進位
+ 141   5                                              {       if (DISP[7]==2 && DISP[6]==3) 
+ 142   6                                                      {       DISP[7]=DISP[6]=0;// 時歸零 
+ 143   7                                                              DISP[4]=DISP[3]=0;// 分歸零 
+ 144   7                                                              DISP[1]=DISP[0]=0;// 秒歸零 
+ 145   7                                                      }
+ 146   6                                                      else if (DISP[6]<9) 
+ 147   6                                                      {       DISP[6]++;
+ 148   7                                                              DISP[4]=DISP[3]=0;// 分歸零 
+ 149   7                                                              DISP[1]=DISP[0]=0;// 秒歸零 
+ 150   7                                                      }
+ 151   6                                                      else
+ 152   6                                                      // 時個位數進位
+ 153   6                                                      {       DISP[7]++;DISP[6]=0;
+ 154   7                                                              DISP[4]=DISP[3]=0;// 分歸零 
+ 155   7                                                              DISP[1]=DISP[0]=0;// 秒歸零 
+ 156   7                                                      }
+ 157   6                                              }
+ 158   5                                      } 
+ 159   4                              }
+ 160   3                      }
+ 161   2              }       
+ 162   1      }       
+ 163          //=== 八位七節顯示器掃瞄中斷副程式(T1) ===
+ 164          void segscan(void) interrupt 3 using 2
+ 165          {       TH1=t1H;TL1=t1L;                        // T1填入計量  
+ 166   1              if (++SEGX==8) SEGX=0;          // 調整掃瞄指標 
+ 167   1              SEGP=0xff;                                      // 關閉顯示信號(防殘影)
+ 168   1              SCANP=SCAN_CODE[7-SEGX];        // 輸出掃瞄信號 
+ 169   1              SEGP=TAB[DISP[SEGX]];           // 輸出顯示信號 
+ 170   1      }
+ 171          //==== 延時函數(0.5ms) ==============================
+ 172          void DELAY500us(int x) 
+ 173          {       int     i,j;
+ 174   1              for(i=0;i<x;i++)                        // 外迴圈(0.5ms*x)
+ 175   1                      for(j=0;j<60;j++);              // 內迴圈(0.5ms)
+ 176   1      }
+ 177          //==== 嗶聲函數 ==============================
+ 178          void BEEP(char x) 
+ 179          {       int     i,j;
+C51 COMPILER V9.01   A1                                                                    02/07/2012 15:36:19 PAGE 4   
+
+ 180   1              for(i=0;i<x;i++)                                // 嗶x聲 
+ 181   1              {       for(j=0;j<100;j++)                      // 重複吸放100次
+ 182   2                      {       Buzzer=0;DELAY500us(1);// 蜂鳴器吸
+ 183   3                              Buzzer=1;DELAY500us(1);// 蜂鳴器放
+ 184   3                      } 
+ 185   2                      DELAY500us(200);                        // 靜音0.1秒
+ 186   2              } 
+ 187   1      }
+ 188          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    587    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
