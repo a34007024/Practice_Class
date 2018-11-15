@@ -1,0 +1,108 @@
+C51 COMPILER V9.01   INTERRUPTER_BUTTON_CONTROL_7SEG                                       11/15/2018 15:42:31 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE INTERRUPTER_BUTTON_CONTROL_7SEG
+OBJECT MODULE PLACED IN interrupter_button_control_7seg.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE interrupter_button_control_7seg.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          programmer      :LuckyPig
+   3          fuctions        :按住INT0從0數到999，按住再放開INT1則歸零
+   4          version         :20181115A
+   5          */
+   6          /*
+   7          接線說明:
+   8          a -> P0.0 (P0^0) a為LSB(最低位元)
+   9          b -> P0.1
+  10          依序a,b,c,d,e,f,g......
+  11          最後為dp -> P0.7 dp為MSB(最高位元)
+  12          D0 -> P2^0為LSB
+  13          依序接線
+  14          D3 -> P2^3為MSB
+  15          */
+  16          #include<reg51.h>
+  17          #define seg7 P0
+  18          #define scan7seg P2
+  19          #define led P1
+  20          sbit seg7dp = P0^7;
+  21          sbit buzzer = P3^7;
+  22          char seg7hexCode[20] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
+  23          // 7-seg對應顯示輸出0~9
+  24          char scan7segCode[8] = {0x7f,0xbf,0xdf,0xef,0xf7,0xfb,0xfd,0xfe};//使用char比int節省空間
+  25          //7-seg的掃描碼
+  26          char segDisplayNumber[8] = {19,19,19,19,19,0,0,0};
+  27          char dataPointer = 0;
+  28          void display8digitsData(char dataIn[]);
+  29          void delay(int ms);
+  30          int timeCount = 0;
+  31          
+  32          void main(){
+  33   1              IE=0x85;                //      啟用INT 0,INT 1中斷(0x85=10000101)
+  34   1              IP=0x01;                //      設定高優先等級
+  35   1              //int i;
+  36   1              seg7hexCode[19] = 0xff;//清除顯示器
+  37   1              while(1){
+  38   2                      display8digitsData(segDisplayNumber);
+  39   2              }
+  40   1      }
+  41          
+  42          void delay(int ms){
+  43   1              int i,j;
+  44   1              for(i = 0;i < ms;i++)
+  45   1                      for(j=0;j<120;j++);//do null
+  46   1      }
+  47          
+  48          void display8digitsData(char dataIn[]){
+  49   1              int i = 0;
+  50   1              for(i = 0;i<8;i++){
+  51   2                      seg7 = seg7hexCode[dataIn[i]];
+  52   2                      scan7seg = scan7segCode[i];
+  53   2                      delay(1);
+  54   2                      if(timeCount <= 32767)timeCount +=1;
+  55   2                      else timeCount = 0;
+C51 COMPILER V9.01   INTERRUPTER_BUTTON_CONTROL_7SEG                                       11/15/2018 15:42:31 PAGE 2   
+
+  56   2              }                                                                
+  57   1      }
+  58          // === INT 0的中斷副程式 ===
+  59          void int0_count(void) interrupt 0 using 1       {
+  60   1              display8digitsData(segDisplayNumber);
+  61   1              if(timeCount >= 10){//about 100 ms
+  62   2                      if(segDisplayNumber[7] != 9)segDisplayNumber[7] += 1;
+  63   2                      else{
+  64   3                              segDisplayNumber[7] = 0;
+  65   3                              if(segDisplayNumber[6] != 9)segDisplayNumber[6] += 1;
+  66   3                              else{
+  67   4                                      segDisplayNumber[6] = 0;
+  68   4                                      if(segDisplayNumber[5] != 9)segDisplayNumber[5] += 1;
+  69   4                                      else{
+  70   5                                              segDisplayNumber[5] = 0;
+  71   5                                      }
+  72   4                              }
+  73   3                      }
+  74   2                      timeCount = 0;
+  75   2              }
+  76   1      }
+  77          // === INT 1中斷副程式 ===
+  78          void int1_right(void) interrupt 2 using 2 {
+  79   1              display8digitsData(segDisplayNumber);   
+  80   1              segDisplayNumber[5] = 0;
+  81   1              segDisplayNumber[6] = 0;
+  82   1              segDisplayNumber[7] = 0;
+  83   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    270    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     39       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
