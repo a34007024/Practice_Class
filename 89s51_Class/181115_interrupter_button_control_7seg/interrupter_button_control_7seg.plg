@@ -173,3 +173,41 @@ linking...
 Program Size: data=79.0 xdata=0 code=514
 creating hex file from "interrupter_button_control_7seg"...
 "interrupter_button_control_7seg" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupter_button_control_7seg.c...
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_DISPLAY8DIGITSDATA?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER1: ?PR?INT1_RIGHT?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER2: ?C_C51STARTUP
+Program Size: data=67.0 xdata=0 code=519
+creating hex file from "interrupter_button_control_7seg"...
+"interrupter_button_control_7seg" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling interrupter_button_control_7seg.c...
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_DISPLAY8DIGITSDATA?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER1: ?PR?INT0_COUNT?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER2: ?PR?INT1_RIGHT?INTERRUPTER_BUTTON_CONTROL_7SEG
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_DISPLAY8DIGITSDATA?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER1: ?PR?INT1_RIGHT?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER2: ?C_C51STARTUP
+Program Size: data=80.0 xdata=0 code=540
+creating hex file from "interrupter_button_control_7seg"...
+"interrupter_button_control_7seg" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling interrupter_button_control_7seg.c...
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_DISPLAY8DIGITSDATA?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER1: ?PR?INT0_COUNT?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER2: ?PR?INT1_RIGHT?INTERRUPTER_BUTTON_CONTROL_7SEG
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_DISPLAY8DIGITSDATA?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER1: ?PR?INT1_RIGHT?INTERRUPTER_BUTTON_CONTROL_7SEG
+    CALLER2: ?C_C51STARTUP
+Program Size: data=80.0 xdata=0 code=540
+creating hex file from "interrupter_button_control_7seg"...
+"interrupter_button_control_7seg" - 0 Error(s), 2 Warning(s).

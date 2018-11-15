@@ -1,4 +1,4 @@
-C51 COMPILER V9.01   INTERRUPTER_BUTTON_CONTROL_7SEG                                       11/15/2018 15:42:31 PAGE 1   
+C51 COMPILER V9.01   INTERRUPTER_BUTTON_CONTROL_7SEG                                       11/15/2018 15:57:24 PAGE 1   
 
 
 C51 COMPILER V9.01, COMPILATION OF MODULE INTERRUPTER_BUTTON_CONTROL_7SEG
@@ -37,7 +37,7 @@ line level    source
   28          void display8digitsData(char dataIn[]);
   29          void delay(int ms);
   30          int timeCount = 0;
-  31          
+  31          char countDown = 0;
   32          void main(){
   33   1              IE=0x85;                //      啟用INT 0,INT 1中斷(0x85=10000101)
   34   1              IP=0x01;                //      設定高優先等級
@@ -45,61 +45,66 @@ line level    source
   36   1              seg7hexCode[19] = 0xff;//清除顯示器
   37   1              while(1){
   38   2                      display8digitsData(segDisplayNumber);
-  39   2              }
-  40   1      }
-  41          
-  42          void delay(int ms){
-  43   1              int i,j;
-  44   1              for(i = 0;i < ms;i++)
-  45   1                      for(j=0;j<120;j++);//do null
-  46   1      }
-  47          
-  48          void display8digitsData(char dataIn[]){
-  49   1              int i = 0;
-  50   1              for(i = 0;i<8;i++){
-  51   2                      seg7 = seg7hexCode[dataIn[i]];
-  52   2                      scan7seg = scan7segCode[i];
-  53   2                      delay(1);
-  54   2                      if(timeCount <= 32767)timeCount +=1;
-  55   2                      else timeCount = 0;
-C51 COMPILER V9.01   INTERRUPTER_BUTTON_CONTROL_7SEG                                       11/15/2018 15:42:31 PAGE 2   
+  39   2                      if(countDown == 0){
+  40   3                              if(timeCount >= 10){//about 100 ms
+  41   4                                      if(segDisplayNumber[7] != 9)segDisplayNumber[7] += 1;
+  42   4                                      else{
+  43   5                                              segDisplayNumber[7] = 0;
+  44   5                                              if(segDisplayNumber[6] != 9)segDisplayNumber[6] += 1;
+  45   5                                              else{
+  46   6                                                      segDisplayNumber[6] = 0;
+  47   6                                                      if(segDisplayNumber[5] != 9)segDisplayNumber[5] += 1;
+  48   6                                                      else{
+  49   7                                                              segDisplayNumber[5] = 0;
+  50   7                                                      }
+  51   6                                              }
+  52   5                                      }
+  53   4                                      timeCount = 0;
+  54   4                              }
+  55   3                      }
+C51 COMPILER V9.01   INTERRUPTER_BUTTON_CONTROL_7SEG                                       11/15/2018 15:57:24 PAGE 2   
 
-  56   2              }                                                                
+  56   2              }
   57   1      }
-  58          // === INT 0的中斷副程式 ===
-  59          void int0_count(void) interrupt 0 using 1       {
-  60   1              display8digitsData(segDisplayNumber);
-  61   1              if(timeCount >= 10){//about 100 ms
-  62   2                      if(segDisplayNumber[7] != 9)segDisplayNumber[7] += 1;
-  63   2                      else{
-  64   3                              segDisplayNumber[7] = 0;
-  65   3                              if(segDisplayNumber[6] != 9)segDisplayNumber[6] += 1;
-  66   3                              else{
-  67   4                                      segDisplayNumber[6] = 0;
-  68   4                                      if(segDisplayNumber[5] != 9)segDisplayNumber[5] += 1;
-  69   4                                      else{
-  70   5                                              segDisplayNumber[5] = 0;
-  71   5                                      }
-  72   4                              }
-  73   3                      }
-  74   2                      timeCount = 0;
-  75   2              }
-  76   1      }
-  77          // === INT 1中斷副程式 ===
-  78          void int1_right(void) interrupt 2 using 2 {
-  79   1              display8digitsData(segDisplayNumber);   
-  80   1              segDisplayNumber[5] = 0;
-  81   1              segDisplayNumber[6] = 0;
-  82   1              segDisplayNumber[7] = 0;
-  83   1      }
+  58          
+  59          void delay(int ms){
+  60   1              int i,j;
+  61   1              for(i = 0;i < ms;i++)
+  62   1                      for(j=0;j<120;j++);//do null
+  63   1      }
+  64          
+  65          void display8digitsData(char dataIn[]){
+  66   1              int i = 0;
+  67   1              for(i = 0;i<8;i++){
+  68   2                      seg7 = seg7hexCode[dataIn[i]];
+  69   2                      scan7seg = scan7segCode[i];
+  70   2                      delay(1);
+  71   2                      if(timeCount <= 9999)timeCount +=1;
+  72   2                      else timeCount = 0;
+  73   2              }                                                                
+  74   1      }
+  75          // === INT 0的中斷副程式 ===
+  76          void int0_count(void) interrupt 0 using 1       {
+  77   1              display8digitsData(segDisplayNumber);
+  78   1              if(countDown == 1)countDown = 0;
+  79   1              else countDown = 1;
+  80   1              delay(1000);
+  81   1      }
+  82          // === INT 1中斷副程式 ===
+  83          void int1_right(void) interrupt 2 using 2 {
+  84   1              display8digitsData(segDisplayNumber);   
+  85   1              segDisplayNumber[5] = 0;
+  86   1              segDisplayNumber[6] = 0;
+  87   1              segDisplayNumber[7] = 0;
+  88   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    270    ----
+   CODE SIZE        =    293    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     39       5
+   DATA SIZE        =     40       5
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
