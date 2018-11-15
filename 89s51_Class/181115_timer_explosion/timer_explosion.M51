@@ -1,0 +1,194 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/15/2018  13:16:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE timer_explosion.obj TO timer_explosion RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  timer_explosion.obj (TIMER_EXPLOSION)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  timer_explosion (TIMER_EXPLOSION)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0028H     UNIT         ?DT?TIMER_EXPLOSION
+            DATA    0030H     0006H     UNIT         _DATA_GROUP_
+            IDATA   0036H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0056H     UNIT         ?PR?_BEEP?TIMER_EXPLOSION
+            CODE    08E2H     0055H     UNIT         ?PR?_DISPLAY8DIGITSDATA?TIMER_EXPLOSION
+            CODE    0937H     0053H     UNIT         ?PR?MAIN?TIMER_EXPLOSION
+            CODE    098AH     0035H     UNIT         ?C_INITSEG
+            CODE    09BFH     002DH     UNIT         ?C?LIB_CODE
+            CODE    09ECH     0026H     UNIT         ?PR?_DELAY?TIMER_EXPLOSION
+            CODE    0A12H     0026H     UNIT         ?PR?_DELAY100US?TIMER_EXPLOSION
+
+
+
+OVERLAY MAP OF MODULE:   timer_explosion (TIMER_EXPLOSION)
+
+
+SEGMENT                                           DATA_GROUP 
+  +--> CALLED SEGMENT                           START    LENGTH
+---------------------------------------------------------------
+?C_C51STARTUP                                   -----    -----
+  +--> ?PR?MAIN?TIMER_EXPLOSION
+  +--> ?C_INITSEG
+
+?PR?MAIN?TIMER_EXPLOSION                        -----    -----
+  +--> ?PR?_DISPLAY8DIGITSDATA?TIMER_EXPLOSION
+  +--> ?PR?_BEEP?TIMER_EXPLOSION
+
+?PR?_DISPLAY8DIGITSDATA?TIMER_EXPLOSION         0030H    0005H
+  +--> ?PR?_DELAY?TIMER_EXPLOSION
+
+?PR?_BEEP?TIMER_EXPLOSION                       0030H    0006H
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/15/2018  13:16:35  PAGE 2
+
+
+  +--> ?PR?_DELAY100US?TIMER_EXPLOSION
+
+
+
+SYMBOL TABLE OF MODULE:  timer_explosion (TIMER_EXPLOSION)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TIMER_EXPLOSION
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:0008H         PUBLIC        dataPointer
+  D:00B0H         PUBLIC        P3
+  D:0009H         PUBLIC        displayTime
+  C:0A12H         PUBLIC        _delay100us
+  C:09ECH         PUBLIC        _delay
+  C:088CH         PUBLIC        _beep
+  D:000BH         PUBLIC        scan7segCode
+  B:00B0H.7       PUBLIC        buzzer
+  C:0937H         PUBLIC        main
+  D:0013H         PUBLIC        power
+  D:0014H         PUBLIC        countDownNumber
+  C:08E8H         PUBLIC        _display8digitsData
+  D:001CH         PUBLIC        seg7hexCode
+  -------         PROC          MAIN
+  C:0937H         LINE#         34
+  C:0937H         LINE#         36
+  C:093AH         LINE#         37
+  C:0940H         LINE#         38
+  C:094DH         LINE#         39
+  C:0950H         LINE#         40
+  C:0952H         LINE#         41
+  C:0952H         LINE#         42
+  C:0956H         LINE#         43
+  C:0958H         LINE#         44
+  C:095AH         LINE#         45
+  C:0962H         LINE#         46
+  C:0965H         LINE#         47
+  C:0967H         LINE#         48
+  C:0969H         LINE#         49
+  C:0969H         LINE#         50
+  C:096FH         LINE#         51
+  C:0972H         LINE#         52
+  C:0979H         LINE#         53
+  C:097CH         LINE#         54
+  C:097EH         LINE#         55
+  C:097EH         LINE#         56
+  C:0983H         LINE#         57
+  C:0983H         LINE#         58
+  C:0985H         LINE#         59
+  C:0989H         LINE#         61
+  C:0989H         LINE#         62
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/15/2018  13:16:35  PAGE 3
+
+
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:09ECH         LINE#         64
+  C:09ECH         LINE#         66
+  C:09FCH         LINE#         67
+  C:0A11H         LINE#         68
+  -------         ENDPROC       _DELAY
+  -------         PROC          L?0045
+  -------         ENDPROC       L?0045
+  -------         PROC          _DISPLAY8DIGITSDATA
+  D:0030H         SYMBOL        dataIn
+  -------         DO            
+  D:0033H         SYMBOL        i
+  -------         ENDDO         
+  C:08E8H         LINE#         70
+  C:08EEH         LINE#         71
+  C:08F3H         LINE#         72
+  C:08F7H         LINE#         73
+  C:090CH         LINE#         74
+  C:0914H         LINE#         75
+  C:091BH         LINE#         76
+  C:0923H         LINE#         77
+  C:0936H         LINE#         78
+  -------         ENDPROC       _DISPLAY8DIGITSDATA
+  -------         PROC          _BEEP
+  D:0030H         SYMBOL        beepcount
+  -------         DO            
+  D:0032H         SYMBOL        i
+  D:0034H         SYMBOL        j
+  -------         ENDDO         
+  C:088CH         LINE#         79
+  C:0890H         LINE#         81
+  C:08A6H         LINE#         82
+  C:08ABH         LINE#         83
+  C:08B4H         LINE#         84
+  C:08BDH         LINE#         85
+  C:08D0H         LINE#         86
+  C:08D7H         LINE#         87
+  C:08E1H         LINE#         88
+  -------         ENDPROC       _BEEP
+  -------         PROC          _DELAY100US
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0A12H         LINE#         89
+  C:0A12H         LINE#         91
+  C:0A22H         LINE#         92
+  C:0A30H         LINE#         93
+  C:0A37H         LINE#         94
+  -------         ENDPROC       _DELAY100US
+  -------         ENDMOD        TIMER_EXPLOSION
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/15/2018  13:16:35  PAGE 4
+
+
+  -------         MODULE        ?C?CLDOPTR
+  C:09BFH         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 017EH BYTE (18%) *
+******************************************************************************
+
+Program Size: data=55.0 xdata=0 code=571
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
