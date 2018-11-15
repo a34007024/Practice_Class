@@ -1,0 +1,261 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\¡i¹q¤T¤A·¨Â`©Ó¡j\Practice_Class\89s51_Class\181115_delayFunc_using_timer_value\timer_delay_fuction.uvproj
+Project File Date:  11/15/2018
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+timer_delay_fuction.c(4): error C301: identifier expected
+timer_delay_fuction.c(4): error C304: bad macro parameter list
+timer_delay_fuction.c(5): error C301: identifier expected
+timer_delay_fuction.c(5): error C304: bad macro parameter list
+TIMER_DELAY_FUCTION.C(17): error C202: 'TH_M1': undefined identifier
+TIMER_DELAY_FUCTION.C(18): error C202: 'TL_M1': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+TIMER_DELAY_FUCTION.C(27): warning C280: 'ms': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?TIMER_DELAY_FUCTION
+Program Size: data=11.0 xdata=0 code=58
+creating hex file from "timer_delay_fuction"...
+"timer_delay_fuction" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+TIMER_DELAY_FUCTION.C(23): warning C280: 'ms': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?TIMER_DELAY_FUCTION
+Program Size: data=11.0 xdata=0 code=58
+creating hex file from "timer_delay_fuction"...
+"timer_delay_fuction" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+TIMER_DELAY_FUCTION.C(23): warning C280: 'ms': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?TIMER_DELAY_FUCTION
+Program Size: data=11.0 xdata=0 code=58
+creating hex file from "timer_delay_fuction"...
+"timer_delay_fuction" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+TIMER_DELAY_FUCTION.C(23): warning C280: 'ms': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?TIMER_DELAY_FUCTION
+Program Size: data=11.0 xdata=0 code=58
+creating hex file from "timer_delay_fuction"...
+"timer_delay_fuction" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling timer_delay_fuction.c...
+TIMER_DELAY_FUCTION.C(23): warning C280: 'ms': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?TIMER_DELAY_FUCTION
+Program Size: data=11.0 xdata=0 code=58
+creating hex file from "timer_delay_fuction"...
+"timer_delay_fuction" - 0 Error(s), 2 Warning(s).
