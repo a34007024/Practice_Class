@@ -8,16 +8,16 @@ entity signal_vs_variable is
 end entity;
 --此文件用來練習、比較signal 和 variable的差異性
 architecture main of signal_vs_variable is
---signal A:integer range 0 to 15 := 0;
+	signal A:integer range 0 to 15 := 0;
 begin
 	process(clk)
-	variable A:integer range 0 to 15:=0;
+	--variable A:integer range 0 to 15:=0;
 	begin
 		if rising_edge(clk) then
-			A := A + 1;
+			A <= A + 1;
 			B <= A;
 			if A=5 then 
-				A := 0;
+				A <= 0;
 			end if;
 		end if;
 	end process;
