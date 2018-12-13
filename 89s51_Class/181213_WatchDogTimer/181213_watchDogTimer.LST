@@ -1,0 +1,72 @@
+C51 COMPILER V9.01   181213_WATCHDOGTIMER                                                  12/13/2018 11:04:54 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 181213_WATCHDOGTIMER
+OBJECT MODULE PLACED IN 181213_watchDogTimer.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 181213_watchDogTimer.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include        <reg51.h>       // 包含reg51.h標頭檔 
+   2          #define LED      P1                     // 定義LED接至Port 1
+   3          sfr     WDTRST=0xa6;            // 宣告WDTRST位址
+   4          #define counts 142              // 定義追狗速度
+   5          #define t0H (65536-1000)/256    // 定義T0計數起點之高8位元
+   6          #define t0L (65536-1000)%256    // 宣告T0計數起點之高8位元
+   7          unsigned int x;                         // 宣告無號整數變數x(佔2Bytes)
+   8          void DELAY1ms(int);             // 宣告延遲函數
+   9          //==主程式======================================
+  10          void main()                                     
+  11          {       unsigned char i;        // 宣告無號數字元變數i(佔1Bytes)
+  12   1              EA=ET0=PT0=1;           // 設定Timer 0中斷
+  13   1              TH0=t0H;                        // 填入高8位元
+  14   1              TL0=t0L;                        // 填入低8位元
+  15   1              TR0=1;                          // 啟動Timer 0
+  16   1              WDTRST = 0x1e;          // 啟用看門狗計時器
+  17   1              WDTRST = 0xe1;          // 啟用看門狗計時器
+  18   1              LED=0xfe;                               // 初值=1111 1110,只有最右1燈亮 
+  19   1              while(1)                                // 無窮迴圈,程式一直跑 
+  20   1              {       for(i=0;i<7;i++)        // 左移7次
+  21   2                      {       DELAY1ms(100);  // 延遲0.1s 
+  22   3                              LED=(LED<<1)|0x01;      // 左移1位,並設定最低位元為1 
+  23   3                      }                       
+  24   2                      for(i=0;i<7;i++)        // 右移7次 
+  25   2                      {       DELAY1ms(100);  // 延遲0.1s 
+  26   3                              LED=(LED>>1)|0x80;      // 右移1位,並設定最高位元為1
+  27   3                      }               
+  28   2              }                       
+  29   1      }                               
+  30          // === 延時函數 ===
+  31          void DELAY1ms(int x) 
+  32          {       int i,j;                                
+  33   1              for(i=0;i<x;i++)                
+  34   1                      for(j=0;j<120;j++);     
+  35   1      } 
+  36          // === Timer 0中斷副程式 ===
+  37          void  Feed(void)  interrupt 1   // 餵狗副程式開始 
+  38          {       TH0=t0H;                        // 填入高8位元
+  39   1              TL0=t0L;                        // 填入低8位元
+  40   1              // 軟體模擬：75以下ok, 76(含)以上追不上WDT
+  41   1              // 硬體實驗：142以下 ok, 143(含)以上追不上WDT
+  42   1              if (++x == counts)      
+  43   1              {       x=0;                    // 重新計數  
+  44   2                      WDTRST = 0x1e;  // 重置看門狗計時器 
+  45   2                      WDTRST = 0xe1;  // 重置看門狗計時器
+  46   2              }
+  47   1      }                               
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    152    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       1
+C51 COMPILER V9.01   181213_WATCHDOGTIMER                                                  12/13/2018 11:04:54 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
