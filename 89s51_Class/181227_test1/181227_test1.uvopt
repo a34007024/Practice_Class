@@ -188,8 +188,8 @@
       <Focus>0</Focus>
       <ColumnNumber>27</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>103</TopLine>
-      <CurrentLine>103</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\181227_test1.c</PathWithFileName>
       <FilenameWithoutPath>181227_test1.c</FilenameWithoutPath>
@@ -1542,8 +1542,8 @@
         <Doc>
           <Name>.\181227_test1.c</Name>
           <ColumnNumber>27</ColumnNumber>
-          <TopLine>103</TopLine>
-          <CurrentLine>103</CurrentLine>
+          <TopLine>1</TopLine>
+          <CurrentLine>1</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>
