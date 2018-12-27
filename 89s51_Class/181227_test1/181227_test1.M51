@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        12/27/2018  11:04:38  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        12/27/2018  11:16:14  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -22,22 +22,22 @@ LINK MAP OF MODULE:  181227_test1 (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0016H     UNIT         ?DT?181227_TEST1
-            DATA    001EH     0006H     UNIT         _DATA_GROUP_
-            IDATA   0024H     0001H     UNIT         ?STACK
+            DATA    0008H     0018H     UNIT         ?DT?181227_TEST1
+            DATA    0020H     0006H     UNIT         _DATA_GROUP_
+            IDATA   0026H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
-            CODE    0800H     008DH     UNIT         ?PR?MAIN?181227_TEST1
-            CODE    088DH     008CH     UNIT         ?C_C51STARTUP
-            CODE    0919H     0056H     UNIT         ?PR?_BEEP?181227_TEST1
-            CODE    096FH     002AH     UNIT         ?PR?_DELAY?181227_TEST1
-            CODE    0999H     0026H     UNIT         ?PR?_DELAY100US?181227_TEST1
-            CODE    09BFH     0020H     UNIT         ?PR?_LED_AND_SEG7_FLASH?181227_TEST1
-            CODE    09DFH     001FH     UNIT         ?PR?LEDMOVELEFT?181227_TEST1
-            CODE    09FEH     001FH     UNIT         ?PR?LEDMOVERIGHT?181227_TEST1
-            CODE    0A1DH     001BH     UNIT         ?C_INITSEG
+            CODE    0800H     00BBH     UNIT         ?PR?MAIN?181227_TEST1
+            CODE    08BBH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0947H     0052H     UNIT         ?PR?_BEEP?181227_TEST1
+            CODE    0999H     002AH     UNIT         ?PR?_DELAY?181227_TEST1
+            CODE    09C3H     0026H     UNIT         ?PR?_DELAY100US?181227_TEST1
+            CODE    09E9H     0020H     UNIT         ?PR?_LED_AND_SEG7_FLASH?181227_TEST1
+            CODE    0A09H     001FH     UNIT         ?C_INITSEG
+            CODE    0A28H     001BH     UNIT         ?PR?LEDMOVELEFT?181227_TEST1
+            CODE    0A43H     001BH     UNIT         ?PR?LEDMOVERIGHT?181227_TEST1
 
 
 
@@ -59,7 +59,7 @@ SEGMENT                                        DATA_GROUP
   +--> ?PR?_LED_AND_SEG7_FLASH?181227_TEST1
 
 ?PR?LEDMOVELEFT?181227_TEST1                 -----    -----
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:04:38  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:16:14  PAGE 2
 
 
   +--> ?PR?_DELAY?181227_TEST1
@@ -67,7 +67,7 @@ SEGMENT                                        DATA_GROUP
 ?PR?LEDMOVERIGHT?181227_TEST1                -----    -----
   +--> ?PR?_DELAY?181227_TEST1
 
-?PR?_BEEP?181227_TEST1                       001EH    0006H
+?PR?_BEEP?181227_TEST1                       0020H    0006H
   +--> ?PR?_DELAY100US?181227_TEST1
   +--> ?PR?_DELAY?181227_TEST1
 
@@ -82,8 +82,8 @@ SYMBOL TABLE OF MODULE:  181227_test1 (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:088DH         SEGMENT       ?C_C51STARTUP
-  I:0024H         SEGMENT       ?STACK
+  C:08BBH         SEGMENT       ?C_C51STARTUP
+  I:0026H         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
@@ -92,7 +92,7 @@ SYMBOL TABLE OF MODULE:  181227_test1 (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0890H         SYMBOL        IDATALOOP
+  C:08BEH         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -101,25 +101,25 @@ SYMBOL TABLE OF MODULE:  181227_test1 (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:088DH         SYMBOL        STARTUP1
+  C:08BBH         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:088DH         LINE#         133
-  C:088FH         LINE#         134
-  C:0890H         LINE#         135
-  C:0891H         LINE#         136
-  C:0893H         LINE#         185
-  C:0896H         LINE#         196
+  C:08BBH         LINE#         133
+  C:08BDH         LINE#         134
+  C:08BEH         LINE#         135
+  C:08BFH         LINE#         136
+  C:08C1H         LINE#         185
+  C:08C4H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        181227_TEST1
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:04:38  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:16:14  PAGE 3
 
 
   B:00B0H.0       PUBLIC        pb0
@@ -127,127 +127,130 @@ SYMBOL TABLE OF MODULE:  181227_test1 (?C_STARTUP)
   B:00B0H.1       PUBLIC        pb1
   B:00B0H.2       PUBLIC        pb2
   B:00B0H.3       PUBLIC        pb3
-  C:0999H         PUBLIC        _delay100us
-  C:0973H         PUBLIC        _delay
-  C:09FEH         PUBLIC        ledmoveright
-  C:09BFH         PUBLIC        _led_and_seg7_flash
-  C:0919H         PUBLIC        _beep
-  C:09DFH         PUBLIC        ledmoveleft
+  C:09C3H         PUBLIC        _delay100us
+  C:099DH         PUBLIC        _delay
+  C:0A43H         PUBLIC        ledmoveright
+  C:09E9H         PUBLIC        _led_and_seg7_flash
+  D:0008H         PUBLIC        startup
+  C:0947H         PUBLIC        _beep
+  C:0A28H         PUBLIC        ledmoveleft
   B:00B0H.7       PUBLIC        buzzer
   C:0800H         PUBLIC        main
-  D:0008H         PUBLIC        seg7hexCode
-  D:001CH         PUBLIC        seg7Number
+  D:000AH         PUBLIC        seg7hexCode
+  D:001EH         PUBLIC        seg7Number
   -------         PROC          MAIN
-  C:0800H         LINE#         33
   C:0800H         LINE#         34
-  C:0803H         LINE#         35
-  C:0806H         LINE#         36
-  C:080AH         LINE#         37
+  C:0800H         LINE#         35
+  C:0803H         LINE#         36
+  C:0806H         LINE#         37
   C:080AH         LINE#         38
-  C:080DH         LINE#         39
-  C:0810H         LINE#         40
-  C:0813H         LINE#         41
-  C:0816H         LINE#         42
-  C:0828H         LINE#         43
-  C:082DH         LINE#         44
-  C:082DH         LINE#         45
-  C:082DH         LINE#         46
-  C:082FH         LINE#         47
-  C:0832H         LINE#         48
-  C:0835H         LINE#         49
-  C:0838H         LINE#         50
-  C:083BH         LINE#         51
-  C:084BH         LINE#         52
-  C:0851H         LINE#         53
-  C:0859H         LINE#         54
-  C:0859H         LINE#         55
-  C:085BH         LINE#         56
-  C:085EH         LINE#         57
-  C:0861H         LINE#         58
-  C:0864H         LINE#         59
-  C:0869H         LINE#         60
-  C:0871H         LINE#         61
-  C:0878H         LINE#         62
-  C:0878H         LINE#         63
-  C:087AH         LINE#         64
-  C:087DH         LINE#         65
-  C:0880H         LINE#         66
-  C:0883H         LINE#         67
-  C:088AH         LINE#         68
-  C:088AH         LINE#         69
-  C:088AH         LINE#         70
+  C:080AH         LINE#         39
+  C:080DH         LINE#         40
+  C:0814H         LINE#         41
+  C:0817H         LINE#         42
+  C:081CH         LINE#         43
+  C:081FH         LINE#         44
+  C:0831H         LINE#         45
+  C:0836H         LINE#         46
+  C:0836H         LINE#         47
+  C:0836H         LINE#         48
+  C:0838H         LINE#         49
+  C:083BH         LINE#         50
+  C:0842H         LINE#         51
+  C:0845H         LINE#         52
+  C:084AH         LINE#         53
+  C:084DH         LINE#         54
+  C:085DH         LINE#         55
+  C:0863H         LINE#         56
+  C:086BH         LINE#         57
+  C:086BH         LINE#         58
+  C:086DH         LINE#         59
+  C:0876H         LINE#         60
+  C:087CH         LINE#         61
+  C:087FH         LINE#         62
+  C:0884H         LINE#         63
+  C:088CH         LINE#         64
+  C:0893H         LINE#         65
+  C:0893H         LINE#         66
+  C:0896H         LINE#         67
+  C:08A5H         LINE#         68
+  C:08ABH         LINE#         69
+  C:08B1H         LINE#         70
+  C:08B8H         LINE#         71
+  C:08B8H         LINE#         72
+  C:08B8H         LINE#         73
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:16:14  PAGE 4
+
+
   -------         ENDPROC       MAIN
-  C:096FH         SYMBOL        L?0059
+  C:0999H         SYMBOL        L?0059
   -------         PROC          L?0058
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:04:38  PAGE 4
-
-
   -------         ENDPROC       L?0058
-  C:096FH         SYMBOL        L?0059
+  C:0999H         SYMBOL        L?0059
   -------         PROC          _DELAY
   D:0006H         SYMBOL        ms
   -------         DO            
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
-  C:0973H         LINE#         73
-  C:0973H         LINE#         75
-  C:0983H         LINE#         76
-  C:0991H         LINE#         77
-  C:0998H         LINE#         78
+  C:099DH         LINE#         76
+  C:099DH         LINE#         78
+  C:09ADH         LINE#         79
+  C:09BBH         LINE#         80
+  C:09C2H         LINE#         81
   -------         ENDPROC       _DELAY
   -------         PROC          LEDMOVELEFT
   -------         DO            
   D:0082H         SYMBOL        i
   -------         ENDDO         
-  C:09DFH         LINE#         80
-  C:09DFH         LINE#         81
-  C:09E2H         LINE#         82
-  C:09E5H         LINE#         83
-  C:09ECH         LINE#         84
-  C:09F4H         LINE#         85
-  C:09FDH         LINE#         86
+  C:0A28H         LINE#         83
+  C:0A28H         LINE#         84
+  C:0A2BH         LINE#         85
+  C:0A2EH         LINE#         86
+  C:0A31H         LINE#         87
+  C:0A39H         LINE#         88
+  C:0A42H         LINE#         89
   -------         ENDPROC       LEDMOVELEFT
   -------         PROC          LEDMOVERIGHT
   -------         DO            
   D:0082H         SYMBOL        i
   -------         ENDDO         
-  C:09FEH         LINE#         87
-  C:09FEH         LINE#         88
-  C:0A01H         LINE#         89
-  C:0A04H         LINE#         90
-  C:0A0BH         LINE#         91
-  C:0A13H         LINE#         92
-  C:0A1CH         LINE#         93
+  C:0A43H         LINE#         90
+  C:0A43H         LINE#         91
+  C:0A46H         LINE#         92
+  C:0A49H         LINE#         93
+  C:0A4CH         LINE#         94
+  C:0A54H         LINE#         95
+  C:0A5DH         LINE#         96
   -------         ENDPROC       LEDMOVERIGHT
   -------         PROC          _LED_AND_SEG7_FLASH
   D:0082H         SYMBOL        seg7State
-  C:09BFH         LINE#         94
-  C:09C1H         LINE#         96
-  C:09C4H         LINE#         97
-  C:09C7H         LINE#         98
-  C:09CEH         LINE#         99
-  C:09D1H         LINE#         100
-  C:09DAH         LINE#         101
+  C:09E9H         LINE#         97
+  C:09EBH         LINE#         99
+  C:09EEH         LINE#         100
+  C:09F1H         LINE#         101
+  C:09F8H         LINE#         102
+  C:09FBH         LINE#         103
+  C:0A04H         LINE#         104
   -------         ENDPROC       _LED_AND_SEG7_FLASH
   -------         PROC          _BEEP
-  D:001EH         SYMBOL        beepcount
+  D:0020H         SYMBOL        beepcount
   -------         DO            
-  D:0020H         SYMBOL        i
-  D:0022H         SYMBOL        j
+  D:0022H         SYMBOL        i
+  D:0024H         SYMBOL        j
   -------         ENDDO         
-  C:0919H         LINE#         103
-  C:091DH         LINE#         105
-  C:0933H         LINE#         106
-BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:04:38  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  11:16:14  PAGE 5
 
 
-  C:0938H         LINE#         107
-  C:0941H         LINE#         108
-  C:094AH         LINE#         109
-  C:095DH         LINE#         110
-  C:0964H         LINE#         111
-  C:096EH         LINE#         112
+  C:0947H         LINE#         106
+  C:094BH         LINE#         108
+  C:0961H         LINE#         109
+  C:0966H         LINE#         110
+  C:096FH         LINE#         111
+  C:0978H         LINE#         112
+  C:098BH         LINE#         113
+  C:098EH         LINE#         114
+  C:0998H         LINE#         115
   -------         ENDPROC       _BEEP
   -------         PROC          _DELAY100US
   D:0006H         SYMBOL        delayXms
@@ -255,16 +258,16 @@ SYMBOL TABLE OF MODULE:  181227_test1 (?C_STARTUP)
   D:0004H         SYMBOL        i
   D:0002H         SYMBOL        j
   -------         ENDDO         
-  C:0999H         LINE#         113
-  C:0999H         LINE#         115
-  C:09A9H         LINE#         116
-  C:09BEH         LINE#         117
+  C:09C3H         LINE#         116
+  C:09C3H         LINE#         118
+  C:09D3H         LINE#         119
+  C:09E8H         LINE#         120
   -------         ENDPROC       _DELAY100US
   -------         ENDMOD        181227_TEST1
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 01BAH BYTE (21%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 01E0H BYTE (23%) *
 ******************************************************************************
 
-Program Size: data=37.0 xdata=0 code=571
+Program Size: data=39.0 xdata=0 code=609
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

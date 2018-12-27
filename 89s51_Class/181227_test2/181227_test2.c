@@ -23,7 +23,6 @@ b -> P0.1
 char seg7hexCode[20] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
 // 7-seg對應顯示輸出0~9
 int seg7Number = 0;
-int startup = 1;
 void delay(int);
 void ledmoveleft();
 void ledmoveright();
@@ -39,7 +38,6 @@ void main(){
 		if(pb0 == 0){
 			delay(5);
 			if(pb0 == 0){
-				startup = 0;
 				ledmoveleft();
 				if(seg7Number != 9)seg7Number += 1;
 				else seg7Number = 0;
@@ -49,14 +47,13 @@ void main(){
 		else if(pb1 == 0){
 			delay(5);
 			if(pb1 == 0){
-				startup = 0;
 				ledmoveright();
 				if(seg7Number != 0)seg7Number -= 1;
 				else seg7Number = 9;
 				seg7 = seg7hexCode[seg7Number];
 			}
 		}
-		else if(pb2 == 0 && startup == 0){
+		else if(pb2 == 0){
 			delay(5);
 			if(pb2 == 0){
 				seg7Number = 0;
@@ -64,7 +61,7 @@ void main(){
 				beep(2);
 			}
 		}
-		else if(pb3 == 0 && startup == 0){
+		else if(pb3 == 0){
 			delay(5);
 			if(pb3 == 0){
 				led_and_seg7_flash(seg7Number);
