@@ -8,7 +8,7 @@ sbit pb3 = P3^3;
 sbit buzzer = P3^7;
 /*
 接線說明:
-共用掃描訊號D0接至GND
+*共用掃描訊號D0接至GND
 a -> P0.0 (P0^0) a為LSB(最低位元)
 b -> P0.1
 依序a,b,c,d,e,f,g......
@@ -18,7 +18,7 @@ b -> P0.1
 		 (PB1) R1 -> P3.1
 		 (PB2) R2 -> P3.2
 		 (PB3) R3 -> P3.3
-		 ***重要c0-c3接到GND***
+		 ***重要c0-c3全都接到GND***
 */
 char seg7hexCode[20] = {0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
 // 7-seg對應顯示輸出0~9
