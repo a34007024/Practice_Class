@@ -1,3 +1,4 @@
+//樂譜:http://tw.everyonepiano.com/Number-5314-1-Flower-Dance-%E8%8A%B1%E8%88%9E-C%E8%AA%BF%E7%B0%A1%E5%96%AE%E7%89%88%E9%9B%99%E6%89%8B%E7%B0%A1%E8%AD%9C%E9%A0%90%E8%A6%BD1.html
 #include <reg51.h>
 #define  B0 50000		// 定義基本節拍
 sbit Buzzer=P3^7;		// 宣告蜂鳴器位址 
