@@ -1,0 +1,209 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/14/2019  10:50:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE STARTUP.obj, flower_dance_in89s51_buzzer.obj TO flower_dance_in89s51_buzzer
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  flower_dance_in89s51_buzzer.obj (FLOWER_DANCE_IN89S51_BUZZER)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SLDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  flower_dance_in89s51_buzzer (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?FLOWER_DANCE_IN89S51_BUZZER
+            DATA    000CH     0003H     UNIT         _DATA_GROUP_
+            IDATA   000FH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     00CEH     UNIT         ?C?LIB_CODE
+            CODE    08CEH     00BDH     UNIT         ?CO?FLOWER_DANCE_IN89S51_BUZZER
+            CODE    098BH     00B8H     UNIT         ?PR?MAIN?FLOWER_DANCE_IN89S51_BUZZER
+            CODE    0A43H     0044H     UNIT         ?C?LDIV
+            CODE    0A87H     0026H     UNIT         ?PR?_DELAY1MS?FLOWER_DANCE_IN89S51_BUZZER
+            CODE    0AADH     001EH     UNIT         ?PR?_BEAT?FLOWER_DANCE_IN89S51_BUZZER
+            CODE    0ACBH     0018H     UNIT         ?PR?_DELAY?FLOWER_DANCE_IN89S51_BUZZER
+            CODE    0AE3H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0AEFH     0009H     UNIT         ?PR?TONE_INT?FLOWER_DANCE_IN89S51_BUZZER
+
+
+
+OVERLAY MAP OF MODULE:   flower_dance_in89s51_buzzer (?C_STARTUP)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?FLOWER_DANCE_IN89S51_BUZZER
+
+?PR?MAIN?FLOWER_DANCE_IN89S51_BUZZER             000CH    0001H
+  +--> ?CO?FLOWER_DANCE_IN89S51_BUZZER
+  +--> ?PR?_BEAT?FLOWER_DANCE_IN89S51_BUZZER
+  +--> ?PR?_DELAY1MS?FLOWER_DANCE_IN89S51_BU...
+
+?PR?_BEAT?FLOWER_DANCE_IN89S51_BUZZER            000DH    0002H
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/14/2019  10:50:09  PAGE 2
+
+
+  +--> ?PR?_DELAY?FLOWER_DANCE_IN89S51_BUZZER
+
+
+
+SYMBOL TABLE OF MODULE:  flower_dance_in89s51_buzzer (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0AE3H         SEGMENT       ?C_C51STARTUP
+  I:000FH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0AE6H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0AE3H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0AE3H         LINE#         133
+  C:0AE5H         LINE#         134
+  C:0AE6H         LINE#         135
+  C:0AE7H         LINE#         136
+  C:0AE9H         LINE#         185
+  C:0AECH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        FLOWER_DANCE_IN89S51_BUZZER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:0A87H         PUBLIC        _DELAY1ms
+  B:00B0H.7       PUBLIC        Buzzer
+  D:00A8H         PUBLIC        IE
+  C:08CEH         PUBLIC        BaseTone
+  C:0952H         PUBLIC        BEAT
+  C:0AADH         PUBLIC        _beat
+  C:098BH         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  C:0918H         PUBLIC        SONG
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/14/2019  10:50:09  PAGE 3
+
+
+  B:0088H.4       PUBLIC        TR0
+  C:0AEFH         PUBLIC        TONE_int
+  D:0008H         PUBLIC        t0H
+  C:0ACBH         PUBLIC        _DELAY
+  D:000AH         PUBLIC        t0L
+  -------         PROC          MAIN
+  -------         DO            
+  D:000CH         SYMBOL        i
+  -------         ENDDO         
+  C:098BH         LINE#         48
+  C:098BH         LINE#         49
+  C:098BH         LINE#         50
+  C:098DH         LINE#         51
+  C:0990H         LINE#         52
+  C:0993H         LINE#         53
+  C:0993H         LINE#         54
+  C:0996H         LINE#         55
+  C:0998H         LINE#         56
+  C:09A6H         LINE#         57
+  C:09E2H         LINE#         59
+  C:0A28H         LINE#         61
+  C:0A32H         LINE#         62
+  C:0A34H         LINE#         63
+  C:0A37H         LINE#         64
+  C:0A39H         LINE#         65
+  C:0A40H         LINE#         66
+  -------         ENDPROC       MAIN
+  -------         PROC          _BEAT
+  D:000DH         SYMBOL        x
+  -------         DO            
+  D:000EH         SYMBOL        i
+  -------         ENDDO         
+  C:0AADH         LINE#         69
+  C:0AAFH         LINE#         70
+  C:0AAFH         LINE#         71
+  C:0ABFH         LINE#         72
+  C:0ACAH         LINE#         73
+  -------         ENDPROC       _BEAT
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0A87H         LINE#         75
+  C:0A87H         LINE#         76
+  C:0A87H         LINE#         77
+  C:0A97H         LINE#         78
+  C:0AACH         LINE#         79
+  -------         ENDPROC       _DELAY1MS
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0ACBH         LINE#         81
+  C:0ACBH         LINE#         82
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/14/2019  10:50:09  PAGE 4
+
+
+  C:0ACBH         LINE#         83
+  C:0AE2H         LINE#         84
+  -------         ENDPROC       _DELAY
+  -------         PROC          TONE_INT
+  C:0AEFH         LINE#         86
+  C:0AEFH         LINE#         87
+  C:0AF5H         LINE#         88
+  C:0AF7H         LINE#         89
+  -------         ENDPROC       TONE_INT
+  -------         ENDMOD        FLOWER_DANCE_IN89S51_BUZZER
+
+  -------         MODULE        ?C?SLDIV
+  C:0A43H         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:083CH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 01ECH BYTE (24%) *
+******************************************************************************
+
+Program Size: data=16.0 xdata=0 code=766
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,114 @@
+C51 COMPILER V9.01   FLOWER_DANCE_IN89S51_BUZZER                                           02/14/2019 10:50:08 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE FLOWER_DANCE_IN89S51_BUZZER
+OBJECT MODULE PLACED IN flower_dance_in89s51_buzzer.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE flower_dance_in89s51_buzzer.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define  B0 50000               // 定義基本節拍
+   3          sbit Buzzer=P3^7;               // 宣告蜂鳴器位址 
+   4          unsigned int code BaseTone[37]={        // 宣告基本音階陣列
+   5          // 中音 
+   6          //  0   1               2               3               4               5               6               7
+   7                  1,      956,    852,    759,    716,  638,      568,    506,
+   8          //  8   9       10
+   9                  1,      1, 1,
+  10          // 低音 
+  11          //  11          12              13              14              15              16              17
+  12                  1908,   1701,   1515,   1433,   1276,   1136,   1012,
+  13          //  18  19      20
+  14                  1,      1, 1,
+  15          // 高音 
+  16          //  21          22              23              24              25              26              27
+  17                  478,    426,    379,    358,    319,    284,    253,
+  18          //  28  29      30
+  19                  1,      1, 1,
+  20          // 中音(Do#, Re#,-,Fa#,So#,La# ) 
+  21          //  31          32              33              34              35              36              
+  22                  903,    804,    1,              676,    602,    526     };
+  23          /*// 點仔膠 音調表 
+  24          char code SONG[]={
+  25                  6,6,6,          5,3,6,  22,21,22,       6,5,6,                  //1     
+  26                  21,21,22,23,23,22,22,21,21,6,6, 5,7,6,  100};   //2
+  27          // 點仔膠 節拍表 
+  28          char code BEAT[]={
+  29                  4,4,6,          4,4,6,  4,4,6,          4,4,6,          //1
+  30                  4,4,6,2,        4,4,6,  4,4,4,4,        4,4,6};         //2
+  31          //========================================*/
+  32          // flower dance 音調表 
+  33          char code SONG[]={
+  34                  3,2,6,2,3,2,6,2,        3,2,6,2,3,2,6,2,        3,2,6,2,3,2,6,2,        3,2,6,2,3,2,6,2,
+  35                  3,2,6,2,3,2,6,2,        3,2,6,2,3,2,6,2,        3,2,6,2,3,2,6,2,        3
+  36                  ,100}; //100為空的陣列格，表示歌曲結尾
+  37          // flower dance 節拍表 
+  38          char code BEAT[]={
+  39                  4,4,4,4,4,4,4,4,        4,4,4,4,4,4,4,4,        4,4,4,4,4,4,4,4,        4,4,4,4,4,4,4,4,
+  40                  4,4,4,4,4,4,4,4,        4,4,4,4,4,4,4,4,        4,4,4,4,4,4,4,4,        32
+  41                  };
+  42          //========================================
+  43          int t0H,t0L;                    // 宣告變數
+  44          void beat(char);                // 宣告節拍函數
+  45          void DELAY(int);                // 宣告延時函數
+  46          void DELAY1ms(int);     // 宣告延時函數
+  47          // ==================================================
+  48          main()
+  49          {       unsigned char i;        // 宣告播歌指標
+  50   1              Buzzer=1;                       // 初始化
+  51   1              IE=0x82;                        // 啟用Timer 0中斷
+  52   1              TMOD=TMOD|1;            // 設定Timer 0 Mode 1
+  53   1              while(1)                        // 若開關on
+  54   1              {       i=0;                    // 若播歌指標歸零
+  55   2                      TR0=1;                  // 開始播歌
+C51 COMPILER V9.01   FLOWER_DANCE_IN89S51_BUZZER                                           02/14/2019 10:50:08 PAGE 2   
+
+  56   2                      while(SONG[i]!=100)     // 若非結束符號，則播歌
+  57   2                      {       TH0=t0H=(65536-BaseTone[SONG[i]])/256;
+  58   3                              // 載入所要播音階之高8位元
+  59   3                              TL0=t0L=(65536-BaseTone[SONG[i]])%256;
+  60   3                              // 載入所要播音階之低8位元
+  61   3                              beat(BEAT[i]);  // 等待節拍結束
+  62   3                              i++;                    // 下一個音
+  63   3                      }
+  64   2                      TR0=0;                          // 停止播放 
+  65   2                      DELAY1ms(30000);        // 等30秒
+  66   2              } 
+  67   1      } 
+  68          // ==================================================
+  69          void beat(char x)
+  70          {       char i;
+  71   1              for (i=0;i<x;i++)
+  72   1                      DELAY((B0-23)/12);      
+  73   1      }       
+  74          // ==================================================
+  75          void DELAY1ms(int x)    // 宣告延時函數
+  76          {       int i,j;
+  77   1              for(i=0;i<x;i++)
+  78   1                      for(j=0;j<120;j++);
+  79   1      }
+  80          // ==================================================
+  81          void DELAY(int x)
+  82          {       int i;
+  83   1              for(i=0;i<x;i++);
+  84   1      }
+  85          // ==================================================
+  86          void TONE_int(void) interrupt 1
+  87          {       TH0=t0H; TL0=t0L;       // 重新填入計時量
+  88   1              Buzzer=!Buzzer;         // 切換蜂鳴器
+  89   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    285    ----
+   CONSTANT SIZE    =    189    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

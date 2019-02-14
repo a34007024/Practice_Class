@@ -1,0 +1,173 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/14/2019  12:04:39  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE My_Heart_Will_Go_On-left_Hand_in89s51_buzzer.obj TO My_Heart_Will_Go_On-left_Hand_in89s51_buzze
+>> r
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  My_Heart_Will_Go_On-left_Hand_in89s51_buzzer.obj (MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SLDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  My_Heart_Will_Go_On-left_Hand_in89s51_buzzer (MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+            DATA    000CH     0003H     UNIT         _DATA_GROUP_
+            IDATA   000FH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     0181H     UNIT         ?CO?MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+            CODE    0981H     00CEH     UNIT         ?C?LIB_CODE
+            CODE    0A4FH     00B8H     UNIT         ?PR?MAIN?MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+            CODE    0B07H     0044H     UNIT         ?C?LDIV
+            CODE    0B4BH     0026H     UNIT         ?PR?_DELAY1MS?MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+            CODE    0B71H     001EH     UNIT         ?PR?_BEAT?MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+            CODE    0B8FH     0018H     UNIT         ?PR?_DELAY?MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+            CODE    0BA7H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0BB3H     0009H     UNIT         ?PR?TONE_INT?MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+
+
+
+OVERLAY MAP OF MODULE:   My_Heart_Will_Go_On-left_Hand_in89s51_buzzer (MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?MY_HEART_WILL_GO_ON_LEFT_HAN...
+
+?PR?MAIN?MY_HEART_WILL_GO_ON_LEFT_HAN...         000CH    0001H
+  +--> ?CO?MY_HEART_WILL_GO_ON_LEFT_HAND_IN8...
+  +--> ?PR?_BEAT?MY_HEART_WILL_GO_ON_LEFT_HA...
+  +--> ?PR?_DELAY1MS?MY_HEART_WILL_GO_ON_LEF...
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/14/2019  12:04:39  PAGE 2
+
+
+?PR?_BEAT?MY_HEART_WILL_GO_ON_LEFT_HA...         000DH    0002H
+  +--> ?PR?_DELAY?MY_HEART_WILL_GO_ON_LEFT_H...
+
+
+
+SYMBOL TABLE OF MODULE:  My_Heart_Will_Go_On-left_Hand_in89s51_buzzer (MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:0B4BH         PUBLIC        _DELAY1ms
+  B:00B0H.7       PUBLIC        Buzzer
+  D:00A8H         PUBLIC        IE
+  C:0800H         PUBLIC        BaseTone
+  C:08E6H         PUBLIC        BEAT
+  C:0B71H         PUBLIC        _beat
+  C:0A4FH         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  C:084AH         PUBLIC        SONG
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:0BB3H         PUBLIC        TONE_int
+  D:0008H         PUBLIC        t0H
+  C:0B8FH         PUBLIC        _DELAY
+  D:000AH         PUBLIC        t0L
+  -------         PROC          MAIN
+  -------         DO            
+  D:000CH         SYMBOL        i
+  -------         ENDDO         
+  C:0A4FH         LINE#         68
+  C:0A4FH         LINE#         69
+  C:0A4FH         LINE#         70
+  C:0A51H         LINE#         71
+  C:0A54H         LINE#         72
+  C:0A57H         LINE#         73
+  C:0A57H         LINE#         74
+  C:0A5AH         LINE#         75
+  C:0A5CH         LINE#         76
+  C:0A6AH         LINE#         77
+  C:0AA6H         LINE#         79
+  C:0AECH         LINE#         81
+  C:0AF6H         LINE#         82
+  C:0AF8H         LINE#         83
+  C:0AFBH         LINE#         84
+  C:0AFDH         LINE#         85
+  C:0B04H         LINE#         86
+  -------         ENDPROC       MAIN
+  -------         PROC          _BEAT
+  D:000DH         SYMBOL        x
+  -------         DO            
+  D:000EH         SYMBOL        i
+  -------         ENDDO         
+  C:0B71H         LINE#         89
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/14/2019  12:04:39  PAGE 3
+
+
+  C:0B73H         LINE#         90
+  C:0B73H         LINE#         91
+  C:0B83H         LINE#         92
+  C:0B8EH         LINE#         93
+  -------         ENDPROC       _BEAT
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0B4BH         LINE#         95
+  C:0B4BH         LINE#         96
+  C:0B4BH         LINE#         97
+  C:0B5BH         LINE#         98
+  C:0B70H         LINE#         99
+  -------         ENDPROC       _DELAY1MS
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0B8FH         LINE#         101
+  C:0B8FH         LINE#         102
+  C:0B8FH         LINE#         103
+  C:0BA6H         LINE#         104
+  -------         ENDPROC       _DELAY
+  -------         PROC          TONE_INT
+  C:0BB3H         LINE#         106
+  C:0BB3H         LINE#         107
+  C:0BB9H         LINE#         108
+  C:0BBBH         LINE#         109
+  -------         ENDPROC       TONE_INT
+  -------         ENDMOD        MY_HEART_WILL_GO_ON_LEFT_HAND_IN89S51_BUZ
+
+  -------         MODULE        ?C?SLDIV
+  C:0B07H         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:09BDH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 02A1H BYTE (32%) *
+******************************************************************************
+
+Program Size: data=16.0 xdata=0 code=962
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
