@@ -65,9 +65,9 @@ int keyscan()
 				case 6:Sound(6);break;			// Si
 				case 7:Sound(7);break;			// Do#
 			}
-			while(Y!=0) Y=~KEYP & 0x0f;// 等待放開按鍵
+			//while(Y!=0) Y=~KEYP & 0x0f;// 等待放開按鍵
 		}
-		DELAY500us(4);					// 延遲2ms
+		//DELAY500us(4);					// 延遲2ms
 	}
 	return Kcode;
 }
